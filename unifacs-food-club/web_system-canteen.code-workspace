@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.defaultLanguage": "typescriptreact",
+    "files.associations": {
+      "*.js": "javascriptreact",
+      "*.ts": "typescriptreact"
+    },
+    "files.eol": "\n",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "huuums.vscode-fast-folder-structure",
+      "jpoissonnier.vscode-styled-components"
+    ]
+  }
+}
