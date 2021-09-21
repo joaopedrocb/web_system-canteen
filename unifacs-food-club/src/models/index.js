@@ -1,0 +1,6 @@
+export { Beverage } from './Beverage'
+export { Food } from './Food'
+export { Product } from './Product'
+export { Responsible } from './Responsible'
+export { Staff } from './Staff'
+export { Student } from './Student'
