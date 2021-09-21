@@ -1,0 +1,21 @@
+#dashboard_header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 30px 40px 30px 100px;
+
+    border: 1px solid black;
+}
+
+.header_navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 250px;
+}
+
+.header_navigation-options {
+    display: inline;
+    margin-right: 10px;
+}
