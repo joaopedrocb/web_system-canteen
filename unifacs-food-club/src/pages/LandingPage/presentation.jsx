@@ -4,11 +4,9 @@ import React from 'react';
 // css
 import './styles.css'
 
-import { LocalStorageAdapter } from '../../infra'
 
 function LandingPagePresentation() {
-    const storage = new LocalStorageAdapter()
-    storage.setItem('teste', '123')
+    
     return (
         <main id="landing-page">
             <section class="landing-page_presentation" style={({display: 'grid', alignItems: 'center', justifyContent: 'center'})}>
