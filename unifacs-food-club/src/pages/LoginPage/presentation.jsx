@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 // css
 import './styles.css';
 
-function LoginPagePresentation() {
+function LoginPagePresentation({ onClickLogin }) {
     return (
         <main id="login-page">
             <section class="login-page_section">
@@ -21,7 +21,7 @@ function LoginPagePresentation() {
                         Esqueceu a senha?
                     </Link>
 
-                    <button>Entrar</button>
+                    <button onClick={() => onClickLogin()}>Entrar</button>
 
                     <hr />
 
