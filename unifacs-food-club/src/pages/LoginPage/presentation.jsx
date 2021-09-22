@@ -5,15 +5,21 @@ import { Link } from 'react-router-dom'
 // css
 import './styles.css';
 
-function LoginPagePresentation({ onClickLogin }) {
+function LoginPagePresentation(props) {
+    const { 
+        onClickLogin,
+        onEmailInputChange,
+        onPasswordInputChange,
+    } = props;
+
     return (
         <main id="login-page">
             <section class="login-page_section">
                 <span class="login-page_section-title">Entrar</span>
 
                 <form class="login-page_section-form">
-                    <input placeholder="Email"></input>
-                    <input placeholder="Senha"></input>
+                    <input onChange={onEmailInputChange} placeholder="Email"></input>
+                    <input onChange={onPasswordInputChange} placeholder="Senha"></input>
                 </form>
 
                 <footer class="login-page_section-footer">
@@ -21,7 +27,7 @@ function LoginPagePresentation({ onClickLogin }) {
                         Esqueceu a senha?
                     </Link>
 
-                    <button onClick={() => onClickLogin()}>Entrar</button>
+                    <button onClick={onClickLogin}>Entrar</button>
 
                     <hr />
 
