@@ -1,0 +1,1 @@
+export { InsertProduct } from './InsertProduct'
