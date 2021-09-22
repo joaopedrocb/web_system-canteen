@@ -16,7 +16,7 @@ function HeaderPresentation() {
                 </li>
 
                 <li class="header_navigation-options">
-                    <Link to="/sistema">Gerenciamento</Link>
+                    <Link to="/insertProduct">Gerenciamento</Link>
                 </li>
             </ul>
 
