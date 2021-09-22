@@ -1,0 +1,14 @@
+.landing-page_presentation {
+    height: 600px;
+    background-color: red;
+}
+
+.landing-page_system-info {
+    height: 300px;
+    background-color: aqua;
+}
+
+.lading-page_school-info {
+    height: 300px;
+    background-color: green;
+}
