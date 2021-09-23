@@ -1,73 +1,116 @@
 // dependencies
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { AccessLevel } from "../../../enums";
 
 // css
-import './styles.css'
+import "./styles.css";
 
 function ManagementTemplatePresentation(props) {
-    const { children, loggedUser } = props;
+  const { children, loggedUser } = props;
+
+  function renderBalance() {
+    if (loggedUser.accessLevel.id !== AccessLevel.STUDENT.id) {
+      return null;
+    }
+    return (
+      <div className="user-infos">
+        <span>Saldo:</span>
+
+        <span>R$ {loggedUser?.balance || "-"}</span>
+      </div>
+    );
+  }
+
+  function renderProductsButton() {
+    if (loggedUser.accessLevel.id === AccessLevel.STUDENT.id) {
+      return null;
+    }
 
     return (
-        <section id="management-page">
-            <div class="management-page_navbar">
+      <Link to="/gerenciamento/produtos">
+        <div className="navbar-item">
+          <div className="navbar-item_logo products" />
+          Produtos
+        </div>
+      </Link>
+    );
+  }
 
-                <div className="actions-container">
-                    <Link to='/'>Voltar ao início</Link>
-                </div>
+  function renderResponsiblesListButton() {
+    if (loggedUser.accessLevel.id !== AccessLevel.STAFF.id) {
+      return null;
+    }
 
-                <div className="navbar-header">
-                    <div className="user-logo"/>
+    return (
+      <Link replace to="/gerenciamento/responsaveis">
+        <div className="navbar-item">
+          <div className="navbar-item_logo responsibles" />
+          Responsáveis
+        </div>
+      </Link>
+    );
+  }
 
-                    <span className="user-name">{loggedUser?.name}</span>
+  function renderStudentsButton() {
+    if (loggedUser.accessLevel.id === AccessLevel.STUDENT.id) {
+      return null;
+    }
 
-                    <div className="user-infos">
-                        <span>Saldo:</span>
-                        
-                        <span>R$ {loggedUser?.balance || '-'}</span>
-                    </div>
-                </div>
+    return (
+      <Link to="/gerenciamento/alunos">
+        <div className="navbar-item">
+          <div className="navbar-item_logo students" />
+          Alunos
+        </div>
+      </Link>
+    );
+  }
 
-                <hr/>
+  function renderProductsPurchaseButton() {
+    if (loggedUser.accessLevel.id !== AccessLevel.STUDENT.id) {
+      return null;
+    }
+    return (
+      <Link to="/comprar">
+        <div className="navbar-item">
+          <div className="navbar-item_logo cart" />
+          Comprar
+        </div>
+      </Link>
+    );
+  }
 
-                <Link to="gerenciamento/produtos">
-                    <div className="navbar-item">
-                        <div className="navbar-item_logo products"/>
+  return (
+    <section id="management-page">
+      <div class="management-page_navbar">
+        <div className="actions-container">
+          <Link to="/">Voltar ao início</Link>
+        </div>
 
-                        Produtos
-                    </div>
-                </Link>
+        <div className="navbar-header">
+          <div className="user-logo" />
 
-                <Link replace to="/gerenciamento/responsaveis">
-                    <div className="navbar-item">
-                        <div className="navbar-item_logo responsibles"/>
+          <span className="user-name">{loggedUser?.name}</span>
 
-                        Responsáveis
-                    </div>
-                </Link>
+          {renderBalance()}
+        </div>
 
-                <Link to="/gerenciamento/alunos">
-                    <div className="navbar-item">
-                        <div className="navbar-item_logo students"/>
+        <hr />
 
-                        Alunos
-                    </div>
-                </Link>
+        {renderProductsButton()}
 
-                <Link to="/comprar">
-                    <div className="navbar-item">
-                        <div className="navbar-item_logo cart"/>
+        {renderResponsiblesListButton()}
 
-                        Comprar
-                    </div>
-                </Link>
-            </div>
+        {renderStudentsButton()}
 
-            <div className="management-page_main">
-                {children}
-            </div>
-        </section>
-    )
+        {renderProductsPurchaseButton()}
+      </div>
+
+      <div className="management-page_main">{children}</div>
+    </section>
+  );
 }
 
 export default ManagementTemplatePresentation;
