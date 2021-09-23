@@ -9,8 +9,6 @@ export function InsertStudent() {
 
   const studentsList = storage.getItem(STUDENTS_LIST);
 
-  React.useEffect(() => {console.log('List Update', studentsList)}, [studentsList])
-
   const [shift, setShift] = React.useState('');
 
   function onShiftInputChange(event) {

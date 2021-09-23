@@ -40,7 +40,7 @@ function ProductsPagePresentation(props) {
     <ManagementTemplate>
       {renderCreateProductButton()}
       <div className="productsList">
-        <div className="list-header">
+        <div className="list-header-products">
           <span>Nome</span>
           <span>Código</span>
           <span>Tipo</span>

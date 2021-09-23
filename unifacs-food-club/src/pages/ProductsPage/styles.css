@@ -36,7 +36,7 @@
     flex-wrap: wrap;
 }
 
-.list-header {
+.list-header-products {
     display: grid;
     grid-template-columns: 0.8fr 0.5fr 0.5fr 0.5fr 2fr 1fr 0.05fr;
     width: 100%;

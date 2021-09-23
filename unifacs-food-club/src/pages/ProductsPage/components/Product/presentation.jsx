@@ -32,8 +32,6 @@ function ProductPresentation(props) {
             return '-';
         }
 
-        console.log('ingredients', ingredients);
-
         return ingredients.map(ingredient => {
             return (
                 <li className="ingredient">
@@ -46,7 +44,7 @@ function ProductPresentation(props) {
     function renderProduct() {
         if (isBlocked) {
             return (
-                <div id="produc" className="isBlocked">
+                <div id="produc" className="isBlockedProducts">
                     <div className="product-data">
                         <div  className="product-image"></div>
                         <span className="product-name">{name}</span>
