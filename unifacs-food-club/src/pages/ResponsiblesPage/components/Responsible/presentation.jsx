@@ -12,7 +12,7 @@ export default function ResponsiblePresentation(props) {
 
   function renderEnrollmentList() {
     return studentsEnrollment.map((item) => {
-      return <li className="enrollment">{item}</li>;
+      return <span>{item}</span>;
     });
   }
 
@@ -24,7 +24,7 @@ export default function ResponsiblePresentation(props) {
       <span className="responsible-id">{cpf}</span>
       <span className="responsible-id">{phoneNumber}</span>
       <span className="responsible-id">{email}</span>
-      <span>{renderEnrollmentList()}</span>
+      <div className="enrollment-list">{renderEnrollmentList()}</div>
 
       <Link replace to="../gerenciamento/responsaveis/alterar"><div className="management-button"/></Link>
     </div>

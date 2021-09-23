@@ -6,6 +6,12 @@
     padding: 100px;
 }
 
+.backToProducts {
+    justify-self: flex-end;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
 .insert-responsible-page_section {
     width: 400px;
     display: grid;

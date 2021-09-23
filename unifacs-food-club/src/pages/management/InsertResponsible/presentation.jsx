@@ -1,5 +1,6 @@
 // dependencies
 import React from "react";
+import { Link } from 'react-router-dom';
 
 // css
 import "./styles.css";
@@ -21,6 +22,10 @@ export function InsertResponsiblePresentational(props) {
   return (
     <ManagementTemplate>
       <main id="insert-responsible-page">
+        <Link replace to="/gerenciamento/responsaveis" className="backToProducts">
+            <span >Voltar para responsáveis</span> 
+        </Link>
+
         <section class="insert-responsible-page_section">
           <span class="insert-responsible-page_section-title">
             Cadastrar responsável
