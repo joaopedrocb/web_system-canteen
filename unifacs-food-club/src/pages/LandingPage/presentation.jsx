@@ -22,7 +22,7 @@ function LandingPagePresentation() {
                     <span className="static-info-title">Segurança reforçada</span>
 
                     <text className="static-info-text">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, aperiam quidem. Qui quod rerum ipsam corrupti esse iure quasi expedita beatae temporibus excepturi? Quis possimus harum sed repudiandae, ab facilis?
+                        Nossa plataforma oferece um ambiente seguro e de confiança por meio de protocolos modernos de criptografia. Seus dados estão seguros conosco, então fique tranquilo para realizar depósitos e fazer compras.
                     </text>
                 </div>
 
@@ -30,7 +30,8 @@ function LandingPagePresentation() {
                     <span className="static-info-title">Objetivos</span>
 
                     <text className="static-info-text">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, aperiam quidem. Qui quod rerum ipsam corrupti esse iure quasi expedita beatae temporibus excepturi? Quis possimus harum sed repudiandae, ab facilis?
+                        Nossa missão é garantir que o estudante gaste seu precioso tomando as decisões na sala de aula e no seu futuro, com nossa plataforma, é possível reduzir o tempo que o aluno passa tomando decisões e manter um histórico da sua alimentação e gastos.
+                        
                     </text>
                 </div>
 
@@ -39,7 +40,8 @@ function LandingPagePresentation() {
 
 
                     <text className="static-info-text">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, aperiam quidem. Qui quod rerum ipsam corrupti esse iure quasi expedita beatae temporibus excepturi? Quis possimus harum sed repudiandae, ab facilis?
+                        Nossa plataforma se destaca por conta de sua interface inovadora e de fácil adaptação. Também oferecemos um ambiente seguro e privado para responsáveis e alunos.
+
                     </text>
                 </div>
             </section>
