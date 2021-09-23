@@ -54,7 +54,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link to="gerenciamento/produtos">
+                <Link to="/comprar">
                     <div className="navbar-item">
                         <div className="navbar-item_logo cart"/>
 

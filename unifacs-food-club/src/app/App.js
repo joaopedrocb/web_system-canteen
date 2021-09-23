@@ -12,6 +12,7 @@ import {
   ProductsPage,
   ResponsiblesPage,
   StudentsPage,
+  ProductsPurchasePage
 } from "../pages";
 
 import { LocalStorageAdapter } from "../infra";
@@ -38,6 +39,7 @@ function App() {
               component={ResponsiblesPage}
             />
             <Route path="/gerenciamento/alunos" component={StudentsPage} />
+            <Route path="/comprar" component={ProductsPurchasePage} />
           </Switch>
         </DashboardTemplate>
       </Router>
