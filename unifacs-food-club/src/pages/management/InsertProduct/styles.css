@@ -2,8 +2,12 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    
-    padding: 100px;
+}
+
+.backToProducts {
+    justify-self: flex-end;
+    margin-bottom: 20px;
+    text-decoration: none;
 }
 
 .insert-product-page_section {
@@ -77,6 +81,8 @@
     font-weight: 600;
     font-size: 16px;
     background-color: #9146ff;
+
+    cursor: pointer;
 }
 
 .insert-product-page_section-footer a {
@@ -85,4 +91,10 @@
 
 .insert-product-page_section-footer-sign-up-text {
     font-size: 14px;
+}
+
+.product-type-selector-container {
+    display: flex;
+    grid-gap: 10px;
+    margin-top: 10px;
 }

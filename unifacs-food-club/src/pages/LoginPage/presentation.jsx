@@ -35,7 +35,7 @@ function LoginPagePresentation(props) {
                 <header className="login-page_section-header">
                     <span class="login-page_section-title">Entrar</span>
 
-                    <Link to="/">Voltar ao início</Link>
+                    <Link replace to="/">Voltar ao início</Link>
                 </header>
 
                 <form autocomplete="on" class="login-page_section-form">
@@ -44,7 +44,7 @@ function LoginPagePresentation(props) {
                         <input name="password" type="password" onChange={onPasswordInputChange} placeholder="Senha"></input>
                     </div>
 
-                    <Link to="/login" class="login-page_section-form-forgot-password">
+                    <Link replace to="/login" class="login-page_section-form-forgot-password">
                         Esqueceu a senha?
                     </Link>
 
@@ -57,7 +57,7 @@ function LoginPagePresentation(props) {
                     <span class="login-page_section-footer-sign-up-text">
                         Sua escola ainda não está cadastrada?
                         {' '}
-                        <Link to="/login">Cadastre agora</Link>
+                        <Link replace to="/login">Cadastre agora</Link>
                     </span>
 
                 </footer>

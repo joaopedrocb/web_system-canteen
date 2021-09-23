@@ -13,7 +13,7 @@ function ManagementTemplatePresentation(props) {
             <div class="management-page_navbar">
 
                 <div className="actions-container">
-                    <Link to='/'>Voltar ao início</Link>
+                    <Link replace to='/'>Voltar ao início</Link>
                 </div>
 
                 <div className="navbar-header">
@@ -30,7 +30,7 @@ function ManagementTemplatePresentation(props) {
 
                 <hr/>
 
-                <Link to="gerenciamento/produtos">
+                <Link replace to="/gerenciamento/produtos">
                     <div className="navbar-item">
                         <div className="navbar-item_logo products"/>
 
@@ -38,7 +38,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link to="gerenciamento/produtos">
+                <Link replace to="gerenciamento/produtos">
                     <div className="navbar-item">
                         <div className="navbar-item_logo responsibles"/>
 
@@ -46,7 +46,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link to="gerenciamento/produtos">
+                <Link replace to="gerenciamento/produtos">
                     <div className="navbar-item">
                         <div className="navbar-item_logo students"/>
 
@@ -54,7 +54,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link to="gerenciamento/produtos">
+                <Link replace to="gerenciamento/produtos">
                     <div className="navbar-item">
                         <div className="navbar-item_logo cart"/>
 

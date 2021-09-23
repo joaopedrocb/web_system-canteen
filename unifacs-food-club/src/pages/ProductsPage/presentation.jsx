@@ -1,5 +1,6 @@
 // dependencies
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // template
 import { ManagementTemplate } from '../templates';
@@ -16,7 +17,9 @@ function ProductsPagePresentation(props) {
     return (
         <ManagementTemplate>
             <div className="create-product-button-container">
-                <button className="create-product-button">Criar Produto</button>
+                <Link replace to="/gerenciamento/produtos/adicionar">
+                    <button className="create-product-button">Criar Produto</button> 
+                </Link>
             </div>
 
             <div className="productsList">

@@ -44,17 +44,25 @@ export function InsertProduct() {
     setIngredients(event?.target?.value);
   }
 
+  const buttonIsDisabled = React.useMemo(() => {
+    return (ingredients === '' && provider === '') ||
+            price === '' ||
+            name  === '' ||
+            code === '' ||
+            !productType;
+  },[code, ingredients, name, price, productType, provider])
+
   function codeAlreadyExists() {
     const codeAlreadyExists = productsList.some(product => {
       return product.code === parseFloat(code)
     })
 
-    if (codeAlreadyExists) {
+    if (codeAlreadyExists && name !== '') {
       alert('Já existe um produto com este código.')
-      return codeAlreadyExists
+      return codeAlreadyExists;
     }
 
-    return codeAlreadyExists
+    return codeAlreadyExists;
   }
 
   function nameAlreadyExists() {
@@ -63,11 +71,11 @@ export function InsertProduct() {
     })
 
     if (nameAlreadyExists) {
-      alert('Já existe um produto com este nome.')
-      return nameAlreadyExists
+      alert('Já existe um produto com este nome.' && name !== '')
+      return nameAlreadyExists;
     }
 
-    return nameAlreadyExists
+    return nameAlreadyExists;
   }
 
   function onSubmit() {
@@ -79,8 +87,6 @@ export function InsertProduct() {
         type: productType === 1 ? ProductType.FOOD : ProductType.BEVERAGE,
         code,
         name,
-        //@TODO: Adicionar cadastro de imagem
-        // picture,
         price,
         isBlocked: true,
         ingredients,
@@ -94,6 +100,7 @@ export function InsertProduct() {
 
   return React.createElement(InsertProductPresentational, {
       productType,
+      buttonIsDisabled,
 
       onProductTypeInputChange,
       onCodeInputChange,
