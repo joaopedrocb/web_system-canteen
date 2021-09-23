@@ -20,6 +20,7 @@ import {
   UpdateResponsible,
   UpdateStudent,
   StatementPage,
+  DepositsPage
 } from "../pages";
 
 import { LocalStorageAdapter } from "../infra";
@@ -47,7 +48,8 @@ function App() {
             <Route path="/gerenciamento/responsaveis/adicionar" component={InsertResponsible}/>
             <Route path="/gerenciamento/responsaveis/alterar" component={UpdateResponsible}/>
             <Route path="/gerenciamento/alunos/alterar" component={UpdateStudent}/>
-            <Route path="/extrato" component={StatementPage}/>
+            <Route path="/gerenciamento/extrato" component={StatementPage}/>
+            <Route path="/gerenciamento/depositos" component={DepositsPage}/>
             <Route
               path="/gerenciamento/responsaveis"
               component={ResponsiblesPage}
