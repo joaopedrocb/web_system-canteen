@@ -7,28 +7,51 @@ import './styles.css';
 
 function LoginPagePresentation(props) {
     const { 
+        email,
+        password,
+
         onClickLogin,
         onEmailInputChange,
         onPasswordInputChange,
     } = props;
 
+    const buttonIsDisabled = !email || !password;
+
+    function renderButton() {
+        if (buttonIsDisabled) {
+            return <button type="button" className="buttonIsDisabled">Entrar</button>;
+        }
+
+        return <button onClick={onClickLogin}>Entrar</button>
+    }
+
     return (
         <main id="login-page">
+            <div className="box login-box"/>
+            <div className="box login-box-small"/>
+            <div className="box login-box-medium"/>
+
             <section class="login-page_section">
-                <span class="login-page_section-title">Entrar</span>
+                <header className="login-page_section-header">
+                    <span class="login-page_section-title">Entrar</span>
+
+                    <Link to="/">Voltar ao início</Link>
+                </header>
 
                 <form class="login-page_section-form">
-                    <input onChange={onEmailInputChange} placeholder="Email"></input>
-                    <input onChange={onPasswordInputChange} placeholder="Senha"></input>
-                </form>
+                    <div className="login-page_section-form-inputs-container">
+                        <input pattern=".+@gmail\.com" required onChange={onEmailInputChange} placeholder="Email"></input>
+                        <input onChange={onPasswordInputChange} placeholder="Senha"></input>
+                    </div>
 
-                <footer class="login-page_section-footer">
-                    <Link to="/login" class="login-page_section-footer-forgot-password">
+                    <Link to="/login" class="login-page_section-form-forgot-password">
                         Esqueceu a senha?
                     </Link>
 
-                    <button onClick={onClickLogin}>Entrar</button>
+                    {renderButton()}
+                </form>
 
+                <footer class="login-page_section-footer">
                     <hr />
 
                     <span class="login-page_section-footer-sign-up-text">
