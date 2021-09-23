@@ -1,5 +1,6 @@
 // dependencies
 import React from 'react';
+import { ManagementTemplate } from "../../templates";
 
 // css
 import './styles.css';
@@ -19,6 +20,7 @@ export function UpdateStudentPresentational(props) {
     } = props;
 
     return (
+      <ManagementTemplate>
         <main id="update-student-page">
           <section class="update-student-page_section">
               <span class="update-student-page_section-title">Editar aluno</span>
@@ -49,5 +51,6 @@ export function UpdateStudentPresentational(props) {
               </footer>
           </section>
         </main>
+        </ManagementTemplate>
     )
 }
