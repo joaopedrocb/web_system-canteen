@@ -2,8 +2,6 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    
-    padding: 100px;
 }
 
 .update-product-page_section {
@@ -77,6 +75,8 @@
     font-weight: 600;
     font-size: 16px;
     background-color: #9146ff;
+
+    cursor: pointer;
 }
 
 .update-product-page_section-footer a {

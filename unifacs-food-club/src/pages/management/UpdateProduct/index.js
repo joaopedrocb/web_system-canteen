@@ -2,7 +2,6 @@ import { UpdateProductPresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
 import { PRODUCTS_LIST } from '../../../constants/domain/storageKeys';
-import { ProductType } from '../../../enums';
 
 export function UpdateProduct(product) {
   const storage = new LocalStorageAdapter()
@@ -34,8 +33,8 @@ export function UpdateProduct(product) {
 
   function nameAlreadyExists() {
     const nameAlreadyExists =  productsList.some(product => {
-      return product.name.toUpperCase() === name.toLocaleUpperCase()
-    })
+      return product?.name.toUpperCase() === name.toUpperCase();
+    });
 
     if (nameAlreadyExists) {
       alert('Já existe um produto com este nome.')
@@ -75,6 +74,9 @@ export function UpdateProduct(product) {
 
   return React.createElement(UpdateProductPresentational, {
       product,
+      name,
+      price,
+      ingredients,
 
       onNameInputChange,
       onPriceInputChange,
