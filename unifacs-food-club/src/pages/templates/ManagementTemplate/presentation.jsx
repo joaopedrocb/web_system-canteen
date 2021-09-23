@@ -87,7 +87,7 @@ function ManagementTemplatePresentation(props) {
       return (
         <Link to="/gerenciamento/extrato">
           <div className="navbar-item">
-            <div className="navbar-item_logo cart" />
+            <div className="navbar-item_logo statement" />
             Extrato de consumo
           </div>
         </Link>
@@ -102,7 +102,7 @@ function ManagementTemplatePresentation(props) {
       return (
         <Link to="/gerenciamento/depositos">
           <div className="navbar-item">
-            <div className="navbar-item_logo cart" />
+            <div className="navbar-item_logo deposit" />
             Extrato de depósitos
           </div>
         </Link>
@@ -138,6 +138,7 @@ function ManagementTemplatePresentation(props) {
         {renderProductsPurchaseButton()}
 
         {renderStatementButton()}
+        
         {renderDepositsButton()}
       </div>
 
