@@ -9,6 +9,8 @@ export function InsertStudent() {
 
   const studentsList = storage.getItem(STUDENTS_LIST);
 
+  React.useEffect(() => {console.log('List Update', studentsList)}, [studentsList])
+
   const [shift, setShift] = React.useState('');
 
   function onShiftInputChange(event) {
@@ -77,6 +79,21 @@ export function InsertStudent() {
     if (!error) {
       const loggedResponsible = storage.getItem(LOGGED_USER);
       
+
+      studentsList.push({
+        shift: shift === 1 ? ShiftType.MORNING : ShiftType.AFTERNOON,
+        enrollment,
+        name,
+        studentClass,
+        phoneNumber: phone,
+        email,
+        login,
+        password,
+        responsibleCpf: loggedResponsible.cpf,
+        accessLevel: AccessLevel.STUDENT,
+      })
+
+
       const newList = [...studentsList, {
         shift: shift === 1 ? ShiftType.MORNING : ShiftType.AFTERNOON,
         enrollment,
@@ -91,6 +108,7 @@ export function InsertStudent() {
       }]
 
       storage.setItem(STUDENTS_LIST, [...newList])
+      alert(`Aluno ${name} cadastrado com sucesso.`)
       return;
     }
   }
