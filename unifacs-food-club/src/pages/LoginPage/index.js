@@ -127,8 +127,6 @@ React.useEffect(() => {
       accessLevel,
     } = staff;
 
-    console.log(staff)
-  
     localStorage.setItem(LOGGED_USER, {   
       name,
       adress,
