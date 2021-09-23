@@ -88,6 +88,15 @@ hr {
     background-image: url('/src//assets/icons/cart.png');
 }
 
+.statement {
+    /* background-image: url('/src//assets/icons/statement.png'); */
+    background-size: 20px;
+}
+
+.deposit {
+    background-image: url('/src//assets/icons/deposits.png');
+}
+
 .navbar-item {
     padding: 20px;
     display: flex;
