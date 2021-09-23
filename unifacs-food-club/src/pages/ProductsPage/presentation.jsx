@@ -1,66 +1,80 @@
 // dependencies
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // template
-import { ManagementTemplate } from '../templates';
+import { ManagementTemplate } from "../templates";
 
 // components
-import { Product } from './components';
+import { Product } from "./components";
 
 // css
-import './styles.css';
+import "./styles.css";
+
+// infra
+import { LocalStorageAdapter } from "../../infra";
+
+// data
+import { LOGGED_USER } from "../../constants";
+import { AccessLevel } from "../../enums";
 
 function ProductsPagePresentation(props) {
-    const { productsList } = props;
+  const { productsList } = props;
 
+  function renderCreateProductButton() {
+    const storage = new LocalStorageAdapter();
+    const loggedUser = storage.getItem(LOGGED_USER);
+    if (loggedUser.accessLevel.id !== AccessLevel.STAFF.id) {
+      return null;
+    }
     return (
-        <ManagementTemplate>
-            <div className="create-product-button-container">
-                <Link replace to="/gerenciamento/produtos/adicionar">
-                    <button className="create-product-button">Criar Produto</button> 
-                </Link>
-            </div>
+      <div className="create-product-button-container">
+        <button className="create-product-button">Criar Produto</button>
+      </div>
+    );
+  }
 
-            <div className="productsList">
-                <div className="list-header">
-                    <span>Nome</span>
-                    <span>Código</span>
-                    <span>Tipo</span>
-                    <span>Fornecedor</span>
-                    <span>Ingredientes</span>
-                    <span>Valor</span>
-                    <div style={({width: '30px'})}/>
-                </div>
-                
-                {productsList.map(product => {
-                    const {
-                        code,
-                        ingredients,
-                        isBlocked,
-                        name,
-                        picture,
-                        price,
-                        type,
-                        provider,
-                    } = product;
+  return (
+    <ManagementTemplate>
+      {renderCreateProductButton()}
+      <div className="productsList">
+        <div className="list-header">
+          <span>Nome</span>
+          <span>Código</span>
+          <span>Tipo</span>
+          <span>Fornecedor</span>
+          <span>Ingredientes</span>
+          <span>Valor</span>
+          <div style={{ width: "30px" }} />
+        </div>
 
-                    return (
-                        <Product 
-                            code={code}
-                            ingredients={ingredients}
-                            isBlocked={isBlocked}
-                            name={name}
-                            picture={picture}
-                            price={price}
-                            type={type}
-                            provider={provider}
-                        />    
-                    );
-                })}
-            </div>
-        </ManagementTemplate>
-    )
+        {productsList.map((product) => {
+          const {
+            code,
+            ingredients,
+            isBlocked,
+            name,
+            picture,
+            price,
+            type,
+            provider,
+          } = product;
+
+          return (
+            <Product
+              code={code}
+              ingredients={ingredients}
+              isBlocked={isBlocked}
+              name={name}
+              picture={picture}
+              price={price}
+              type={type}
+              provider={provider}
+            />
+          );
+        })}
+      </div>
+    </ManagementTemplate>
+  );
 }
 
 export default ProductsPagePresentation;
