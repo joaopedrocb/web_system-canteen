@@ -1,0 +1,17 @@
+#management-page {
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+.management-page_navbar {
+    background-color: white;
+    z-index: -1;
+}
+
+.management-page_navbar ul {
+    list-style-type: none;
+}
+
+.management-page_navbar li {
+    margin-bottom: 20px;
+}

@@ -1,18 +1,13 @@
 #dashboard_header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99;
-
     display: grid;
     grid-template-columns: auto 1fr auto;
     justify-content: center;
     align-items: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin-left: 30%;
-    margin-right: 30%;
+    padding: 30px 200px 30px 100px;
+
+    background-color: white;
+    box-shadow: 0 2px 5px -2px gray;
+
 }
 
 .header_navigation {
@@ -36,7 +31,7 @@
 }
 
 .header_navigation-options a:hover {
-    color: white;
+    color: rgb(179, 175, 175);
 }
 .header_login-button, .header_logout-button {
     height: 35px;
@@ -46,13 +41,13 @@
     
     font-size: 16px;
     font-weight: 700;
-    color: #6f7edb;
+    color: white;
     
-    background-color: white;
+    background-color: #6f7edb;
     cursor: pointer;
 }
 
 .header_login-button:hover, .header_logout-button:hover {
-    background-color: #6f7edb;
-    color: white;
+    background-color: rgb(241, 237, 237);
+    color:  #6f7edb;
 }

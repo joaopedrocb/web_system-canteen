@@ -30,15 +30,7 @@ function HeaderPresentation(props) {
                 </li>
 
                 <li class="header_navigation-options">
-                    <Link to="/insertProduct">Inserir produtos</Link>
-                </li>
-
-                <li class="header_navigation-options">
-                    <Link to="/insertStudent">Inserir aluno</Link>
-                </li>
-
-                <li class="header_navigation-options">
-                    <Link to="/insertResponsible">Inserir responsável</Link>
+                    <Link to="/gerenciamento">Gerenciamento</Link>
                 </li>
             </ul>
 
