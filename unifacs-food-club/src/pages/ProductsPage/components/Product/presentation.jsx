@@ -32,6 +32,8 @@ function ProductPresentation(props) {
             return '-';
         }
 
+        console.log('ingredients', ingredients);
+
         return ingredients.map(ingredient => {
             return (
                 <li className="ingredient">

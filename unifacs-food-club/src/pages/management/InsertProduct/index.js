@@ -95,7 +95,7 @@ const history = useHistory();
         name,
         price,
         isBlocked: true,
-        ingredients,
+        ingredients: [ingredients],
         provider,
       }]
 
