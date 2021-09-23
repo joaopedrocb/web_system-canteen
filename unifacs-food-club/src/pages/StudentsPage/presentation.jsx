@@ -23,7 +23,7 @@ export default function StudentsPagePresentation(props) {
       </Link>
 
       <div className="studentsList">
-        <div className="list-header">
+        <div className="list-header-students">
           <span>Matrícula</span>
           <span>Turma</span>
           <span>Turno</span>
@@ -31,7 +31,7 @@ export default function StudentsPagePresentation(props) {
           <span>Telefone</span>
           <span>Email</span>
           <span>CPF do responsável</span>
-          <span>Balance</span>
+          <span>Saldo</span>
           <div style={{ width: "30px" }} />
         </div>
 

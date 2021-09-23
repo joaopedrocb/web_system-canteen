@@ -10,14 +10,33 @@ import './styles.css';
 export function UpdateResponsiblePresentational(props) {
     const {
       responsible,
+      name,
+      phone,
+      email,
+      login,
+      password,
 
-      onNameInputChange,
-      onPhoneInputChange,
-      onEmailInputChange,
-      onLoginInputChange,
-      onPasswordInputChange,
-      onSubmit
+    onNameInputChange,
+    onPhoneInputChange,
+    onEmailInputChange,
+    onLoginInputChange,
+    onPasswordInputChange,
+    onSubmit
     } = props;
+
+    const buttonIsDisabled = !name ||
+                              !phone ||
+                              !email ||
+                              !login ||
+                              !password;
+
+    function renderButton() {
+      if (buttonIsDisabled) {
+          return <button type="button" className="buttonIsDisabled">Editar</button>;
+      }
+
+      return <button onClick={onSubmit}>Editar</button>;
+    }
 
     return (
       <ManagementTemplate>
@@ -33,7 +52,7 @@ export function UpdateResponsiblePresentational(props) {
               </form>
 
               <footer class="update-responsible-page_section-footer">
-                  <button onClick={onSubmit}>Editar</button>
+                  {renderButton()}
               </footer>
           </section>
         </main>

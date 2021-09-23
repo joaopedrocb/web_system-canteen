@@ -65,8 +65,6 @@ export function UpdateProduct(product) {
 
       const newList = productsList[updatedIndex] = updatedProduct;
 
-      console.log(newList)
-
       storage.setItem(PRODUCTS_LIST, [...newList])
       return;
     }

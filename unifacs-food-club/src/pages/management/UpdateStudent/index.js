@@ -70,8 +70,6 @@ export function UpdateStudent(student) {
 
     const newList = studentsList[updatedIndex] = updatedResponsible;
 
-    console.log(newList)
-
     storage.setItem(STUDENTS_LIST, [...newList])
   }
 

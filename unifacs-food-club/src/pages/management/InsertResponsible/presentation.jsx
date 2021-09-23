@@ -10,6 +10,13 @@ import { ManagementTemplate } from "../../templates";
 
 export function InsertResponsiblePresentational(props) {
   const {
+    cpf,
+    name,
+    phone,
+    email,
+    login,
+    password,
+
     onCPFInputChange,
     onNameInputChange,
     onPhoneInputChange,
@@ -18,6 +25,21 @@ export function InsertResponsiblePresentational(props) {
     onPasswordInputChange,
     onSubmit,
   } = props;
+
+  const buttonIsDisabled = !cpf ||
+                            !name ||
+                            !phone ||
+                            !email ||
+                            !login ||
+                            !password;
+
+  function renderButton() {
+    if (buttonIsDisabled) {
+        return <button type="button" className="buttonIsDisabled">Cadastrar</button>;
+    }
+
+    return <button onClick={onSubmit}>Cadastrar</button>
+}
 
   return (
     <ManagementTemplate>
@@ -47,7 +69,7 @@ export function InsertResponsiblePresentational(props) {
           </form>
 
           <footer class="insert-responsible-page_section-footer">
-            <button onClick={onSubmit}>Cadastrar</button>
+            {renderButton()}
           </footer>
         </section>
       </main>

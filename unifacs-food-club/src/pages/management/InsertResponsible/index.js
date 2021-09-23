@@ -80,12 +80,19 @@ export function InsertResponsible() {
   }
 
   return React.createElement(InsertResponsiblePresentational, {
+    cpf,
+    name,
+    phone,
+    email,
+    login,
+    password,
+
     onCPFInputChange,
     onNameInputChange,
     onPhoneInputChange,
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
-    onSubmit
+    onSubmit,
   })
 }

@@ -29,7 +29,7 @@ export function UpdateProductPresentational(props) {
 
     function renderButton() {
       if (buttonIsDisabled) {
-        return <button type="button" className="buttonIsDisabled">Entrar</button>;
+        return <button type="button" className="buttonIsDisabled">Editar</button>;
       }
 
       return <button onClick={onSubmit}>Editar</button>
