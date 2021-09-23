@@ -38,7 +38,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link to="gerenciamento/produtos">
+                <Link replace to="/gerenciamento/responsaveis">
                     <div className="navbar-item">
                         <div className="navbar-item_logo responsibles"/>
 
