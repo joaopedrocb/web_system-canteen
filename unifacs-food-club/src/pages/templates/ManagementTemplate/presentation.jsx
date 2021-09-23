@@ -46,7 +46,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link to="gerenciamento/produtos">
+                <Link to="/gerenciamento/alunos">
                     <div className="navbar-item">
                         <div className="navbar-item_logo students"/>
 
