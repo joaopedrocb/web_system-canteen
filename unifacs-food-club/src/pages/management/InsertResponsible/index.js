@@ -2,6 +2,7 @@ import { InsertResponsiblePresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
 import { RESPONSIBLES_LIST } from '../../../constants/domain/storageKeys';
+import { AccessLevel } from '../../../enums';
 
 export function InsertResponsible() {
   const storage = new LocalStorageAdapter()
@@ -66,14 +67,14 @@ export function InsertResponsible() {
       const newList = [...responsiblesList, {
         cpf,
         name,
-        phone,
+        phoneNumber: phone,
         email,
         login,
         password,
-        
+        accessLevel: AccessLevel.RESPONSIBLE
       }]
 
-      // storage.setItem(PRODUCTS_LIST, [...newList])
+      storage.setItem(RESPONSIBLES_LIST, [...newList])
       return;
     }
   }
