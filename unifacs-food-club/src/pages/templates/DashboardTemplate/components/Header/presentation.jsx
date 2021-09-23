@@ -14,7 +14,7 @@ function HeaderPresentation(props) {
         }
 
         return (
-            <Link to="/login">
+            <Link replace to="/login">
                 <button class="header_login-button">Login</button>
             </Link>
         );
@@ -31,11 +31,11 @@ function HeaderPresentation(props) {
 
                 <ul class="header_navigation">
                     <li class="header_navigation-options">
-                        <Link to="/">Início</Link>
+                        <Link replace to="/">Início</Link>
                     </li>
 
                     <li class="header_navigation-options">
-                        <Link to="/gerenciamento">Gerenciamento</Link>
+                        <Link replace to="/gerenciamento">Gerenciamento</Link>
                     </li>
                 </ul>
 

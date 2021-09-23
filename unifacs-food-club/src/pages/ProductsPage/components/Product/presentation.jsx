@@ -1,5 +1,6 @@
 // dependencies
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 // css
 import './styles.css';
@@ -31,6 +32,8 @@ function ProductPresentation(props) {
             return '-';
         }
 
+        console.log('ingredients', ingredients);
+
         return ingredients.map(ingredient => {
             return (
                 <li className="ingredient">
@@ -59,7 +62,7 @@ function ProductPresentation(props) {
 
                     <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
 
-                    <div className="management-button"/>
+                    <Link replace to="../gerenciamento/produtos/alterar"><div className="management-button"/></Link>
             </div>
             );
         }

@@ -10,6 +10,7 @@ import {
   LoginPage,
   LandingPage,
   ProductsPage,
+  InsertProduct,
   ResponsiblesPage,
   StudentsPage,
   ProductsPurchasePage
@@ -33,7 +34,8 @@ function App() {
             <Route path="/" exact component={LandingPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/gerenciamento" exact component={ProductsPage} />
-            <Route path="/gerenciamento/produtos" component={ProductsPage} />
+            <Route path="/gerenciamento/produtos" exact component={ProductsPage} />
+            <Route path="/gerenciamento/produtos/adicionar" component={InsertProduct}/>
             <Route
               path="/gerenciamento/responsaveis"
               component={ResponsiblesPage}

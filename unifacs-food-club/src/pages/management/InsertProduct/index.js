@@ -1,5 +1,8 @@
-import { InsertProductPresentational } from './presentation'
+// dependencies
 import React from 'react';
+import { useHistory } from 'react-router-dom'
+
+import { InsertProductPresentational } from './presentation'
 import { LocalStorageAdapter } from '../../../infra'
 import { PRODUCTS_LIST } from '../../../constants/domain/storageKeys';
 import { ProductType } from '../../../enums';
@@ -44,17 +47,25 @@ export function InsertProduct() {
     setIngredients(event?.target?.value);
   }
 
+  const buttonIsDisabled = React.useMemo(() => {
+    return (ingredients === '' && provider === '') ||
+            price === '' ||
+            name  === '' ||
+            code === '' ||
+            !productType;
+  },[code, ingredients, name, price, productType, provider])
+
   function codeAlreadyExists() {
     const codeAlreadyExists = productsList.some(product => {
       return product.code === parseFloat(code)
     })
 
-    if (codeAlreadyExists) {
+    if (codeAlreadyExists && name !== '') {
       alert('Já existe um produto com este código.')
-      return codeAlreadyExists
+      return codeAlreadyExists;
     }
 
-    return codeAlreadyExists
+    return codeAlreadyExists;
   }
 
   function nameAlreadyExists() {
@@ -63,12 +74,15 @@ export function InsertProduct() {
     })
 
     if (nameAlreadyExists) {
-      alert('Já existe um produto com este nome.')
-      return nameAlreadyExists
+      alert('Já existe um produto com este nome.' && name !== '')
+      return nameAlreadyExists;
     }
 
-    return nameAlreadyExists
+    return nameAlreadyExists;
   }
+
+const history = useHistory();
+
 
   function onSubmit() {
     const error = codeAlreadyExists() || nameAlreadyExists();
@@ -79,21 +93,21 @@ export function InsertProduct() {
         type: productType === 1 ? ProductType.FOOD : ProductType.BEVERAGE,
         code,
         name,
-        //@TODO: Adicionar cadastro de imagem
-        // picture,
         price,
         isBlocked: true,
-        ingredients,
+        ingredients: [ingredients],
         provider,
       }]
 
-      storage.setItem(PRODUCTS_LIST, [...newList])
+      storage.setItem(PRODUCTS_LIST, [...newList]);
+      history.push('/gerenciamento/produtos');
       return;
     }
   }
 
   return React.createElement(InsertProductPresentational, {
       productType,
+      buttonIsDisabled,
 
       onProductTypeInputChange,
       onCodeInputChange,

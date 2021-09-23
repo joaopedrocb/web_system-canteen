@@ -1,5 +1,5 @@
 // dependencies
-import React from "react";
+import React from 'react';
 
 // template
 import { ManagementTemplate } from "../templates";
