@@ -9,13 +9,15 @@ import { DashboardTemplate, LoginPage, LandingPage } from '../pages';
 import { InsertResponsible, InsertProduct, InsertStudent } from '../pages/management';
 
 import { LocalStorageAdapter } from '../infra'
-import { PRODUCTS_LIST } from '../constants'
-import { productsList } from '../data'
+import { PRODUCTS_LIST, STUDENTS_LIST, RESPONSIBLES_LIST } from '../constants'
+import { productsList, studentsList, responsiblesList } from '../data'
 
 function App() {
 
     const storage = new LocalStorageAdapter()
     storage.setItem(PRODUCTS_LIST, [...productsList])
+    storage.setItem(STUDENTS_LIST, [...studentsList])
+    storage.setItem(RESPONSIBLES_LIST, [...responsiblesList])
 
     return (
         <div className="App">

@@ -1,8 +1,8 @@
 import { InsertStudentPresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
-import { STUDENTS_LIST } from '../../../constants/domain/storageKeys';
-import { ShiftType } from '../../../enums';
+import { LOGGED_USER, STUDENTS_LIST } from '../../../constants/domain/storageKeys';
+import { AccessLevel, ShiftType } from '../../../enums';
 
 export function InsertStudent() {
   const storage = new LocalStorageAdapter()
@@ -75,20 +75,22 @@ export function InsertStudent() {
     const error = enrollmentAlreadyExists();
     
     if (!error) {
-
+      const loggedResponsible = storage.getItem(LOGGED_USER);
+      
       const newList = [...studentsList, {
         shift: shift === 1 ? ShiftType.MORNING : ShiftType.AFTERNOON,
         enrollment,
         name,
         studentClass,
-        phone,
+        phoneNumber: phone,
         email,
         login,
         password,
-        //responsibleCpf
+        responsibleCpf: loggedResponsible.cpf,
+        accessLevel: AccessLevel.STUDENT,
       }]
 
-      // storage.setItem(PRODUCTS_LIST, [...newList])
+      storage.setItem(STUDENTS_LIST, [...newList])
       return;
     }
   }
