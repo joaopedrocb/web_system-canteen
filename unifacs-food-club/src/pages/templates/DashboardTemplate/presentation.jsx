@@ -8,12 +8,19 @@ import './styles.css';
 import { Header } from './components';
 
 function DashboardTemplatePresentation(props) {
-    const { children } = props;
+    const { children, loginPageIsActive } = props;
+
+    function renderHeader() {
+        if (loginPageIsActive) {
+            return null;
+        }
+        
+        return <Header />;
+    }
 
     return (
         <main id="dashboard_main">
-            <Header />
-
+            {renderHeader()}
             {children}
         </main>
     );

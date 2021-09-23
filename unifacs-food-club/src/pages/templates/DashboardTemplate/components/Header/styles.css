@@ -1,21 +1,58 @@
 #dashboard_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+
     display: grid;
     grid-template-columns: auto 1fr auto;
     justify-content: center;
     align-items: center;
-    
-    padding: 30px 40px 30px 100px;
-
-    border: 1px solid black;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .header_navigation {
     display: flex;
     justify-content: flex-end;
-    padding-right: 250px;
+    padding-right: 200px;
 }
 
 .header_navigation-options {
     display: inline;
-    margin-right: 10px;
+    margin-right: 20px;
+}
+
+.header_navigation-options a {
+    text-decoration: none;
+    text-transform: upperCase;
+    color: #6f7edb;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.header_navigation-options a:hover {
+    color: white;
+}
+.header_login-button, .header_logout-button {
+    height: 35px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    
+    font-size: 16px;
+    font-weight: 700;
+    color: #6f7edb;
+    
+    background-color: white;
+    cursor: pointer;
+}
+
+.header_login-button:hover, .header_logout-button:hover {
+    background-color: #6f7edb;
+    color: white;
 }

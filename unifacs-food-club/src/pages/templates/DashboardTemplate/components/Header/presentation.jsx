@@ -5,7 +5,21 @@ import { Link } from 'react-router-dom'
 // css
 import './styles.css';
 
-function HeaderPresentation() {
+function HeaderPresentation(props) {
+    const { hasALoggedUser, clearSession } = props;
+
+    function renderLoginOrLogoutButton() {
+        if (hasALoggedUser) {
+            return <button onClick={clearSession} class="header_logout-button">Sair</button>
+        }
+
+        return (
+            <Link to="/login">
+                <button class="header_login-button">Login</button>
+            </Link>
+        );
+    }
+
     return (
         <header id="dashboard_header">
             <div class="dashboard_logo">LOGO</div>
@@ -20,9 +34,7 @@ function HeaderPresentation() {
                 </li>
             </ul>
 
-            <Link to="/login">
-                <button class="header_login-button">Login</button>
-            </Link>
+            {renderLoginOrLogoutButton()}
         </header>
     );
 }
