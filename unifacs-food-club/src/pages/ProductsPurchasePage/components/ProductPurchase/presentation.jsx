@@ -35,13 +35,15 @@ function ProductPurchasePresentation(props) {
             }).format(price)}
           </span>
 
-          <div className="management-button" />
+          <div className="purchase-button-container">
+          <button className="purchase-button">Comprar</button>
+        </div>
         </div>
       );
     }
 
     return (
-      <div id="product">
+      <div id="purchase-product">
         <div className="product-data">
           <div className="product-image"></div>
           <span className="product-name">{name}</span>
@@ -56,7 +58,9 @@ function ProductPurchasePresentation(props) {
           }).format(price)}
         </span>
 
-        <div className="management-button" />
+        <div className="purchase-button-container">
+          <button className="purchase-button">Comprar</button>
+        </div>
       </div>
     );
   }

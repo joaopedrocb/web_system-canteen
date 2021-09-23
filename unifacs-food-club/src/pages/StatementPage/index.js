@@ -1,0 +1,1 @@
+export { StatementPage } from './presentation';
