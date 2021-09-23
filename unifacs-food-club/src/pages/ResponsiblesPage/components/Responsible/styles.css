@@ -1,6 +1,6 @@
 #responsible {
     display: grid;
-    grid-template-columns: 0.8fr 0.5fr 0.5fr 0.5fr 2fr 1fr 0.05fr;
+    grid-template-columns: repeat(6, 1fr);
     align-items: center;
     padding: 15px;
     width: 100%;
@@ -15,7 +15,7 @@
     color: grey;
 
     display: grid;
-    grid-template-columns: 0.8fr 0.5fr 0.5fr 0.5fr 2fr 1fr 0.05fr;
+    grid-template-columns: repeat(6, 1fr);
     align-items: center;
     padding: 15px;
     width: 100%;
@@ -100,4 +100,9 @@
     background-size: 18px;
 
     cursor: pointer;
+}
+
+.enrollment-list {
+    display: flex;
+    grid-gap: 10px;
 }
