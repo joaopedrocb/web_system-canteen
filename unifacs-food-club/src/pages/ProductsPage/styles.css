@@ -1,0 +1,16 @@
+.productsList {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list-header {
+    display: grid;
+    grid-template-columns: 0.8fr 0.5fr 0.5fr 0.5fr 2fr 1fr;
+    width: 100%;
+    padding: 15px;
+    font-weight: 600;
+    color: #3b3663;
+}

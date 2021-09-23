@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 // css
 import './styles.css'
 
-function ManagementPagePresentation() {
+function ManagementTemplatePresentation(props) {
+    const { children } = props;
+
     return (
         <section id="management-page">
             <div class="management-page_navbar">
                 <ul>
-                    <li><Link> Consultar Produtos </Link></li>
+                    <li><Link to="gerenciamento/produtos"> Consultar Produtos </Link></li>
                     <li><Link> Adicionar Produto </Link></li>
                     <li><Link> Alterar Produto </Link></li>
                     <li><Link> Gerenciar Produto </Link></li>
@@ -35,8 +37,12 @@ function ManagementPagePresentation() {
 
                 </ul>
             </div>
+
+            <div className="management-page_main">
+                {children}
+            </div>
         </section>
     )
 }
 
-export default ManagementPagePresentation;
+export default ManagementTemplatePresentation;

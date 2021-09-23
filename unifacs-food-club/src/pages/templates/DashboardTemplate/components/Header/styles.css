@@ -1,5 +1,6 @@
 #dashboard_header {
     display: grid;
+    z-index: 99999;
     grid-template-columns: auto 1fr auto;
     justify-content: center;
     align-items: center;

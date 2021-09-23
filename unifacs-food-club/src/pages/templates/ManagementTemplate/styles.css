@@ -5,7 +5,6 @@
 
 .management-page_navbar {
     background-color: white;
-    z-index: -1;
 }
 
 .management-page_navbar ul {
@@ -14,4 +13,8 @@
 
 .management-page_navbar li {
     margin-bottom: 20px;
+}
+
+.management-page_main {
+    padding: 30px;
 }
