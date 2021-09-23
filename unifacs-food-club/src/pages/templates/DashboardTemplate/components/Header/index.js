@@ -1,5 +1,6 @@
 // dependencies
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 // presentation
 import HeaderPresentation from './presentation';
@@ -11,6 +12,8 @@ import { LocalStorageAdapter } from '../../../../../infra'
 import { LOGGED_USER } from '../../../../../constants'
 
 function Header() {
+    const location = useLocation();
+
     const storage = React.useMemo(() => {
         return new LocalStorageAdapter();
     }, []); 
@@ -34,9 +37,21 @@ function Header() {
         document.location.reload();
     }
 
+    const [managementPageHasBeenActive, setManagementPageHasBeenActive] = React.useState(false);
+
+    React.useEffect(() => {
+        if (location.pathname === '/' || location.pathname === '/login') {
+            setManagementPageHasBeenActive(false);
+
+            return;
+        } 
+
+        setManagementPageHasBeenActive(true);
+    }, [location.pathname])
 
     return React.createElement(HeaderPresentation, {
         hasALoggedUser,
+        managementPageHasBeenActive,
 
         clearSession,
     });

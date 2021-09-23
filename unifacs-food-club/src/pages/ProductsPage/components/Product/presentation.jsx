@@ -58,6 +58,8 @@ function ProductPresentation(props) {
                     <span>{renderIngredients()}</span>
 
                     <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
+
+                    <div className="management-button"/>
             </div>
             );
         }
@@ -78,6 +80,8 @@ function ProductPresentation(props) {
                 <span>{renderIngredients()}</span>
 
                 <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
+
+                <div className="management-button"/>
             </div>
         );
     }

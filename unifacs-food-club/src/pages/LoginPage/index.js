@@ -16,11 +16,42 @@ import { LOGGED_USER } from '../../constants'
 
 export function LoginPage() {
 
-  const history = useHistory();
+const history = useHistory();
 
-  const storage = React.useMemo(() => {
-    return new LocalStorageAdapter();
-  }, []); 
+const storage = React.useMemo(() => {
+  return new LocalStorageAdapter();
+}, []); 
+
+const responsible = new Responsible();
+  
+const student = new Student();
+
+const staff = new Staff();
+
+const validResponsibleEmail = responsible.email;
+
+const validStudentEmail = student.email;
+
+const validStaffEmail = staff.email;
+
+const [hasALoggedUser, setHasALoggedUser] = React.useState(false);
+
+React.useEffect(() => {
+  const loggedUser = storage.getItem(LOGGED_USER);
+
+  if (loggedUser) {
+      setHasALoggedUser(true);
+      return;
+  }
+
+  setHasALoggedUser(false);
+}, [storage]);
+
+  React.useEffect(() => {
+    if (hasALoggedUser) {
+      history.push('/');
+    }
+  }, [hasALoggedUser, history]);
   
   React.useLayoutEffect(() => {
     const loggedUser = storage.getItem(LOGGED_USER);
@@ -31,18 +62,6 @@ export function LoginPage() {
       return;
     }
   }, [history, storage]);
-
-  const responsible = new Responsible();
-  
-  const student = new Student();
-  
-  const staff = new Staff();
-
-  const validResponsibleEmail = responsible.email;
-
-  const validStudentEmail = student.email;
-
-  const validStaffEmail = staff.email;
 
   function saveResponsible() {
     const { 
@@ -120,21 +139,32 @@ export function LoginPage() {
   }
 
 function onClickLogin() {
-  if (email === validResponsibleEmail && password === '12313') {
+  if (email === validResponsibleEmail && password === '123123') {
     saveResponsible();
-    history.push('./');
+    document.window.reload();
+    history.push('/gerenciamento/produtos');
+
+    return;
   }
 
-  if (email === validStudentEmail && password === '12313') {
+  if (email === validStudentEmail && password === '123123') {
     saveStudent();
-    history.push('./');
+    document.window.reload();
+    history.push('/gerenciamento/produtos');
+
+    return;
   }
   
 
-  if (email === validStaffEmail && password === '12313') {
+  if (email === validStaffEmail && password === '123123') {
     saveStaff();
-    history.push('./');
+    document.window.reload();
+    history.push('/gerenciamento/produtos');
+
+    return;
   }
+
+  setTimeout(() => alert('Essa conta não existe'), 2000)
 }
 
 const [email, setEmail] = React.useState('');

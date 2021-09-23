@@ -14,7 +14,6 @@ function DashboardTemplate(props) {
 
     const location = useLocation();
 
-
     React.useEffect(() => {
         if (location.pathname === loginPathName) {
             setLoginPageIsActive(true);

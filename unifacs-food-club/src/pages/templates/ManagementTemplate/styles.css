@@ -3,17 +3,105 @@
     grid-template-columns: 300px auto;
 }
 
+hr {
+    width: 60%;
+    border: none;
+    border-top: 0.2px solid rgb(225, 229, 231);
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.actions-container {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.navbar-header {
+    display: flex;
+    padding-top: 20px;
+    padding-left: 20px;
+    align-items: center;
+    
+}
+
+.user-logo {
+    height: 40px;
+    width: 40px;
+    background-color: rgb(238, 242, 244);
+    border-radius: 50%;
+    margin-right: 10px;
+
+    background-image: url('/src//assets/icons/user.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
+
+.user-name {
+    margin-right: 50px;
+    font-weight: 600;
+}
+
+.user-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    font-size: 14px;
+    font-weight: 600;
+    justify-self: flex-end;
+}
+
 .management-page_navbar {
     background-color: white;
 }
 
-.management-page_navbar ul {
-    list-style-type: none;
+.navbar-item_logo {
+    height: 40px;
+    width: 40px;
+    background-color: rgb(238, 242, 244);
+    border-radius: 50%;
+    margin-right: 10px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
 }
 
-.management-page_navbar li {
-    margin-bottom: 20px;
+.products {
+    background-image: url('/src//assets/icons/box.png');
 }
+
+.responsibles {
+    background-image: url('/src//assets/icons/couple.png');
+}
+
+.students {
+    background-image: url('/src//assets/icons/graduated.png');
+}
+
+.cart {
+    background-image: url('/src//assets/icons/cart.png');
+}
+
+.navbar-item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-item:hover {
+    background-color: rgb(236, 240, 242);
+}
+
+.management-page_navbar a {
+    text-decoration: none;
+}
+
 
 .management-page_main {
     padding: 30px;

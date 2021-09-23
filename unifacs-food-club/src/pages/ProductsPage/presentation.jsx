@@ -12,8 +12,13 @@ import './styles.css';
 
 function ProductsPagePresentation(props) {
     const { productsList } = props;
+
     return (
         <ManagementTemplate>
+            <div className="create-product-button-container">
+                <button className="create-product-button">Criar Produto</button>
+            </div>
+
             <div className="productsList">
                 <div className="list-header">
                     <span>Nome</span>
@@ -22,7 +27,9 @@ function ProductsPagePresentation(props) {
                     <span>Fornecedor</span>
                     <span>Ingredientes</span>
                     <span>Valor</span>
+                    <div style={({width: '30px'})}/>
                 </div>
+                
                 {productsList.map(product => {
                     const {
                         code,

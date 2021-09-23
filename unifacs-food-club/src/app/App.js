@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../global.css';
 
 // pages
-import { DashboardTemplate, LoginPage, LandingPage, ManagementTemplate, ProductsPage } from '../pages';
+import { DashboardTemplate, LoginPage, LandingPage, ProductsPage } from '../pages';
 
 import { LocalStorageAdapter } from '../infra'
 import { PRODUCTS_LIST, STUDENTS_LIST, RESPONSIBLES_LIST } from '../constants'
@@ -25,10 +25,8 @@ function App() {
                     <Switch>
                         <Route path="/" exact component={LandingPage}/>
                         <Route path="/login" component={LoginPage}/>
-                        <Route path="/gerenciamento" exact component={ManagementTemplate}/>
-
-                        <Route path="/gerenciamento/produtos" component={ProductsPage}/>
-                        
+                        <Route path="/gerenciamento" exact component={ProductsPage}/>
+                        <Route path="/gerenciamento/produtos" component={ProductsPage}/>   
                     </Switch>
                 </ DashboardTemplate>
             </Router>

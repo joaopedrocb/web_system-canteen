@@ -38,10 +38,10 @@ function LoginPagePresentation(props) {
                     <Link to="/">Voltar ao início</Link>
                 </header>
 
-                <form class="login-page_section-form">
+                <form autocomplete="on" class="login-page_section-form">
                     <div className="login-page_section-form-inputs-container">
-                        <input pattern=".+@gmail\.com" required onChange={onEmailInputChange} placeholder="Email"></input>
-                        <input onChange={onPasswordInputChange} placeholder="Senha"></input>
+                        <input name="email" type="text"  pattern=".+@gmail\.com" required onChange={onEmailInputChange} placeholder="Email"></input>
+                        <input name="password" type="password" onChange={onPasswordInputChange} placeholder="Senha"></input>
                     </div>
 
                     <Link to="/login" class="login-page_section-form-forgot-password">

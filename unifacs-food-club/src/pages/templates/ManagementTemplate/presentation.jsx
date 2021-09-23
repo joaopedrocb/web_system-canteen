@@ -6,36 +6,61 @@ import { Link } from 'react-router-dom';
 import './styles.css'
 
 function ManagementTemplatePresentation(props) {
-    const { children } = props;
+    const { children, loggedUser, clearSession } = props;
 
     return (
         <section id="management-page">
             <div class="management-page_navbar">
-                <ul>
-                    <li><Link to="gerenciamento/produtos"> Consultar Produtos </Link></li>
-                    <li><Link> Adicionar Produto </Link></li>
-                    <li><Link> Alterar Produto </Link></li>
-                    <li><Link> Gerenciar Produto </Link></li>
 
-                    <li>{' -'}</li>
+                <div className="actions-container">
+                    <Link to='/'>Voltar ao início</Link>
+                </div>
 
-                    <li><Link> Consultar Responsáveis </Link></li>
-                    <li><Link> Adicionar Responsável </Link></li>
+                <div className="navbar-header">
+                    <div className="user-logo"/>
 
-                    <li>{' -'}</li>
+                    <span className="user-name">{loggedUser?.name}</span>
 
-                    <li><Link> Consultar Alunos </Link></li>
-                    <li><Link> Adicionar Aluno </Link></li>
+                    <div className="user-infos">
+                        <span>Saldo:</span>
+                        
+                        <span>R$ {loggedUser?.balance || '-'}</span>
+                    </div>
+                </div>
 
-                    <li>{' -'}</li>
+                <hr/>
 
-                    <li><Link> Adicionar Aluno </Link></li>
+                <Link to="gerenciamento/produtos">
+                    <div className="navbar-item">
+                        <div className="navbar-item_logo products"/>
 
-                    <li>{' -'}</li>
+                        Produtos
+                    </div>
+                </Link>
 
-                    <li><Link> Comprar </Link></li>
+                <Link to="gerenciamento/produtos">
+                    <div className="navbar-item">
+                        <div className="navbar-item_logo responsibles"/>
 
-                </ul>
+                        Responsáveis
+                    </div>
+                </Link>
+
+                <Link to="gerenciamento/produtos">
+                    <div className="navbar-item">
+                        <div className="navbar-item_logo students"/>
+
+                        Alunos
+                    </div>
+                </Link>
+
+                <Link to="gerenciamento/produtos">
+                    <div className="navbar-item">
+                        <div className="navbar-item_logo cart"/>
+
+                        Comprar
+                    </div>
+                </Link>
             </div>
 
             <div className="management-page_main">

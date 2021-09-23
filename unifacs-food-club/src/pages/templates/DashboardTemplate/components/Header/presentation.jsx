@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import './styles.css';
 
 function HeaderPresentation(props) {
-    const { hasALoggedUser, clearSession } = props;
+    const { hasALoggedUser, managementPageHasBeenActive, clearSession } = props;
 
     function renderLoginOrLogoutButton() {
         if (hasALoggedUser) {
@@ -20,23 +20,31 @@ function HeaderPresentation(props) {
         );
     }
 
-    return (
-        <header id="dashboard_header">
-            <div class="dashboard_logo">LOGO</div>
+    function renderHeader() {
+        if (managementPageHasBeenActive) {
+            return null;
+        }
 
-            <ul class="header_navigation">
-                <li class="header_navigation-options">
-                    <Link to="/">Início</Link>
-                </li>
+        return (
+            <header id="dashboard_header">
+                <div class="dashboard_logo">{'.'}</div>
 
-                <li class="header_navigation-options">
-                    <Link to="/gerenciamento">Gerenciamento</Link>
-                </li>
-            </ul>
+                <ul class="header_navigation">
+                    <li class="header_navigation-options">
+                        <Link to="/">Início</Link>
+                    </li>
 
-            {renderLoginOrLogoutButton()}
-        </header>
-    );
+                    <li class="header_navigation-options">
+                        <Link to="/gerenciamento">Gerenciamento</Link>
+                    </li>
+                </ul>
+
+                {renderLoginOrLogoutButton()}
+            </header>
+        )
+    }
+
+    return renderHeader();
 }
 
 export default HeaderPresentation;
