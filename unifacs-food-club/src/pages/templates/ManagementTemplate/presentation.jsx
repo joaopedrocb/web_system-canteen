@@ -85,10 +85,25 @@ function ManagementTemplatePresentation(props) {
   function renderStatementButton() {
     if (loggedUser.accessLevel.id === AccessLevel.RESPONSIBLE.id) {
       return (
-        <Link to="/extrato">
+        <Link to="/gerenciamento/extrato">
           <div className="navbar-item">
             <div className="navbar-item_logo cart" />
             Extrato de consumo
+          </div>
+        </Link>
+      );
+    }
+
+    return null;
+  }
+
+  function renderDepositsButton() {
+    if (loggedUser.accessLevel.id === AccessLevel.RESPONSIBLE.id) {
+      return (
+        <Link to="/gerenciamento/depositos">
+          <div className="navbar-item">
+            <div className="navbar-item_logo cart" />
+            Extrato de depósitos
           </div>
         </Link>
       );
@@ -123,6 +138,7 @@ function ManagementTemplatePresentation(props) {
         {renderProductsPurchaseButton()}
 
         {renderStatementButton()}
+        {renderDepositsButton()}
       </div>
 
       <div className="management-page_main">{children}</div>

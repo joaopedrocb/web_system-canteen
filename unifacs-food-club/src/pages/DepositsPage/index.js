@@ -1,0 +1,1 @@
+export { DepositsPage } from './presentation';
