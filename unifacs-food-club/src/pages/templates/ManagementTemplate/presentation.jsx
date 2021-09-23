@@ -38,7 +38,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link replace to="gerenciamento/produtos">
+                <Link replace to="/gerenciamento/responsaveis">
                     <div className="navbar-item">
                         <div className="navbar-item_logo responsibles"/>
 
@@ -46,7 +46,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link replace to="gerenciamento/produtos">
+                <Link to="/gerenciamento/alunos">
                     <div className="navbar-item">
                         <div className="navbar-item_logo students"/>
 
@@ -54,7 +54,7 @@ function ManagementTemplatePresentation(props) {
                     </div>
                 </Link>
 
-                <Link replace to="gerenciamento/produtos">
+                <Link to="/comprar">
                     <div className="navbar-item">
                         <div className="navbar-item_logo cart"/>
 

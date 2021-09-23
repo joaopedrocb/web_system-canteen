@@ -1,38 +1,52 @@
 // dependencies
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // css
-import '../global.css';
+import "../global.css";
 
 // pages
-import { DashboardTemplate, LoginPage, LandingPage, ProductsPage, InsertProduct} from '../pages';
+import {
+  DashboardTemplate,
+  LoginPage,
+  LandingPage,
+  ProductsPage,
+  InsertProduct,
+  ResponsiblesPage,
+  StudentsPage,
+  ProductsPurchasePage
+} from "../pages";
 
-import { LocalStorageAdapter } from '../infra'
-import { PRODUCTS_LIST, STUDENTS_LIST, RESPONSIBLES_LIST } from '../constants'
-import { productsList, studentsList, responsiblesList } from '../data'
+import { LocalStorageAdapter } from "../infra";
+import { PRODUCTS_LIST, STUDENTS_LIST, RESPONSIBLES_LIST } from "../constants";
+import { productsList, studentsList, responsiblesList } from "../data";
 
 function App() {
+  const storage = new LocalStorageAdapter();
+  storage.setItem(PRODUCTS_LIST, [...productsList]);
+  storage.setItem(STUDENTS_LIST, [...studentsList]);
+  storage.setItem(RESPONSIBLES_LIST, [...responsiblesList]);
 
-    const storage = new LocalStorageAdapter()
-    storage.setItem(PRODUCTS_LIST, [...productsList])
-    storage.setItem(STUDENTS_LIST, [...studentsList])
-    storage.setItem(RESPONSIBLES_LIST, [...responsiblesList])
-
-    return (
-        <div className="App">
-            <Router>
-                <DashboardTemplate>
-                    <Switch>
-                        <Route path="/" exact component={LandingPage}/>
-                        <Route path="/login" component={LoginPage}/>
-                        <Route path="/gerenciamento" exact component={ProductsPage}/>
-                        <Route path="/gerenciamento/produtos" exact component={ProductsPage}/>   
-                        <Route path="/gerenciamento/produtos/adicionar" component={InsertProduct}/>
-                    </Switch>
-                </ DashboardTemplate>
-            </Router>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Router>
+        <DashboardTemplate>
+          <Switch>
+            <Route path="/" exact component={LandingPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/gerenciamento" exact component={ProductsPage} />
+            <Route path="/gerenciamento/produtos" exact component={ProductsPage} />
+            <Route path="/gerenciamento/produtos/adicionar" component={InsertProduct}/>
+            <Route
+              path="/gerenciamento/responsaveis"
+              component={ResponsiblesPage}
+            />
+            <Route path="/gerenciamento/alunos" component={StudentsPage} />
+            <Route path="/comprar" component={ProductsPurchasePage} />
+          </Switch>
+        </DashboardTemplate>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

@@ -1,0 +1,1 @@
+export { Responsible } from './Responsible';
