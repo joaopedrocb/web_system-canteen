@@ -1,5 +1,6 @@
 // dependencies
 import React from "react";
+import { Link } from "react-router-dom";
 
 // template
 import { ManagementTemplate } from "../templates";
@@ -15,9 +16,13 @@ export default function ResponsiblesPagePresentation(props) {
 
   return (
     <ManagementTemplate>
-      <div className="create-responsible-button-container">
-        <button className="create-responsible-button">Adicionar responsável</button>
-      </div>
+      <Link to="/gerenciamento/responsaveis/adicionar">
+        <div className="create-responsible-button-container">
+          <button className="create-responsible-button">
+            Adicionar responsável
+          </button>
+        </div>
+      </Link>
 
       <div className="responsiblesList">
         <div className="list-header">
@@ -30,13 +35,8 @@ export default function ResponsiblesPagePresentation(props) {
         </div>
 
         {responsiblesList.map((responsible) => {
-          const {
-            cpf,
-            name,
-            phoneNumber,
-            email,
-            studentsEnrollment,
-          } = responsible;
+          const { cpf, name, phoneNumber, email, studentsEnrollment } =
+            responsible;
 
           return (
             <Responsible
@@ -52,5 +52,3 @@ export default function ResponsiblesPagePresentation(props) {
     </ManagementTemplate>
   );
 }
-
-
