@@ -3,7 +3,7 @@ import { AccessLevel } from '../../enums'
 
 export class Student {
   constructor() {
-    this.studentEnrollment = 144171001;
+    this.enrollment = 144171001;
     this.studentClass = 101;
     this.shift = ShiftType.MORNING;
     this.name = 'João da Silva';

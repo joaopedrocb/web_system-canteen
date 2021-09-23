@@ -6,7 +6,7 @@ import '../global.css';
 
 // pages
 import { DashboardTemplate, LoginPage, LandingPage } from '../pages';
-import { InsertProduct } from '../pages/management';
+import { InsertResponsible, InsertProduct, InsertStudent } from '../pages/management';
 
 import { LocalStorageAdapter } from '../infra'
 import { PRODUCTS_LIST } from '../constants'
@@ -25,6 +25,8 @@ function App() {
                         <Route path="/" exact component={LandingPage}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/insertProduct" component={InsertProduct} />
+                        <Route path="/insertStudent" component={InsertStudent} />
+                        <Route path="/insertResponsible" component={InsertResponsible} />
                     </Switch>
                 </ DashboardTemplate>
             </Router>
