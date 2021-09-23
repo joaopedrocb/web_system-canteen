@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import './styles.css'
 
 function ManagementTemplatePresentation(props) {
-    const { children, loggedUser, clearSession } = props;
+    const { children, loggedUser } = props;
 
     return (
         <section id="management-page">
