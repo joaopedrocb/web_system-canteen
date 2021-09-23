@@ -61,6 +61,8 @@ function ProductPresentation(props) {
                     <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
 
                     <Link replace to="../gerenciamento/produtos/alterar"><div className="management-button"/></Link>
+
+                     <div className="block-button"/>
             </div>
             );
         }
@@ -82,7 +84,9 @@ function ProductPresentation(props) {
 
                 <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
 
-                <div className="management-button"/>
+                <Link replace to="../gerenciamento/produtos/alterar"><div className="management-button"/></Link>
+
+                <div className="block-button"/>
             </div>
         );
     }
