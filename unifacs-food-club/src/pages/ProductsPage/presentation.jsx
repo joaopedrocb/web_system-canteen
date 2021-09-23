@@ -1,5 +1,6 @@
 // dependencies
-import React from 'react';
+import React from "react";
+import { Link } from 'react-router-dom'
 
 // template
 import { ManagementTemplate } from "../templates";
@@ -27,9 +28,11 @@ function ProductsPagePresentation(props) {
       return null;
     }
     return (
-      <div className="create-product-button-container">
-        <button className="create-product-button">Criar Produto</button>
-      </div>
+      <Link to="/gerenciamento/produtos/adicionar">
+        <div className="create-product-button-container">
+          <button className="create-product-button">Criar Produto</button>
+        </div>
+      </Link>
     );
   }
 
