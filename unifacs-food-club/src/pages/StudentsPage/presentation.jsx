@@ -1,4 +1,5 @@
 // dependencies
+import { Link } from "react-router-dom";
 import React from "react";
 
 // template
@@ -15,9 +16,11 @@ export default function StudentsPagePresentation(props) {
 
   return (
     <ManagementTemplate>
-      <div className="create-student-button-container">
-        <button className="create-student-button">Adicionar aluno</button>
-      </div>
+      <Link to="/gerenciamento/alunos/adicionar">
+        <div className="create-student-button-container">
+          <button className="create-student-button">Adicionar aluno</button>
+        </div>
+      </Link>
 
       <div className="studentsList">
         <div className="list-header">
