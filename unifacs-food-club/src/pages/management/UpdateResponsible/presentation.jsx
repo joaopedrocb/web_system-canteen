@@ -1,6 +1,9 @@
 // dependencies
 import React from 'react';
 
+// template
+import { ManagementTemplate } from "../../templates";
+
 // css
 import './styles.css';
 
@@ -17,6 +20,7 @@ export function UpdateResponsiblePresentational(props) {
     } = props;
 
     return (
+      <ManagementTemplate>
         <main id="update-responsible-page">
           <section class="update-responsible-page_section">
               <span class="update-responsible-page_section-title">Editar responsável</span>
@@ -33,5 +37,6 @@ export function UpdateResponsiblePresentational(props) {
               </footer>
           </section>
         </main>
+        </ManagementTemplate>
     )
 }

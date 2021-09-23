@@ -1,6 +1,6 @@
 // dependencies
 import React from "react";
-
+import { Link } from 'react-router-dom'
 // css
 import "./styles.css";
 
@@ -29,7 +29,7 @@ export default function StudentPresentation(props) {
       <span className="student-id">{responsibleCpf}</span>
       <span className="student-id">{balance}</span>
 
-      <div className="management-button" />
+      <Link replace to="../gerenciamento/alunos/alterar"><div className="management-button"/></Link>
     </div>
   );
 }
