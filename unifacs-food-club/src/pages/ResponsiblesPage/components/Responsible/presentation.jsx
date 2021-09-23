@@ -4,6 +4,9 @@ import React from "react";
 // css
 import "./styles.css";
 
+
+import {Link} from 'react-router-dom'
+
 export default function ResponsiblePresentation(props) {
   const { cpf, name, phoneNumber, email, studentsEnrollment } = props;
 
@@ -23,7 +26,7 @@ export default function ResponsiblePresentation(props) {
       <span className="responsible-id">{email}</span>
       <span>{renderEnrollmentList()}</span>
 
-      <div className="management-button" />
+      <Link replace to="../gerenciamento/responsaveis/alterar"><div className="management-button"/></Link>
     </div>
   );
 }
