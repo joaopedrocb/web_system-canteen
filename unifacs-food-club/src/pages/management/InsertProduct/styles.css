@@ -77,6 +77,21 @@
     border-radius: 10px;
     border: 0;
 
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #9146ff;
+
+    cursor: pointer;
+}
+
+.buttonIsEnabled {
+    width: 100px;
+    height: 40px;
+
+    border-radius: 10px;
+    border: 0;
+
     color: #fff;
     font-weight: 600;
     font-size: 16px;

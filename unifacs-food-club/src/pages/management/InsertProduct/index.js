@@ -1,5 +1,8 @@
-import { InsertProductPresentational } from './presentation'
+// dependencies
 import React from 'react';
+import { useHistory } from 'react-router-dom'
+
+import { InsertProductPresentational } from './presentation'
 import { LocalStorageAdapter } from '../../../infra'
 import { PRODUCTS_LIST } from '../../../constants/domain/storageKeys';
 import { ProductType } from '../../../enums';
@@ -78,6 +81,9 @@ export function InsertProduct() {
     return nameAlreadyExists;
   }
 
+const history = useHistory();
+
+
   function onSubmit() {
     const error = codeAlreadyExists() || nameAlreadyExists();
     
@@ -93,7 +99,8 @@ export function InsertProduct() {
         provider,
       }]
 
-      storage.setItem(PRODUCTS_LIST, [...newList])
+      storage.setItem(PRODUCTS_LIST, [...newList]);
+      history.push('/gerenciamento/produtos');
       return;
     }
   }
