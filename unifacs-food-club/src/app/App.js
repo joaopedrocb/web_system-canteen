@@ -13,7 +13,8 @@ import {
   InsertProduct,
   ResponsiblesPage,
   StudentsPage,
-  ProductsPurchasePage
+  ProductsPurchasePage,
+  InsertStudent
 } from "../pages";
 
 import { LocalStorageAdapter } from "../infra";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/gerenciamento" exact component={ProductsPage} />
             <Route path="/gerenciamento/produtos" exact component={ProductsPage} />
             <Route path="/gerenciamento/produtos/adicionar" component={InsertProduct}/>
+            <Route path="/gerenciamento/alunos/adicionar" component={InsertStudent}/>
             <Route
               path="/gerenciamento/responsaveis"
               component={ResponsiblesPage}
