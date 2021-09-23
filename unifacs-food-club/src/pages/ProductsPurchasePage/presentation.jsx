@@ -16,7 +16,7 @@ function ProductsPurchasePagePresentation(props) {
   return (
     <ManagementTemplate>
       <div className="productsList">
-        <div className="list-header">
+        <div className="purchase-list-header">
           <span>Nome</span>
           <span>Ingredientes</span>
           <span>Valor</span>

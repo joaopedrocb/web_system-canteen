@@ -36,9 +36,9 @@
     flex-wrap: wrap;
 }
 
-.list-header {
+.purchase-list-header {
     display: grid;
-    grid-template-columns: 0.8fr 0.5fr 0.5fr 0.5fr 2fr 1fr 0.05fr;
+    grid-template-columns: 0.8fr 0.8fr 0.5fr 0.5fr;
     width: 100%;
     padding: 15px;
     font-weight: 600;
