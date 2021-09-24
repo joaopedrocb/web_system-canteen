@@ -137,9 +137,9 @@ function ManagementTemplatePresentation(props) {
 
         {renderProductsPurchaseButton()}
 
-        {renderStatementButton()}
-        
         {renderDepositsButton()}
+        
+        {renderStatementButton()}
       </div>
 
       <div className="management-page_main">{children}</div>

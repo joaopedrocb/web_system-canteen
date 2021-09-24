@@ -17,10 +17,10 @@ export class LocalStorageAdapter {
   }
 
   removeItem(key){
-     localStorage.removeItem(key);
+    localStorage.removeItem(key);
   }
 
-   clearStorage() {
-     localStorage.clear();
+  clearStorage() {
+    localStorage.clear();
   }
 }

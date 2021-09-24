@@ -9,6 +9,15 @@ import { ManagementTemplate } from "../../templates";
 
 export function InsertStudentPresentational(props) {
   const {
+    shift,
+    enrollment,
+    name,
+    studentClass,
+    phone,
+    email,
+    login,
+    password,
+
     onShiftInputChange,
     onEnrollmentInputChange,
     onClassInputChange,
@@ -17,8 +26,25 @@ export function InsertStudentPresentational(props) {
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
-    onSubmit,
+    onSubmit
   } = props;
+
+  const buttonIsDisabled = !shift ||
+                              !name ||
+                              !studentClass ||
+                              !phone ||
+                              !email ||
+                              !login ||
+                              !password ||
+                              !enrollment;
+
+      function renderButton() {
+        if (buttonIsDisabled) {
+            return <button type="button" className="buttonIsDisabled">Cadastrar</button>;
+        }
+  
+        return <button onClick={onSubmit}>Cadastrar</button>;
+    }
 
   return (
     <ManagementTemplate>
@@ -28,7 +54,8 @@ export function InsertStudentPresentational(props) {
           <span class="insert-student-page_section-subtitle">
             Selecione o turno do aluno:
           </span>
-          <hr />
+
+          <div>
 
           <input
             type="radio"
@@ -36,7 +63,7 @@ export function InsertStudentPresentational(props) {
             name="shiftType1"
             value={1}
             onChange={onShiftInputChange}
-          />
+            />
           <label for="shiftType1">Matutino</label>
 
           <input
@@ -45,8 +72,9 @@ export function InsertStudentPresentational(props) {
             name="shiftType2"
             value={2}
             onChange={onShiftInputChange}
-          />
+            />
           <label for="shiftType2">Vespertino</label>
+            </div>
 
           <form class="insert-student-page_section-form">
             <input placeholder="Matricula" onChange={onEnrollmentInputChange} />
@@ -66,7 +94,7 @@ export function InsertStudentPresentational(props) {
           </form>
 
           <footer class="insert-student-page_section-footer">
-            <button onClick={onSubmit}>Cadastrar</button>
+            {renderButton()}
           </footer>
         </section>
       </main>

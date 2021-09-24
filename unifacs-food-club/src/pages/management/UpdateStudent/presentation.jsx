@@ -8,6 +8,13 @@ import './styles.css';
 export function UpdateStudentPresentational(props) {
     const {
       student,
+      shift,
+      name,
+      studentClass,
+      phone,
+      email,
+      login,
+      password,
 
       onShiftInputChange,
       onClassInputChange,
@@ -19,22 +26,38 @@ export function UpdateStudentPresentational(props) {
       onSubmit
     } = props;
 
+    const buttonIsDisabled = !shift ||
+                              !name ||
+                              !studentClass ||
+                              !phone ||
+                              !email ||
+                              !login ||
+                              !password;
+
+      function renderButton() {
+        if (buttonIsDisabled) {
+            return <button type="button" className="buttonIsDisabled">Editar</button>;
+        }
+  
+        return <button onClick={onSubmit}>Editar</button>;
+    }
+
     return (
       <ManagementTemplate>
         <main id="update-student-page">
           <section class="update-student-page_section">
               <span class="update-student-page_section-title">Editar aluno</span>
               <span class="update-student-page_section-subtitle">Selecione o turno do aluno:</span>
-              <hr />
 
-              <input type="radio" id="shiftType1"
-              name="shiftType1" value={1} onChange={onShiftInputChange}/>
-              <label for="shiftType1">Matutino</label>
-              
+              <div>
+                <input type="radio" id="shiftType1"
+                name="shiftType1" value={1} onChange={onShiftInputChange}/>
+                <label for="shiftType1">Matutino</label>
 
-              <input type="radio" id="shiftType2"
-              name="shiftType2" value={2} onChange={onShiftInputChange}/>
-              <label for="shiftType2">Vespertino</label>
+                <input type="radio" id="shiftType2"
+                name="shiftType2" value={2} onChange={onShiftInputChange}/>
+                <label for="shiftType2">Vespertino</label>
+              </div>
               
 
               <form class="update-student-page_section-form">
@@ -47,7 +70,7 @@ export function UpdateStudentPresentational(props) {
               </form>
 
               <footer class="update-student-page_section-footer">
-                  <button onClick={onSubmit}>Editar</button>
+                  {renderButton()}
               </footer>
           </section>
         </main>

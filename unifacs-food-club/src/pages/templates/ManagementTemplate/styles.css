@@ -89,8 +89,7 @@ hr {
 }
 
 .statement {
-    /* background-image: url('/src//assets/icons/statement.png'); */
-    background-size: 20px;
+    background-image: url('/src//assets/icons/statement.png');
 }
 
 .deposit {

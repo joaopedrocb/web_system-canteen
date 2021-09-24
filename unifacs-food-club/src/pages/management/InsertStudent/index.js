@@ -112,6 +112,15 @@ export function InsertStudent() {
   }
 
   return React.createElement(InsertStudentPresentational, {
+    shift,
+    enrollment,
+    name,
+    studentClass,
+    phone,
+    email,
+    login,
+    password,
+
     onShiftInputChange,
     onEnrollmentInputChange,
     onClassInputChange,
