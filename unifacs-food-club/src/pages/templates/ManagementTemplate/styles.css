@@ -88,8 +88,9 @@ hr {
     background-image: url('/src//assets/icons/cart.png');
 }
 
-.statement {
+.extrato {
     background-image: url('/src//assets/icons/statement.png');
+    
 }
 
 .deposit {
