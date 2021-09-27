@@ -8,11 +8,11 @@ import './styles.css';
 function LoginPagePresentation(props) {
     const { 
         email,
-        password,
-
-        onClickLogin,
-        onEmailInputChange,
-        onPasswordInputChange,
+    password,
+    
+    onLoginSubmit,
+    onEmailInputChange,
+    onPasswordInputChange,
     } = props;
 
     const buttonIsDisabled = !email || !password;
@@ -22,7 +22,7 @@ function LoginPagePresentation(props) {
             return <button type="button" className="buttonIsDisabled">Entrar</button>;
         }
 
-        return <button onClick={onClickLogin}>Entrar</button>
+        return <button onClick={onLoginSubmit}>Entrar</button>
     }
 
     return (
