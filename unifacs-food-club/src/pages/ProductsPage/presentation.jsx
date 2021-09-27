@@ -1,6 +1,6 @@
 // dependencies
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 // template
 import { ManagementTemplate } from "../templates";
@@ -18,8 +18,12 @@ import { LocalStorageAdapter } from "../../infra";
 import { LOGGED_USER } from "../../constants";
 import { AccessLevel } from "../../enums";
 
+import { ModalPresentational } from "../../modals/Modal";
+
+import { InsertProduct } from "../management/InsertProduct";
+
 function ProductsPagePresentation(props) {
-  const { productsList } = props;
+  const { productsList, toggleCreateProductModalVisibility, show } = props;
 
   function renderCreateProductButton() {
     const storage = new LocalStorageAdapter();
@@ -27,18 +31,35 @@ function ProductsPagePresentation(props) {
     if (loggedUser.accessLevel.id !== AccessLevel.STAFF.id) {
       return null;
     }
+
     return (
-      <Link to="/gerenciamento/produtos/adicionar">
-        <div className="create-product-button-container">
-          <button className="create-product-button">Criar Produto</button>
-        </div>
-      </Link>
+      // <Link to="/gerenciamento/produtos/adicionar">
+      <div className="create-product-button-container">
+        <button
+          onClick={toggleCreateProductModalVisibility}
+          className="create-product-button"
+        >
+          Criar Produto
+        </button>
+      </div>
+      // </Link>
+    );
+  }
+
+  function renderCreateProduct() {
+    
+    return (
+      <ModalPresentational isVisible={show}>
+        
+        <span>Nome</span>
+      </ModalPresentational>
     );
   }
 
   return (
     <ManagementTemplate>
       {renderCreateProductButton()}
+      {renderCreateProduct()}
       <div className="productsList">
         <div className="list-header-products">
           <span>Nome</span>

@@ -1,0 +1,26 @@
+.modal-container {
+  width: 400px;
+  height: 1000px;
+  display: grid;
+  grid-gap: 50px;
+  grid-template-rows: auto 1fr auto;
+  padding: 50px;
+  
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%);
+
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  
+  align-self: center;
+  backdrop-filter: blur(10px);
+
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; 
+  z-index: 999;
+}
