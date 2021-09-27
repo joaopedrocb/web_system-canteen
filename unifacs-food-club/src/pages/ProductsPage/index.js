@@ -1,29 +1,35 @@
 // dependencies
-import React from 'react';
+import React from "react";
 
 // presentation
-import ProductsPagePresentation from './presentation';
+import ProductsPagePresentation from "./presentation";
 
 // infra
-import { LocalStorageAdapter } from '../../infra'
+import { LocalStorageAdapter } from "../../infra";
 
 // constants
-import { PRODUCTS_LIST } from '../../constants/domain/storageKeys';
+import { PRODUCTS_LIST } from "../../constants/domain/storageKeys";
 
 export function ProductsPage() {
-    const storage = React.useMemo(() => {
-        return new LocalStorageAdapter();
-    }, []); 
+  const [show, setShow] = React.useState(false);
 
-    const _productsList = storage.getItem(PRODUCTS_LIST);
+  const storage = React.useMemo(() => {
+    return new LocalStorageAdapter();
+  }, []);
 
-    const [productsList, setProductsList] = React.useState(_productsList);
+  const _productsList = storage.getItem(PRODUCTS_LIST);
 
-    React.useEffect(() => {
-        if (productsList.length !== storage.getItem(PRODUCTS_LIST).length) {
-            setProductsList(storage.getItem(PRODUCTS_LIST));
-        }
-    }, [productsList.length, storage]);
+  const [productsList, setProductsList] = React.useState(_productsList);
 
-    return React.createElement(ProductsPagePresentation, {productsList});
+  React.useEffect(() => {
+    if (productsList.length !== storage.getItem(PRODUCTS_LIST).length) {
+      setProductsList(storage.getItem(PRODUCTS_LIST));
+    }
+  }, [productsList.length, storage]);
+
+  function toggleCreateProductModalVisibility() {
+    setShow(!show)
+  }
+
+  return React.createElement(ProductsPagePresentation, { productsList, toggleCreateProductModalVisibility, show });
 }
