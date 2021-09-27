@@ -29,7 +29,10 @@ export default function StudentPresentation(props) {
       <span className="student-id">{responsibleCpf}</span>
       <span className="student-id">{balance}</span>
 
-      <Link replace to="../gerenciamento/alunos/alterar"><div className="management-button"/></Link>
+      <div style={({display: 'flex', gridGap: '10px'})}>
+        <Link replace to="../gerenciamento/alunos/alterar"><div className="management-button"/></Link>
+        <div className="management-button deposite"/>
+      </div>
     </div>
   );
 }

@@ -75,6 +75,13 @@ export function UpdateStudent(student) {
 
   return React.createElement(UpdateStudentPresentational, {
     student,
+    shift,
+    name,
+    studentClass,
+    phone,
+    email,
+    login,
+    password,
 
     onShiftInputChange,
     onClassInputChange,

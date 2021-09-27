@@ -140,6 +140,8 @@ function ManagementTemplatePresentation(props) {
         {renderStatementButton()}
 
         {renderDepositsButton()}
+        
+        {renderStatementButton()}
       </div>
 
       <div className="management-page_main">{children}</div>
