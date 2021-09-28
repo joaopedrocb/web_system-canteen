@@ -14,6 +14,7 @@ export function Product(props) {
         price,
         type,
         provider,
+        accessLevel
     } = props;
 
     return React.createElement(ProductPresentation, {
@@ -25,5 +26,6 @@ export function Product(props) {
         price,
         type,
         provider,
+        accessLevel
     });
 }

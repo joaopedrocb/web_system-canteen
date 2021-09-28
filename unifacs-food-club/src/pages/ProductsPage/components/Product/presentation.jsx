@@ -1,97 +1,106 @@
 // dependencies
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 // css
-import './styles.css';
+import "./styles.css";
 
 // enums
-import { ProductType } from '../../../../enums';
+import { AccessLevel, ProductType } from "../../../../enums";
 
 function ProductPresentation(props) {
-    const {
-        code,
-        ingredients,
-        isBlocked,
-        name,
-        price,
-        type,
-        provider,
-    } = props;
+  const { code, ingredients, isBlocked, name, price, type, provider, accessLevel } = props;
 
-    function renderProductType() {
-        if (type.id === ProductType.BEVERAGE.id) {
-            return 'Bebida';
-        }
-
-        return 'Comida';
+  function renderProductType() {
+    if (type.id === ProductType.BEVERAGE.id) {
+      return "Bebida";
     }
 
-    function renderIngredients() {
-        if (!ingredients) {
-            return '-';
-        }
+    return "Comida";
+  }
 
-        return ingredients.map(ingredient => {
-            return (
-                <li className="ingredient">
-                    {ingredient}
-                </li>
-            )
-        });
+  function renderIngredients() {
+    if (!ingredients) {
+      return "-";
     }
 
-    function renderProduct() {
-        if (isBlocked) {
-            return (
-                <div id="produc" className="isBlockedProducts">
-                    <div className="product-data">
-                        <div  className="product-image"></div>
-                        <span className="product-name">{name}</span>
-                    </div>
+    return ingredients.map((ingredient) => {
+      return <li className="ingredient">{ingredient}</li>;
+    });
+  }
 
-                    <span className="product-id">#{code}</span>
+  function renderUpdateProductButton() {
+    if (accessLevel.id !== AccessLevel.STAFF.id) {
+      return null;
+    }
+    return (
+      <Link replace to="../gerenciamento/produtos/alterar">
+        <div className="management-button" />
+      </Link>
+    );
+  }
 
-                    <span>{renderProductType()}</span>
+  function renderProduct() {
+    if (isBlocked) {
+      return (
+        <div id="produc" className="isBlockedProducts">
+          <div className="product-data">
+            <div className="product-image"></div>
+            <span className="product-name">{name}</span>
+          </div>
 
-                    <span>{provider || '-'}</span>
+          <span className="product-id">#{code}</span>
 
-                    <span>{renderIngredients()}</span>
+          <span>{renderProductType()}</span>
 
-                    <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
+          <span>{provider || "-"}</span>
 
-                    <Link replace to="../gerenciamento/produtos/alterar"><div className="management-button"/></Link>
+          <span>{renderIngredients()}</span>
 
-                     <div className="block-button"/>
-            </div>
-            );
-        }
+          <span className="product-price">
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(price)}
+          </span>
 
-        return (
-            <div id="product">
-                <div className="product-data">
-                    <div  className="product-image"></div>
-                    <span className="product-name">{name}</span>
-                </div>
+          {renderUpdateProductButton()}
 
-                <span className="product-id">#{code}</span>
-
-                <span>{renderProductType()}</span>
-
-                <span>{provider || '-'}</span>
-
-                <span>{renderIngredients()}</span>
-
-                <span className="product-price">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)}</span>
-
-                <Link replace to="../gerenciamento/produtos/alterar"><div className="management-button"/></Link>
-
-                <div className="block-button"/>
-            </div>
-        );
+          <div className="block-button" />
+        </div>
+      );
     }
 
-    return renderProduct();
+    return (
+      <div id="product">
+        <div className="product-data">
+          <div className="product-image"></div>
+          <span className="product-name">{name}</span>
+        </div>
+
+        <span className="product-id">#{code}</span>
+
+        <span>{renderProductType()}</span>
+
+        <span>{provider || "-"}</span>
+
+        <span>{renderIngredients()}</span>
+
+        <span className="product-price">
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(price)}
+        </span>
+
+        {renderUpdateProductButton()}
+
+        <div className="block-button" />
+      </div>
+    );
+  }
+
+  return renderProduct();
 }
 
 export default ProductPresentation;

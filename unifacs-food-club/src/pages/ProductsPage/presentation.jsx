@@ -15,7 +15,6 @@ import "./styles.css";
 import { LocalStorageAdapter } from "../../infra";
 
 // data
-import { LOGGED_USER } from "../../constants";
 import { AccessLevel } from "../../enums";
 
 import { ModalPresentational } from "../../modals/Modal";
@@ -23,12 +22,12 @@ import { ModalPresentational } from "../../modals/Modal";
 import { InsertProduct } from "../management/InsertProduct";
 
 function ProductsPagePresentation(props) {
-  const { productsList, toggleCreateProductModalVisibility, show } = props;
+  const { productsList, loggedUser } =
+    props;
 
+  const { accessLevel } = loggedUser;
   function renderCreateProductButton() {
-    const storage = new LocalStorageAdapter();
-    const loggedUser = storage.getItem(LOGGED_USER);
-    if (loggedUser.accessLevel.id !== AccessLevel.STAFF.id) {
+    if (accessLevel.id !== AccessLevel.STAFF.id) {
       return null;
     }
 
@@ -36,7 +35,6 @@ function ProductsPagePresentation(props) {
       // <Link to="/gerenciamento/produtos/adicionar">
       <div className="create-product-button-container">
         <button
-          onClick={toggleCreateProductModalVisibility}
           className="create-product-button"
         >
           Criar Produto
@@ -47,10 +45,8 @@ function ProductsPagePresentation(props) {
   }
 
   function renderCreateProduct() {
-    
     return (
-      <ModalPresentational isVisible={show}>
-        
+      <ModalPresentational>
         <span>Nome</span>
       </ModalPresentational>
     );
@@ -93,6 +89,7 @@ function ProductsPagePresentation(props) {
               price={price}
               type={type}
               provider={provider}
+              accessLevel={accessLevel}
             />
           );
         })}

@@ -8,16 +8,16 @@ import ProductsPagePresentation from "./presentation";
 import { LocalStorageAdapter } from "../../infra";
 
 // constants
-import { PRODUCTS_LIST } from "../../constants/domain/storageKeys";
+import { PRODUCTS_LIST, LOGGED_USER } from "../../constants/domain/storageKeys";
 
 export function ProductsPage() {
-  const [show, setShow] = React.useState(false);
 
   const storage = React.useMemo(() => {
     return new LocalStorageAdapter();
   }, []);
 
   const _productsList = storage.getItem(PRODUCTS_LIST);
+  const loggedUser = storage.getItem(LOGGED_USER);
 
   const [productsList, setProductsList] = React.useState(_productsList);
 
@@ -27,9 +27,8 @@ export function ProductsPage() {
     }
   }, [productsList.length, storage]);
 
-  function toggleCreateProductModalVisibility() {
-    setShow(!show)
-  }
-
-  return React.createElement(ProductsPagePresentation, { productsList, toggleCreateProductModalVisibility, show });
+  return React.createElement(ProductsPagePresentation, {
+    productsList,
+    loggedUser,
+  });
 }
