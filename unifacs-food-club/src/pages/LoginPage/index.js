@@ -140,7 +140,7 @@ export function LoginPage() {
     if (email === validStudentEmail && password === "123123") {
       saveStudent();
       document.window.reload();
-      history.push("/gerenciamento/produtos");
+      history.push("/comprar");
 
       return;
     }

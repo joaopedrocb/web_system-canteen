@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 function HeaderPresentation(props) {
-  const { hasALoggedUser, managementPageHasBeenActive, clearSession } = props;
+  const { hasALoggedUser, isStudent, managementPageHasBeenActive, clearSession } = props;
 
   function renderLoginOrLogoutButton() {
     if (hasALoggedUser) {
@@ -27,6 +27,16 @@ function HeaderPresentation(props) {
   function renderManagementButton() {
     if (!hasALoggedUser) {
       return null;
+    }
+
+    if (isStudent) {
+      return (
+        <li class="header_navigation-options">
+          <Link replace to="/comprar">
+            Comprar
+          </Link>
+        </li>
+      );
     }
 
     return (
