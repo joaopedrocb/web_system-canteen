@@ -1,15 +1,11 @@
 // dependencies
 import React from 'react';
-import { useHistory } from 'react-router-dom'
 
+// presentation
 import { InsertProductPresentational } from './presentation'
-import { LocalStorageAdapter } from '../../../infra'
-import { ProductTypeEnum } from '../../../common/domain';
 
-export function InsertProduct() {
-  const storage = new LocalStorageAdapter()
-
-  const productsList = storage.getItem();
+export function InsertProduct(props) {
+  const { productsList, changeProductsList, createProductModalIsActive } = props;
 
   const [productType, setProductType] = React.useState('');
 
@@ -80,27 +76,24 @@ export function InsertProduct() {
     return nameAlreadyExists;
   }
 
-const history = useHistory();
-
-
   function onSubmit() {
     const error = codeAlreadyExists() || nameAlreadyExists();
-    
+
     if (!error) {
+      changeProductsList(prevProductList => {
+        return [
+          ...prevProductList,
+            {
+              type: productType,
+              code,
+              name,
+              price,
+              ingredients: ['Farinha de trigo', 'Ovo'],
+            }
+        ]
+      });
 
-      const newList = [...productsList, {
-        type: productType === 1 ? ProductTypeEnum.FOOD : ProductTypeEnum.BEVERAGE,
-        code,
-        name,
-        price,
-        isBlocked: true,
-        ingredients: [ingredients],
-        provider,
-      }]
-
-      storage.setItem(ProductTypeEnum, [...newList]);
-      history.push('/gerenciamento/produtos');
-      return;
+      createProductModalIsActive(false);
     }
   }
 
@@ -114,6 +107,6 @@ const history = useHistory();
       onPriceInputChange,
       onProviderInputChange,
       onIngredientsInputChange,
-      onSubmit
+      onSubmit 
   })
 }

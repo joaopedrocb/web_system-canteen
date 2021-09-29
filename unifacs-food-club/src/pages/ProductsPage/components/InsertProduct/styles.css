@@ -1,8 +1,14 @@
-#insert-product-page {
+.insert-product {
     display: grid;
     justify-content: center;
     align-items: center;
 }
+
+.insert-product > span {
+    align-self: flex-end;
+}
+
+
 
 .backToProducts {
     justify-self: flex-end;
@@ -15,11 +21,11 @@
     display: grid;
     grid-gap: 50px;
     grid-template-rows: auto 1fr auto;
+    background-color: white;
     padding: 50px;
     
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 30px;
-    box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%);
 }
 
 .insert-product-page_section-title {

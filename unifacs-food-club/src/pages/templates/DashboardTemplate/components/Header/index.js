@@ -9,7 +9,7 @@ import HeaderPresentation from './presentation';
 import { LocalStorageAdapter } from '../../../../../infra'
 
 // constants
-import { AccessLevel } from '../../../../../enums';
+import { AccessLevelEnum } from '../../../../../common/domain';
 
 function Header() {
     const location = useLocation();
@@ -24,8 +24,7 @@ function Header() {
     React.useEffect(() => {
     const loggedUser = storage.getItem();
 
-    const { STUDENT } = AccessLevel;
-
+    const { STUDENT } = AccessLevelEnum;
 
     const isStudent = loggedUser?.accessLevel.id === STUDENT.id
     setIsStudent(isStudent)

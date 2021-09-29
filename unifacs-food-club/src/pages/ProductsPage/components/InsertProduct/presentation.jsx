@@ -1,15 +1,11 @@
 // dependencies
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // enums
-import { ProductTypeEnum } from '../../../common/domain';
+import { ProductTypeEnum } from '../../../../common/domain';
 
 // css
 import './styles.css';
-
-// template
-import { ManagementTemplate } from '../../templates';
 
 export function InsertProductPresentational(props) {
     const { 
@@ -22,7 +18,7 @@ export function InsertProductPresentational(props) {
       onPriceInputChange,
       onProviderInputChange,
       onIngredientsInputChange,
-      onSubmit
+      onSubmit 
     } = props;
 
     function renderButton() {
@@ -50,11 +46,9 @@ export function InsertProductPresentational(props) {
     }
 
     return (
-      <ManagementTemplate>
-        <main id="insert-product-page">
-          <Link replace to="/gerenciamento/produtos" className="backToProducts">
-            <span >Voltar para produtos</span> 
-          </Link>
+      <>
+        <main className="insert-product">
+          <span> X </span>
 
           <section class="insert-product-page_section">
               <span class="insert-product-page_section-title">Cadastrar um novo produto</span>
@@ -96,6 +90,6 @@ export function InsertProductPresentational(props) {
               </footer>
           </section>
         </main>
-      </ManagementTemplate>
+      </>
     )
 }

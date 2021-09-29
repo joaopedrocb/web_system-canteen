@@ -2,7 +2,7 @@
 import React from "react";
 
 // local components
-import { Product } from "./components";
+import { Product, InsertProduct } from './components';
 
 // external components
 import { Modal } from '../../components';
@@ -47,9 +47,11 @@ function ProductsPagePresentation(props) {
     </div>
 
     <Modal isVisible={createProductModalIsActive}>
-      <div>
-        teste
-      </div>
+      <InsertProduct 
+        productsList={productsList}
+        changeProductsList={changeProductsList}
+        createProductModalIsActive={setCreateProductModalIsActive}
+      />
     </Modal>
 
       <div className="productsList">
@@ -73,6 +75,7 @@ function ProductsPagePresentation(props) {
             price,
             type,
             provider,
+            accessLevel,
           } = product;
 
           return (
