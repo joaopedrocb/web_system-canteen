@@ -5,26 +5,17 @@ import React from "react";
 import ProductsPagePresentation from "./presentation";
 
 
-export function ProductsPage() {
-  const [show, setShow] = React.useState(false);
+export function ProductsPage(props) {
+  const { userData, productsList, changeProductsList } = props;
 
-  const storage = React.useMemo(() => {
-    return new LocalStorageAdapter();
-  }, []);
+  const [createProductModalIsActive, setCreateProductModalIsActive] = React.useState(false);
 
-  const _productsList = storage.getItem(PRODUCTS_LIST);
+  return React.createElement(ProductsPagePresentation, { 
+    userData, 
+    productsList, 
+    changeProductsList, 
 
-  const [productsList, setProductsList] = React.useState(_productsList);
-
-  React.useEffect(() => {
-    if (productsList.length !== storage.getItem(PRODUCTS_LIST).length) {
-      setProductsList(storage.getItem(PRODUCTS_LIST));
-    }
-  }, [productsList.length, storage]);
-
-  function toggleCreateProductModalVisibility() {
-    setShow(!show)
-  }
-
-  return React.createElement(ProductsPagePresentation, { productsList, toggleCreateProductModalVisibility, show });
+    createProductModalIsActive,
+    setCreateProductModalIsActive,
+  });
 }

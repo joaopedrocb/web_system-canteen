@@ -1,18 +1,21 @@
 // dependencies
 import React from 'react';
 
+// css
 import './styles.css'
 
-export function ModalPresentational({ isVisible, children }) {
-  console.log('isVisible', isVisible);
-
+function ModalPresentational({ isVisible, children }) {
   if (!isVisible) {
     return null;
   }
 
   return (
     <div className="modal-container">
-      {children}
+      <div className="modal-content">
+        {children}
+      </div>
     </div>
   )
 }
+
+export default ModalPresentational;

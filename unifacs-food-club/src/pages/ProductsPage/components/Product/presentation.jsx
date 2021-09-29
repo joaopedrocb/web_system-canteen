@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import './styles.css';
 
 // enums
-import { ProductType } from '../../../../enums';
+import { ProductTypeEnum } from '../../../../common/domain';
 
 function ProductPresentation(props) {
     const {
@@ -20,7 +20,7 @@ function ProductPresentation(props) {
     } = props;
 
     function renderProductType() {
-        if (type.id === ProductType.BEVERAGE.id) {
+        if (type.id === ProductTypeEnum.BEVERAGE.id) {
             return 'Bebida';
         }
 
@@ -62,7 +62,7 @@ function ProductPresentation(props) {
 
                     <Link replace to="../gerenciamento/produtos/alterar"><div className="management-button"/></Link>
 
-                     <div className="block-button"/>
+                    <div className="block-button"/>
             </div>
             );
         }

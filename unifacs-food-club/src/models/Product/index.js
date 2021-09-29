@@ -1,8 +1,9 @@
-import { ProductType } from "../../enums/ProductType";
+// enums
+import { ProductTypeEnum } from '../../common/domain';
 
 export class Product {
   constructor() {
-    this.type = ProductType.FOOD;
+    this.type = ProductTypeEnum.FOOD;
     this.code = 101;
     this.name = 'Bauru';
     this.picture = '';

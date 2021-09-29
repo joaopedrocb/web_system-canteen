@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 import { InsertProductPresentational } from './presentation'
 import { LocalStorageAdapter } from '../../../infra'
-import { ProductType } from '../../../enums';
+import { ProductTypeEnum } from '../../../common/domain';
 
 export function InsertProduct() {
   const storage = new LocalStorageAdapter()
@@ -89,7 +89,7 @@ const history = useHistory();
     if (!error) {
 
       const newList = [...productsList, {
-        type: productType === 1 ? ProductType.FOOD : ProductType.BEVERAGE,
+        type: productType === 1 ? ProductTypeEnum.FOOD : ProductTypeEnum.BEVERAGE,
         code,
         name,
         price,
@@ -98,7 +98,7 @@ const history = useHistory();
         provider,
       }]
 
-      storage.setItem(PRODUCTS_LIST, [...newList]);
+      storage.setItem(ProductTypeEnum, [...newList]);
       history.push('/gerenciamento/produtos');
       return;
     }

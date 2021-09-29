@@ -1,0 +1,30 @@
+.modal-container {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: rgba(68, 68, 68, 0.15);
+  transition: opacity 0.2s ease 0s;
+
+  align-self: center;
+  backdrop-filter: blur(2px);
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; 
+  z-index: 999999;
+  height: 100%;
+}
+
+.modal-content {
+  padding: 20px;
+
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid rgb(192, 190, 190);
+
+  box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%);
+}

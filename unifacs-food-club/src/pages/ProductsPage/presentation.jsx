@@ -1,65 +1,57 @@
 // dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
-// template
-import { ManagementTemplate } from "../templates";
-
-// components
+// local components
 import { Product } from "./components";
+
+// external components
+import { Modal } from '../../components';
 
 // css
 import "./styles.css";
 
-// infra
-import { LocalStorageAdapter } from "../../infra";
-
-// data
-
-
+// enums
 import { AccessLevelEnum } from '../../common/domain';
 
-import { ModalPresentational } from "../../modals/Modal";
-
-import { InsertProduct } from "../management/InsertProduct";
-
 function ProductsPagePresentation(props) {
-  const { productsList, toggleCreateProductModalVisibility, show } = props;
+  const {  
+    userData, 
+    productsList, 
+    changeProductsList,
+
+    createProductModalIsActive,
+    setCreateProductModalIsActive,
+  } = props;
 
   function renderCreateProductButton() {
-    const storage = new LocalStorageAdapter();
-    const loggedUser = storage.getItem();
-    if (loggedUser.accessLevel.id !== AccessLevelEnum.STAFF.id) {
+    if (userData.accessLevel?.id !== AccessLevelEnum.STAFF.id) {
       return null;
     }
 
     return (
-      // <Link to="/gerenciamento/produtos/adicionar">
-      <div className="create-product-button-container">
         <button
-          onClick={toggleCreateProductModalVisibility}
+          onClick={() => setCreateProductModalIsActive(true)}
           className="create-product-button"
         >
           Criar Produto
         </button>
-      </div>
-      // </Link>
-    );
-  }
-
-  function renderCreateProduct() {
-    
-    return (
-      <ModalPresentational isVisible={show}>
-        <span>Nome</span>
-      </ModalPresentational>
     );
   }
 
   return (
-    <ManagementTemplate>
+    <>
+    <div className="products-page_header">
+      <span>Produtos</span>
+      
       {renderCreateProductButton()}
-      {renderCreateProduct()}
+    </div>
+
+    <Modal isVisible={createProductModalIsActive}>
+      <div>
+        teste
+      </div>
+    </Modal>
+
       <div className="productsList">
         <div className="list-header-products">
           <span>Nome</span>
@@ -71,7 +63,7 @@ function ProductsPagePresentation(props) {
           <div style={{ width: "30px" }} />
         </div>
 
-        {productsList.map((product) => {
+        {productsList && productsList.map((product) => {
           const {
             code,
             ingredients,
@@ -97,7 +89,7 @@ function ProductsPagePresentation(props) {
           );
         })}
       </div>
-    </ManagementTemplate>
+    </>
   );
 }
 

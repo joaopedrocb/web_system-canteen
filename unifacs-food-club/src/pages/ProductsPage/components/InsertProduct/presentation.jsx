@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // enums
-import { ProductType } from '../../../enums';
+import { ProductTypeEnum } from '../../../common/domain';
 
 // css
 import './styles.css';
@@ -34,7 +34,7 @@ export function InsertProductPresentational(props) {
   }
 
     function renderIngredientsInput() {
-      if (productType === ProductType.FOOD.id.toString()) {
+      if (productType === ProductTypeEnum.FOOD.id.toString()) {
         return <input placeholder="Ingredientes" onChange={onIngredientsInputChange} />
       }
 
@@ -42,7 +42,7 @@ export function InsertProductPresentational(props) {
     }
 
     function renderProviderInput() {
-      if (productType === ProductType.BEVERAGE.id.toString()) {
+      if (productType === ProductTypeEnum.BEVERAGE.id.toString()) {
         return <input placeholder="Fornecedor" onChange={onProviderInputChange} />
       }
 

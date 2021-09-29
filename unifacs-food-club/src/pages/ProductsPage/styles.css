@@ -1,13 +1,13 @@
-.create-product-button-container {
+.products-page_header {
+    font-size: 22px;
+    font-weight: 700;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 0 10px 20px 10px;
 }
 
 .create-product-button {
-    margin-right: 10px;
-    margin-bottom: 30px;
-
     height: 40px;
     width: 150px;
     
