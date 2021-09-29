@@ -8,8 +8,6 @@ import HeaderPresentation from './presentation';
 // infra
 import { LocalStorageAdapter } from '../../../../../infra'
 
-// constants
-import { LOGGED_USER } from '../../../../../constants'
 
 function Header() {
     const location = useLocation();
@@ -21,7 +19,7 @@ function Header() {
     const [hasALoggedUser, setHasALoggedUser] = React.useState(false);
 
     React.useEffect(() => {
-    const loggedUser = storage.getItem(LOGGED_USER);
+    const loggedUser = storage.getItem();
 
     if (loggedUser) {
         setHasALoggedUser(true);
@@ -33,7 +31,7 @@ function Header() {
     }, [storage]);
 
     function clearSession() {
-        storage.removeItem(LOGGED_USER);
+        storage.removeItem();
         document.location.reload();
     }
 

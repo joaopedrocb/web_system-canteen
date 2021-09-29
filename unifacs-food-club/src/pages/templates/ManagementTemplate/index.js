@@ -8,8 +8,6 @@ import ManagementTemplatePresentation from './presentation';
 // infra
 import { LocalStorageAdapter } from '../../../infra'
 
-// constants
-import { LOGGED_USER } from '../../../constants'
 
 function ManagementTemplate(props) {
     const { children } = props;
@@ -20,12 +18,12 @@ function ManagementTemplate(props) {
         return new LocalStorageAdapter();
     }, []);
 
-    const loggedUser = storage.getItem(LOGGED_USER);
+    const loggedUser = storage.getItem();
 
     const [hasALoggedUser, setHasALoggedUser] = React.useState(true);
 
     React.useLayoutEffect(() => {
-    const loggedUser = storage.getItem(LOGGED_USER);
+    const loggedUser = storage.getItem();
 
     if (loggedUser) {
         setHasALoggedUser(true);

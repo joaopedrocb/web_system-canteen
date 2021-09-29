@@ -1,8 +1,9 @@
 // dependencies
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { AccessLevel } from "../../../enums";
+// enums
+import { AccessLevelEnum } from '../../../common/domain';
 
 // css
 import "./styles.css";
@@ -11,7 +12,7 @@ function ManagementTemplatePresentation(props) {
   const { children, loggedUser } = props;
 
   function renderBalance() {
-    if (loggedUser.accessLevel.id !== AccessLevel.STUDENT.id) {
+    if (loggedUser.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
       return null;
     }
     return (
@@ -24,7 +25,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsButton() {
-    if (loggedUser.accessLevel.id === AccessLevel.STUDENT.id) {
+    if (loggedUser.accessLevel.id === AccessLevelEnum.STUDENT.id) {
       return null;
     }
 
@@ -39,7 +40,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderResponsiblesListButton() {
-    if (loggedUser.accessLevel.id !== AccessLevel.STAFF.id) {
+    if (loggedUser.accessLevel.id !== AccessLevelEnum.STAFF.id) {
       return null;
     }
 
@@ -54,7 +55,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStudentsButton() {
-    if (loggedUser.accessLevel.id === AccessLevel.STUDENT.id) {
+    if (loggedUser.accessLevel.id === AccessLevelEnum.STUDENT.id) {
       return null;
     }
 
@@ -69,7 +70,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsPurchaseButton() {
-    if (loggedUser.accessLevel.id !== AccessLevel.STUDENT.id) {
+    if (loggedUser.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
       return null;
     }
     return (
@@ -83,7 +84,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStatementButton() {
-    if (loggedUser.accessLevel.id === AccessLevel.RESPONSIBLE.id) {
+    if (loggedUser.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
       return (
         <Link to="/gerenciamento/extrato">
           <div className="navbar-item">
@@ -98,7 +99,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderDepositsButton() {
-    if (loggedUser.accessLevel.id === AccessLevel.RESPONSIBLE.id) {
+    if (loggedUser.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
       return (
         <Link to="/gerenciamento/depositos">
           <div className="navbar-item">

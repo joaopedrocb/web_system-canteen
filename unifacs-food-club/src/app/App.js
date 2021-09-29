@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // css
 import "../global.css";
 
+// constants
+import { productsList as productsListFromDomain } from '../common/domain';
+
 // pages
 import {
   DashboardTemplate,
@@ -28,11 +31,9 @@ function App() {
 
   const [userData, setUserData] = React.useState(undefined);
 
-  console.log('userData', userData);
+  const [productsList, setProductsList] = React.useState(productsListFromDomain);
 
-  function changeUserData(newUserData) {
-    setUserData(newUserData);
-  }
+  console.log('productsList', productsList);
 
   return (
     <div className="App">
@@ -41,9 +42,12 @@ function App() {
           <Switch>
             <Route path="/" exact component={() => <LandingPage userData={userData} />} />
 
-            <Route path="/login" component={() => <LoginPage userData={userData} changeUserData={changeUserData} />} />
+            <Route path="/login" component={() => <LoginPage userData={userData} changeUserData={setUserData} />} />
 
-            <Route path="/gerenciamento" exact component={ProductsPage} />
+            <Route path="/gerenciamento" exact component={() => <ProductsPage 
+                                                                  productsList={productsList} 
+                                                                  userData={userData} 
+                                                                />} />
 
             <Route path="/gerenciamento/produtos" exact component={ProductsPage} />
 

@@ -1,13 +1,14 @@
 import { UpdateResponsiblePresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
-import { RESPONSIBLES_LIST } from '../../../constants/domain/storageKeys';
-import { AccessLevel } from '../../../enums';
+
+// enums
+import { AccessLevelEnum } from '../../../common/domain';
 
 export function UpdateResponsible(responsible) {
   const storage = new LocalStorageAdapter()
 
-  const responsiblesList = storage.getItem(RESPONSIBLES_LIST);
+  const responsiblesList = storage.getItem();
   
   const [name, setName] = React.useState('');
 
@@ -48,7 +49,7 @@ export function UpdateResponsible(responsible) {
       email,
       login,
       password,
-      accessLevel: AccessLevel.RESPONSIBLE
+      accessLevel: AccessLevelEnum.RESPONSIBLE
     }
     
     const updatedIndex = responsiblesList.findIndex(item => item.cpf === responsible.cpf)

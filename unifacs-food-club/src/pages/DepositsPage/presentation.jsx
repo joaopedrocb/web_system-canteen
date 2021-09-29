@@ -7,7 +7,7 @@ import { ManagementTemplate } from "../templates";
 // components
 import { DepositItem } from "./components";
 
-import { depositStatement } from "../../data/depositStatement";
+import { depositStatement } from "../../common/domain";
 
 // css
 import "./styles.css";

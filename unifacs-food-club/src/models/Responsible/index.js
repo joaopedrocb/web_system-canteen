@@ -1,4 +1,5 @@
-import { AccessLevel } from '../../enums'
+// enums
+import { AccessLevelEnum } from '../../common/domain'
 
 export class Responsible {
   constructor() {
@@ -9,7 +10,7 @@ export class Responsible {
     this.login = 'pedro.silva18030953611';
     this.password = '123123'; 
     this.studentsEnrollment = [144171001];
-    this.accessLevel = AccessLevel.RESPONSIBLE
+    this.accessLevel = AccessLevelEnum.RESPONSIBLE
   } 
 
   // PRIVATE

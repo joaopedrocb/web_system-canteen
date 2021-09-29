@@ -1,12 +1,11 @@
 import { UpdateProductPresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
-import { PRODUCTS_LIST } from '../../../constants/domain/storageKeys';
 
 export function UpdateProduct(product) {
   const storage = new LocalStorageAdapter()
 
-  const productsList = storage.getItem(PRODUCTS_LIST);
+  const productsList = storage.getItem();
 
   const [name, setName] = React.useState(product.name);
 

@@ -35,14 +35,31 @@ export function LoginPage(props) {
 
   function onLoginSubmit() {
     if (email === 'funcionario@unifacs.com') {
+      const staff = new Staff();
+
+      changeUserData(staff);
+      history.push('/gerenciamento/produtos');
+
+      return;
+    }
+
+    if (email === 'responsavel@unifacs.com') {
       const responsible = new Responsible();
 
       changeUserData(responsible);
       history.push('/gerenciamento/produtos');
-      document.window.reload();
+
+      return;
     }
 
-    // if (em)
+    if (email === 'estudante@unifacs.com') {
+      const student = new Student();
+
+      changeUserData(student);
+      history.push('/gerenciamento/produtos');
+
+      return;
+    }
   }
 
 

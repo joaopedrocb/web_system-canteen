@@ -4,13 +4,12 @@ import { useHistory } from 'react-router-dom'
 
 import { InsertProductPresentational } from './presentation'
 import { LocalStorageAdapter } from '../../../infra'
-import { PRODUCTS_LIST } from '../../../constants/domain/storageKeys';
 import { ProductType } from '../../../enums';
 
 export function InsertProduct() {
   const storage = new LocalStorageAdapter()
 
-  const productsList = storage.getItem(PRODUCTS_LIST);
+  const productsList = storage.getItem();
 
   const [productType, setProductType] = React.useState('');
 

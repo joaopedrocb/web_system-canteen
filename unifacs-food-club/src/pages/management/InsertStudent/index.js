@@ -1,13 +1,14 @@
 import { InsertStudentPresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
-import { LOGGED_USER, STUDENTS_LIST } from '../../../constants/domain/storageKeys';
-import { AccessLevel, ShiftType } from '../../../enums';
+
+// enums
+import { AccessLevelEnum, ShiftTypeEnum } from '../../../common/domain';
 
 export function InsertStudent() {
   const storage = new LocalStorageAdapter()
 
-  const studentsList = storage.getItem(STUDENTS_LIST);
+  const studentsList = storage.getItem();
 
   const [shift, setShift] = React.useState('');
 
@@ -79,7 +80,7 @@ export function InsertStudent() {
       
 
       studentsList.push({
-        shift: shift === 1 ? ShiftType.MORNING : ShiftType.AFTERNOON,
+        shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
         enrollment,
         name,
         studentClass,
@@ -88,12 +89,12 @@ export function InsertStudent() {
         login,
         password,
         responsibleCpf: loggedResponsible.cpf,
-        accessLevel: AccessLevel.STUDENT,
+        accessLevel: AccessLevelEnum.STUDENT,
       })
 
 
       const newList = [...studentsList, {
-        shift: shift === 1 ? ShiftType.MORNING : ShiftType.AFTERNOON,
+        shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
         enrollment,
         name,
         studentClass,
@@ -102,7 +103,7 @@ export function InsertStudent() {
         login,
         password,
         responsibleCpf: loggedResponsible.cpf,
-        accessLevel: AccessLevel.STUDENT,
+        accessLevel: AccessLevelEnum.STUDENT,
       }]
 
       storage.setItem(STUDENTS_LIST, [...newList])

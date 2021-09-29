@@ -15,8 +15,9 @@ import "./styles.css";
 import { LocalStorageAdapter } from "../../infra";
 
 // data
-import { LOGGED_USER } from "../../constants";
-import { AccessLevel } from "../../enums";
+
+
+import { AccessLevelEnum } from '../../common/domain';
 
 import { ModalPresentational } from "../../modals/Modal";
 
@@ -27,8 +28,8 @@ function ProductsPagePresentation(props) {
 
   function renderCreateProductButton() {
     const storage = new LocalStorageAdapter();
-    const loggedUser = storage.getItem(LOGGED_USER);
-    if (loggedUser.accessLevel.id !== AccessLevel.STAFF.id) {
+    const loggedUser = storage.getItem();
+    if (loggedUser.accessLevel.id !== AccessLevelEnum.STAFF.id) {
       return null;
     }
 
@@ -50,7 +51,6 @@ function ProductsPagePresentation(props) {
     
     return (
       <ModalPresentational isVisible={show}>
-        
         <span>Nome</span>
       </ModalPresentational>
     );

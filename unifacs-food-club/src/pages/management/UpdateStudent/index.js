@@ -1,13 +1,14 @@
 import { UpdateStudentPresentational } from './presentation'
 import React from 'react';
 import { LocalStorageAdapter } from '../../../infra'
-import { STUDENTS_LIST } from '../../../constants/domain/storageKeys';
-import { AccessLevel, ShiftType } from '../../../enums';
+
+// enums
+import { AccessLevelEnum, ShiftTypeEnum } from '../../../common/domain';
 
 export function UpdateStudent(student) {
   const storage = new LocalStorageAdapter()
 
-  const studentsList = storage.getItem(STUDENTS_LIST);
+  const studentsList = storage.getItem();
 
   const [shift, setShift] = React.useState('');
 
@@ -55,7 +56,7 @@ export function UpdateStudent(student) {
     const updatedResponsible = {
       enrollment: student.enrollment,
       studentClass,
-      shift: shift === 1 ? ShiftType.MORNING : ShiftType.AFTERNOON,
+      shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
       name,
       phoneNumber: phone,
       email,
@@ -63,7 +64,7 @@ export function UpdateStudent(student) {
       password,
       responsibleCpf: student.responsibleCpf,
       balance: student.balance,
-      accessLevel: AccessLevel.STUDENT
+      accessLevel: AccessLevelEnum.STUDENT
     }
     
     const updatedIndex = studentsList.findIndex(item => item.enrollment === student.enrollment)

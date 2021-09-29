@@ -4,11 +4,6 @@ import React from "react";
 // presentation
 import ProductsPagePresentation from "./presentation";
 
-// infra
-import { LocalStorageAdapter } from "../../infra";
-
-// constants
-import { PRODUCTS_LIST } from "../../constants/domain/storageKeys";
 
 export function ProductsPage() {
   const [show, setShow] = React.useState(false);

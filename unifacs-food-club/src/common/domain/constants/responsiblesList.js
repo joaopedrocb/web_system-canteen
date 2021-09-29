@@ -1,4 +1,4 @@
-import { AccessLevel } from "../enums"
+import { AccessLevelEnum } from '../enums';
 
 export const responsiblesList = [
   {
@@ -9,7 +9,7 @@ export const responsiblesList = [
     login: 'banana144171001',
     password: '123123',
     studentsEnrollment: [144171001],
-    accessLevel: AccessLevel.RESPONSIBLE
+    accessLevel: AccessLevelEnum.RESPONSIBLE
   },
   {
     cpf: 72771775840,
@@ -19,6 +19,6 @@ export const responsiblesList = [
     login: 'antonio471268008',
     password: '123123',
     studentsEnrollment: [202973268, 198664138],
-    accessLevel: AccessLevel.RESPONSIBLE
+    accessLevel: AccessLevelEnum.RESPONSIBLE
   },
 ]

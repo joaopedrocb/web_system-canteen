@@ -1,4 +1,4 @@
-import { AccessLevel } from '../../enums'
+import { AccessLevelEnum } from '../../common/domain'
 
 export class Staff {
   constructor() {
@@ -6,7 +6,7 @@ export class Staff {
     this.adress = 'Av. Juracy Magalhães Júnior, S/N - Rio Vermelho, Salvador - BA, 41940-060';
     this.phoneNumber = '(71) 3021-2800';
     this.email = 'funcionario@gmail.com';
-    this.accessLevel = AccessLevel.STAFF
+    this.accessLevel = AccessLevelEnum.STAFF
   }
 
   insertProduct(product) {}

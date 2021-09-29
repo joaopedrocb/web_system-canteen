@@ -7,7 +7,7 @@ import { ManagementTemplate } from "../templates";
 // components
 import { StatementItem } from "./components";
 
-import { purchaseHistoric } from "../../data/purchaseHistoric";
+import { purchaseHistoric } from "../../common/domain";
 
 // css
 import "./styles.css";
