@@ -71,7 +71,7 @@ export function UpdateStudent(student) {
 
     const newList = studentsList[updatedIndex] = updatedResponsible;
 
-    storage.setItem(STUDENTS_LIST, [...newList])
+    // storage.setItem(STUDENTS_LIST, [...newList])
   }
 
   return React.createElement(UpdateStudentPresentational, {

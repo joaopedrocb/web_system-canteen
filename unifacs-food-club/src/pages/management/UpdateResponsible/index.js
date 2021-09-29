@@ -56,7 +56,7 @@ export function UpdateResponsible(responsible) {
 
     const newList = responsiblesList[updatedIndex] = updatedResponsible;
 
-    storage.setItem(RESPONSIBLES_LIST, [newList]);
+    // storage.setItem(RESPONSIBLES_LIST, [newList]);
   }
 
   return React.createElement(UpdateResponsiblePresentational, {

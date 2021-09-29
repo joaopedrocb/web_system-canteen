@@ -76,7 +76,7 @@ export function InsertStudent() {
     const error = enrollmentAlreadyExists();
     
     if (!error) {
-      const loggedResponsible = storage.getItem(LOGGED_USER);
+      // const loggedResponsible = storage.getItem(LOGGED_USER);
       
 
       studentsList.push({
@@ -88,7 +88,7 @@ export function InsertStudent() {
         email,
         login,
         password,
-        responsibleCpf: loggedResponsible.cpf,
+        // responsibleCpf: loggedResponsible.cpf,
         accessLevel: AccessLevelEnum.STUDENT,
       })
 
@@ -102,11 +102,11 @@ export function InsertStudent() {
         email,
         login,
         password,
-        responsibleCpf: loggedResponsible.cpf,
+        // responsibleCpf: loggedResponsible.cpf,
         accessLevel: AccessLevelEnum.STUDENT,
       }]
 
-      storage.setItem(STUDENTS_LIST, [...newList])
+      // storage.setItem(STUDENTS_LIST, [...newList])
       alert(`Aluno ${name} cadastrado com sucesso.`)
       return;
     }

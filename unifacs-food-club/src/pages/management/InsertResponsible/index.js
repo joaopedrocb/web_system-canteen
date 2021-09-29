@@ -75,7 +75,7 @@ export function InsertResponsible() {
         accessLevel: AccessLevelEnum.RESPONSIBLE
       }]
 
-      storage.setItem(RESPONSIBLES_LIST, [...newList])
+      // storage.setItem(RESPONSIBLES_LIST, [...newList])
       return;
     }
   }
