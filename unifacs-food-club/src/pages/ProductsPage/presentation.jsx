@@ -85,6 +85,7 @@ function ProductsPagePresentation(props) {
               price={price}
               type={type}
               provider={provider}
+              accessLevel={accessLevel}
             />
           );
         })}

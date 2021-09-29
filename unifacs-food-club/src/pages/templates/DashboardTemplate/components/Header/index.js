@@ -8,6 +8,8 @@ import HeaderPresentation from './presentation';
 // infra
 import { LocalStorageAdapter } from '../../../../../infra'
 
+// constants
+import { AccessLevel } from '../../../../../enums';
 
 function Header() {
     const location = useLocation();
@@ -17,9 +19,16 @@ function Header() {
     }, []); 
 
     const [hasALoggedUser, setHasALoggedUser] = React.useState(false);
+    const [isStudent, setIsStudent] = React.useState(false);
 
     React.useEffect(() => {
     const loggedUser = storage.getItem();
+
+    const { STUDENT } = AccessLevel;
+
+
+    const isStudent = loggedUser?.accessLevel.id === STUDENT.id
+    setIsStudent(isStudent)
 
     if (loggedUser) {
         setHasALoggedUser(true);
@@ -49,6 +58,7 @@ function Header() {
 
     return React.createElement(HeaderPresentation, {
         hasALoggedUser,
+        isStudent,
         managementPageHasBeenActive,
 
         clearSession,
