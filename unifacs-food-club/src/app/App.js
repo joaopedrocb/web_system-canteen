@@ -170,8 +170,6 @@ function App() {
             
             <Route path="/gerenciamento/produtos/alterar" component={UpdateProduct}/>
 
-            <Route path="/gerenciamento/alunos/alterar" component={UpdateStudent}/>
-
             */}
           </Switch>
         </DashboardTemplate>
