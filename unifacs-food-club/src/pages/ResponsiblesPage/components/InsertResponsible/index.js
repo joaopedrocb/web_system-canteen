@@ -2,7 +2,7 @@ import { InsertResponsiblePresentational } from './presentation'
 import React from 'react';
 
 //enums
-import { AccessLevelEnum } from '../../../common/domain';
+import { AccessLevelEnum } from '../../../../common/domain';
 
 export function InsertResponsible({ responsiblesList, updateResponsibles, setInsertResponsibleModalIsActive }) {
 

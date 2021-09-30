@@ -1,12 +1,11 @@
-#update-student-page {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    
-    padding: 100px;
+
+.back {
+    justify-self: flex-end;
+    margin-bottom: 20px;
+    text-decoration: none;
 }
 
-.update-student-page_section {
+.insert-student-page_section {
     width: 400px;
     display: grid;
     grid-gap: 50px;
@@ -18,24 +17,24 @@
     box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%)
 }
 
-.update-student-page_section-title {
+.insert-student-page_section-title {
     font-size: 25px;
     font-weight: 700;
     color: #3b3663;
 }
 
-.update-student-page_section-subtitle {
+.insert-student-page_section-subtitle {
     font-size: 14px;
     font-weight: 700;
     color: #3b3663;
 }
 
-.update-student-page_section-form {
+.insert-student-page_section-form {
     display: grid;
     grid-gap: 10px;
 }
 
-.update-student-page_section-form input {
+.insert-student-page_section-form input {
     height: 40px;
     border: 0;
     border-bottom: 1px solid rgb(194, 186, 186);
@@ -45,11 +44,11 @@
     color: #3b3663;
 }
 
-.update-student-page_section-form input:focus, textarea:focus {
+.insert-student-page_section-form input:focus, textarea:focus {
     outline: none;
 }
 
-.update-student-page_section-footer {
+.insert-student-page_section-footer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -58,7 +57,7 @@
     justify-content: center;
 }
 
-.update-student-page_section-footer hr {
+.insert-student-page_section-footer hr {
     width: 70%;
     padding-right: -100px;
 
@@ -66,7 +65,7 @@
     border-top: 0.1px solid rgb(194, 186, 186);
 }
 
-.update-student-page_section-footer button {
+.insert-student-page_section-footer button {
     width: 100%;
     height: 40px;
 
@@ -79,10 +78,10 @@
     background-color: #9146ff;
 }
 
-.update-student-page_section-footer a {
+.insert-student-page_section-footer a {
     text-decoration: none;
 }
 
-.update-student-page_section-footer-sign-up-text {
+.insert-student-page_section-footer-sign-up-text {
     font-size: 14px;
 }

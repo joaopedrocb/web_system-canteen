@@ -4,9 +4,6 @@ import React from "react";
 // css
 import "./styles.css";
 
-// template
-import { ManagementTemplate } from "../../templates";
-
 export function InsertStudentPresentational(props) {
   const {
     shift,
@@ -26,28 +23,42 @@ export function InsertStudentPresentational(props) {
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
-    onSubmit
+    onSubmit,
+
+    setInsertStudentModalIsActive,
   } = props;
 
-  const buttonIsDisabled = !shift ||
-                              !name ||
-                              !studentClass ||
-                              !phone ||
-                              !email ||
-                              !login ||
-                              !password ||
-                              !enrollment;
+  const buttonIsDisabled =
+    !shift ||
+    !name ||
+    !studentClass ||
+    !phone ||
+    !email ||
+    !login ||
+    !password ||
+    !enrollment;
 
-      function renderButton() {
-        if (buttonIsDisabled) {
-            return <button type="button" className="buttonIsDisabled">Cadastrar</button>;
-        }
-  
-        return <button onClick={onSubmit}>Cadastrar</button>;
+  function renderButton() {
+    if (buttonIsDisabled) {
+      return (
+        <button type="button" className="buttonIsDisabled">
+          Cadastrar
+        </button>
+      );
     }
 
+    return <button onClick={onSubmit}>Cadastrar</button>;
+  }
+
   return (
-    <ManagementTemplate>
+    <>
+      <span
+        className="back"
+        onClick={() => setInsertStudentModalIsActive(false)}
+      >
+        Fechar
+      </span>
+
       <main id="insert-student-page">
         <section class="insert-student-page_section">
           <span class="insert-student-page_section-title">Cadastrar aluno</span>
@@ -56,25 +67,24 @@ export function InsertStudentPresentational(props) {
           </span>
 
           <div>
-
-          <input
-            type="radio"
-            id="shiftType1"
-            name="shiftType1"
-            value={1}
-            onChange={onShiftInputChange}
+            <input
+              type="radio"
+              id="shiftType1"
+              name="shiftType1"
+              value={1}
+              onChange={onShiftInputChange}
             />
-          <label for="shiftType1">Matutino</label>
+            <label for="shiftType1">Matutino</label>
 
-          <input
-            type="radio"
-            id="shiftType2"
-            name="shiftType2"
-            value={2}
-            onChange={onShiftInputChange}
+            <input
+              type="radio"
+              id="shiftType2"
+              name="shiftType2"
+              value={2}
+              onChange={onShiftInputChange}
             />
-          <label for="shiftType2">Vespertino</label>
-            </div>
+            <label for="shiftType2">Vespertino</label>
+          </div>
 
           <form class="insert-student-page_section-form">
             <input placeholder="Matricula" onChange={onEnrollmentInputChange} />
@@ -98,6 +108,6 @@ export function InsertStudentPresentational(props) {
           </footer>
         </section>
       </main>
-    </ManagementTemplate>
+    </>
   );
 }
