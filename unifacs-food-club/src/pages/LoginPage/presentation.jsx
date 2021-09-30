@@ -1,69 +1,95 @@
 // dependencies
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 // css
-import './styles.css';
+import "./styles.css";
 
 function LoginPagePresentation(props) {
-    const { 
-        email,
+  const {
+    email,
     password,
-    
+
     onLoginSubmit,
     onEmailInputChange,
     onPasswordInputChange,
-    } = props;
 
-    const buttonIsDisabled = !email || !password;
+    setUserData,
+  } = props;
 
-    function renderButton() {
-        if (buttonIsDisabled) {
-            return <button type="button" className="buttonIsDisabled">Entrar</button>;
-        }
+  const buttonIsDisabled = !email || !password;
 
-        return <button onClick={onLoginSubmit}>Entrar</button>
+  function renderButton() {
+    if (buttonIsDisabled) {
+      return (
+        <button type="button" className="buttonIsDisabled">
+          Entrar
+        </button>
+      );
     }
 
-    return (
-        <main id="login-page">
-            <div className="box login-box"/>
-            <div className="box login-box-small"/>
-            <div className="box login-box-medium"/>
+    return <button onClick={onLoginSubmit}>Entrar</button>;
+  }
 
-            <section class="login-page_section">
-                <header className="login-page_section-header">
-                    <span class="login-page_section-title">Entrar</span>
+  return (
+    <main id="login-page">
+      <div className="box login-box" />
+      <div className="box login-box-small" />
+      <div className="box login-box-medium" />
 
-                    <Link replace to="/">Voltar ao início</Link>
-                </header>
+      <section class="login-page_section">
+        <header className="login-page_section-header">
+          <span class="login-page_section-title">Entrar</span>
 
-                <form autocomplete="on" class="login-page_section-form">
-                    <div className="login-page_section-form-inputs-container">
-                        <input name="email" type="text"  pattern=".+@gmail\.com" required onChange={onEmailInputChange} placeholder="Email"></input>
-                        <input name="password" type="password" onChange={onPasswordInputChange} placeholder="Senha"></input>
-                    </div>
+          <div onClick={setUserData(undefined)}>
+            <Link replace to="/">
+              Voltar ao início
+            </Link>
+          </div>
+        </header>
 
-                    <Link replace to="/login" class="login-page_section-form-forgot-password">
-                        Esqueceu a senha?
-                    </Link>
+        <form autocomplete="on" class="login-page_section-form">
+          <div className="login-page_section-form-inputs-container">
+            <input
+              name="email"
+              type="text"
+              pattern=".+@gmail\.com"
+              required
+              onChange={onEmailInputChange}
+              placeholder="Email"
+            ></input>
+            <input
+              name="password"
+              type="password"
+              onChange={onPasswordInputChange}
+              placeholder="Senha"
+            ></input>
+          </div>
 
-                    {renderButton()}
-                </form>
+          <Link
+            replace
+            to="/login"
+            class="login-page_section-form-forgot-password"
+          >
+            Esqueceu a senha?
+          </Link>
 
-                <footer class="login-page_section-footer">
-                    <hr />
+          {renderButton()}
+        </form>
 
-                    <span class="login-page_section-footer-sign-up-text">
-                        Sua escola ainda não está cadastrada?
-                        {' '}
-                        <Link replace to="/login">Cadastre agora</Link>
-                    </span>
+        <footer class="login-page_section-footer">
+          <hr />
 
-                </footer>
-            </section>
-        </main>
-    )
+          <span class="login-page_section-footer-sign-up-text">
+            Sua escola ainda não está cadastrada?{" "}
+            <Link replace to="/login">
+              Cadastre agora
+            </Link>
+          </span>
+        </footer>
+      </section>
+    </main>
+  );
 }
 
 export default LoginPagePresentation;

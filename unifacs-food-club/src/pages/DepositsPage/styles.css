@@ -4,6 +4,15 @@
     justify-content: flex-end;
 }
 
+.period {
+    height: 250px !important;
+}
+
+.period-label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
 .create-product-button {
 
     height: 40px;
@@ -41,4 +50,9 @@
     padding: 15px;
     font-weight: 600;
     color: #3b3663;
+}
+
+.choose-period-inputs-container {
+    margin-bottom: 10px;
+    display: grid;
 }

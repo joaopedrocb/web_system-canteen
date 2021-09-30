@@ -54,7 +54,7 @@ export default function StudentPresentation(props) {
       <span className="student-id">{phoneNumber}</span>
       <span className="student-id">{email}</span>
       <span className="student-id">{responsibleCpf}</span>
-      <span className="student-id">{balance}</span>
+      <span className="student-id">R$ {balance}</span>
 
       <Modal isVisible={updateStudentModalActive}>
         <UpdateStudent

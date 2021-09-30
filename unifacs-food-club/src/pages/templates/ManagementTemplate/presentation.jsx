@@ -1,9 +1,9 @@
 // dependencies
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 // enums
-import { AccessLevelEnum } from '../../../common/domain';
+import { AccessLevelEnum } from "../../../common/domain";
 
 // css
 import "./styles.css";
@@ -22,9 +22,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsButton() {
-    // if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
-    //   return null;
-    // }
+    if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
+      return null;
+    }
 
     return (
       <Link to="/gerenciamento/produtos">
@@ -37,9 +37,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderResponsiblesListButton() {
-    // if (userData?.accessLevel.id !== AccessLevelEnum.STAFF.id) {
-    //   return null;
-    // }
+    if (userData?.accessLevel.id !== AccessLevelEnum.STAFF.id) {
+      return null;
+    }
 
     return (
       <Link replace to="/gerenciamento/responsaveis">
@@ -52,9 +52,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStudentsButton() {
-    // if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
-    //   return null;
-    // }
+    if (userData?.accessLevel.id !== AccessLevelEnum.RESPONSIBLE.id) {
+      return null;
+    }
 
     return (
       <Link to="/gerenciamento/alunos">
@@ -67,9 +67,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsPurchaseButton() {
-    // if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
-    //   return null;
-    // }
+    if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
+      return null;
+    }
 
     return (
       <Link to="/comprar">
@@ -82,8 +82,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStatementButton() {
-    // @TODO mudar dps xd
-    if (userData?.accessLevel.id !== AccessLevelEnum.RESPONSIBLE.id) {
+    if (userData?.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
       return (
         <Link to="/gerenciamento/extrato">
           <div className="navbar-item">
@@ -98,9 +97,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderDepositsButton() {
-    // @TODO mudar dps xd
-
-    if (userData?.accessLevel.id !== AccessLevelEnum.RESPONSIBLE.id) {
+    if (userData?.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
       return (
         <Link to="/gerenciamento/depositos">
           <div className="navbar-item">
@@ -117,21 +114,22 @@ function ManagementTemplatePresentation(props) {
   return (
     <>
       <header className="management-header">
-        <div className="logo"/>
+        <div className="logo" />
 
-        <input className="search-input" placeholder="Procurar aluno, responsável ou produto"/>
+        <input
+          className="search-input"
+          placeholder="Procurar aluno, responsável ou produto"
+        />
 
         {renderBalance()}
 
         <div className="welcome-content">
           <div className="user-logo" />
-
           Olá {userData?.name}
         </div>
       </header>
 
       <section id="management-page">
-
         <div class="management-page_navbar">
           <div className="actions-container">
             <Link to="/">Voltar ao início</Link>
@@ -148,7 +146,6 @@ function ManagementTemplatePresentation(props) {
           {renderStatementButton()}
 
           {renderDepositsButton()}
-        
         </div>
 
         <div className="management-page_main">{children}</div>

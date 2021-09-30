@@ -24,6 +24,7 @@ function ProductsPurchasePagePresentation(props) {
 
           return (
             <ProductPurchase
+              key={name + price.toString()}
               ingredients={ingredients}
               isBlocked={isBlocked}
               name={name}

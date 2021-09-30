@@ -65,6 +65,7 @@ export default function StudentsPagePresentation({
 
           return (
             <Student
+              key={enrollment.toString()}
               enrollment={enrollment}
               studentClass={studentClass}
               shift={shift}

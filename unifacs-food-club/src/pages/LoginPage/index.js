@@ -6,20 +6,12 @@ import { useHistory } from "react-router-dom";
 import LoginPagePresentation from "./presentation";
 
 // models
-import { Responsible, Staff, Student } from '../../models';
+import { Responsible, Staff, Student } from "../../models";
 
 export function LoginPage(props) {
-  const { userData, changeUserData } = props;
+  const { changeUserData, setUserData } = props;
 
   const history = useHistory();
-
-  React.useLayoutEffect(() => {
-    if (userData) {
-      history.push("/");
-
-      return;
-    }
-  }, [ history, userData]);
 
   const [email, setEmail] = React.useState("");
 
@@ -34,41 +26,42 @@ export function LoginPage(props) {
   }
 
   function onLoginSubmit() {
-    if (email === 'funcionario@unifacs.com') {
+    if (email === "funcionario@unifacs.com") {
       const staff = new Staff();
 
       changeUserData(staff);
-      history.push('/gerenciamento/produtos');
+      history.push("/gerenciamento/produtos");
 
       return;
     }
 
-    if (email === 'responsavel@unifacs.com') {
+    if (email === "responsavel@unifacs.com") {
       const responsible = new Responsible();
 
       changeUserData(responsible);
-      history.push('/gerenciamento/produtos');
+      history.push("/gerenciamento/produtos");
 
       return;
     }
 
-    if (email === 'estudante@unifacs.com') {
+    if (email === "estudante@unifacs.com") {
       const student = new Student();
 
       changeUserData(student);
-      history.push('/gerenciamento/produtos');
+      history.push("/comprar");
 
       return;
     }
   }
 
-
   return React.createElement(LoginPagePresentation, {
     email,
     password,
-    
+
     onLoginSubmit,
     onEmailInputChange,
     onPasswordInputChange,
+
+    setUserData,
   });
 }

@@ -55,7 +55,11 @@ function App() {
             <Route
               path="/login"
               component={() => (
-                <LoginPage userData={userData} changeUserData={setUserData} />
+                <LoginPage
+                  userData={userData}
+                  changeUserData={setUserData}
+                  setUserData={setUserData}
+                />
               )}
             />
 

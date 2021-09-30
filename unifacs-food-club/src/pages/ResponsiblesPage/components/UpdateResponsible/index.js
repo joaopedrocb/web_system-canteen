@@ -2,9 +2,6 @@ import React from "react";
 
 import { UpdateResponsiblePresentational } from "./presentation";
 
-// enums
-import { AccessLevelEnum } from "../../../../common/domain";
-
 export function UpdateResponsible({
   responsible,
   updateResponsibles,
@@ -41,21 +38,20 @@ export function UpdateResponsible({
   }
 
   function onSubmit() {
-    const updatedResponsible = {
-      cpf: responsible.cpf,
-      name,
-      phoneNumber: phone,
-      email,
-      login,
-      password,
-      accessLevel: AccessLevelEnum.RESPONSIBLE,
-    };
-
-    updateResponsibles((prevResponsiblesList) => {
-      const updatedIndex = prevResponsiblesList.findIndex(
-        (item) => item.cpf === responsible.cpf
-      );
-    });
+    // const updatedResponsible = {
+    //   cpf: responsible.cpf,
+    //   name,
+    //   phoneNumber: phone,
+    //   email,
+    //   login,
+    //   password,
+    //   accessLevel: AccessLevelEnum.RESPONSIBLE,
+    // };
+    // updateResponsibles((prevResponsiblesList) => {
+    //   const updatedIndex = prevResponsiblesList.findIndex(
+    //     (item) => item.cpf === responsible.cpf
+    //   );
+    // });
   }
 
   return React.createElement(UpdateResponsiblePresentational, {

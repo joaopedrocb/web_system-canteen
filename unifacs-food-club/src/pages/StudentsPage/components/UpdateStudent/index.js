@@ -1,8 +1,5 @@
-import { UpdateStudentPresentational } from "./presentation";
 import React from "react";
-
-// enums
-import { AccessLevelEnum, ShiftTypeEnum } from "../../../../common/domain";
+import { UpdateStudentPresentational } from "./presentation";
 
 export function UpdateStudent({
   student,
@@ -52,24 +49,21 @@ export function UpdateStudent({
   }
 
   function onSubmit() {
-    const updatedResponsible = {
-      enrollment: student.enrollment,
-      studentClass,
-      shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
-      name,
-      phoneNumber: phone,
-      email,
-      login,
-      password,
-      responsibleCpf: student.responsibleCpf,
-      balance: student.balance,
-      accessLevel: AccessLevelEnum.STUDENT,
-    };
-
+    // const updatedResponsible = {
+    //   enrollment: student.enrollment,
+    //   studentClass,
+    //   shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
+    //   name,
+    //   phoneNumber: phone,
+    //   email,
+    //   login,
+    //   password,
+    //   responsibleCpf: student.responsibleCpf,
+    //   balance: student.balance,
+    //   accessLevel: AccessLevelEnum.STUDENT,
+    // };
     // const updatedIndex = studentsList.findIndex(item => item.enrollment === student.enrollment)
-
     // const newList = studentsList[updatedIndex] = updatedResponsible;
-
     // storage.setItem(STUDENTS_LIST, [...newList])
   }
 

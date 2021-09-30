@@ -58,6 +58,7 @@ export default function ResponsiblesPagePresentation({
 
           return (
             <Responsible
+              key={cpf.toString()}
               cpf={cpf}
               name={name}
               phoneNumber={phoneNumber}
