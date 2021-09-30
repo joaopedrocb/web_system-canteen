@@ -10,22 +10,29 @@ export function Product(props) {
         ingredients,
         isBlocked,
         name,
-        picture,
         price,
         type,
         provider,
-        accessLevel
+        accessLevel,
+        productsList,
+        changeProductsList,
     } = props;
+
+    const [updateProductModalIsActive, setUpdateProductModalIsActive] = React.useState(false);
 
     return React.createElement(ProductPresentation, {
         code,
         ingredients,
         isBlocked,
         name,
-        picture,
         price,
         type,
         provider,
-        accessLevel
+        accessLevel,
+        productsList,
+        changeProductsList,
+
+        updateProductModalIsActive,
+        setUpdateProductModalIsActive
     });
 }

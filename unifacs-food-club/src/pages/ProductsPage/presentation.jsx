@@ -38,6 +38,40 @@ function ProductsPagePresentation(props) {
     );
   }
 
+  const renderProductsList = React.useCallback(() => {
+      const mappedProductsList = productsList?.map((product) => {
+        
+      const {
+        code,
+        ingredients,
+        isBlocked,
+        name,
+        picture,
+        price,
+        type,
+        provider,
+      } = product;
+
+      return (
+        <Product
+          code={code}
+          ingredients={ingredients}
+          isBlocked={isBlocked}
+          name={name}
+          picture={picture}
+          price={price}
+          type={type}
+          provider={provider}
+          accessLevel={userData?.accessLevel}
+          productsList={productsList}
+          changeProductsList={changeProductsList}
+        />
+      );
+    });
+
+    return mappedProductsList;
+  }, [changeProductsList, productsList, userData?.accessLevel])
+
   return (
     <>
     <div className="products-page_header">
@@ -65,33 +99,7 @@ function ProductsPagePresentation(props) {
           <div style={{ width: "30px" }} />
         </div>
 
-        {productsList && productsList.map((product) => {
-          const {
-            code,
-            ingredients,
-            isBlocked,
-            name,
-            picture,
-            price,
-            type,
-            provider,
-            accessLevel,
-          } = product;
-
-          return (
-            <Product
-              code={code}
-              ingredients={ingredients}
-              isBlocked={isBlocked}
-              name={name}
-              picture={picture}
-              price={price}
-              type={type}
-              provider={provider}
-              accessLevel={accessLevel}
-            />
-          );
-        })}
+        {renderProductsList()}
       </div>
     </>
   );

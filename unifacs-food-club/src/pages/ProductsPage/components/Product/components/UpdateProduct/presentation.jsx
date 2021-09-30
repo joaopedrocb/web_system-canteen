@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 // css
 import './styles.css';
 
-// template
-import { ManagementTemplate } from '../../templates';
-
 export function UpdateProductPresentational(props) {
     const { 
       product,
@@ -33,16 +30,15 @@ export function UpdateProductPresentational(props) {
     }
 
     return (
-      <ManagementTemplate>
+      <>
         <main id="update-product-page">
-        <Link replace to="/gerenciamento/produtos" className="backToProducts">
-            <span >Voltar para produtos</span> 
+          <Link replace to="/gerenciamento/produtos" className="backToProducts">
+            <span>X</span> 
           </Link>
 
           <section class="update-product-page_section">
               <span class="update-product-page_section-title">Editar produto</span>
       
-
               <form class="update-product-page_section-form">
                 <input placeholder="Nome do produto" defaultValue={product.name} onChange={onNameInputChange} />
                 <input placeholder="Preço do produto" defaultValue={product.price} onChange={onPriceInputChange} />
@@ -54,6 +50,6 @@ export function UpdateProductPresentational(props) {
               </footer>
           </section>
         </main>
-      </ManagementTemplate>
+      </>
     )
 }

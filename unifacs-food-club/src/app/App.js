@@ -17,10 +17,6 @@ import {
   ResponsiblesPage,
   StudentsPage,
   ProductsPurchasePage,
-  UpdateProduct,
-  InsertStudent,
-  UpdateResponsible,
-  UpdateStudent,
   StatementPage,
   DepositsPage,
   ManagementTemplate

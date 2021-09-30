@@ -1,6 +1,5 @@
 // dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
 // css
 import "./styles.css";
@@ -8,15 +7,27 @@ import "./styles.css";
 // enums
 import { ProductTypeEnum, AccessLevelEnum } from '../../../../common/domain';
 
+// local components
+import { UpdateProduct } from './components';
+
+// external components
+import { Modal } from '../../../../components';
+
 function ProductPresentation(props) {
   const {
-      code,
-      ingredients,
-      isBlocked,
-      name,
-      price,
-      type,
-      provider,
+    code,
+    ingredients,
+    isBlocked,
+    name,
+    price,
+    type,
+    provider,
+    accessLevel,
+    productsList,
+    changeProductsList,
+
+    updateProductModalIsActive,
+    setUpdateProductModalIsActive
   } = props;
 
   function renderProductType() {
@@ -38,13 +49,12 @@ function ProductPresentation(props) {
   }
 
   function renderUpdateProductButton() {
-    if (AccessLevelEnum.id !== AccessLevelEnum.STAFF.id) {
+    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
       return null;
     }
+
     return (
-      <Link replace to="../gerenciamento/produtos/alterar">
-        <div className="management-button" />
-      </Link>
+        <div className="management-button" onClick={() => setUpdateProductModalIsActive(true)}/>
     );
   }
 
@@ -74,6 +84,24 @@ function ProductPresentation(props) {
 
           {renderUpdateProductButton()}
 
+          <Modal isVisible={updateProductModalIsActive}>
+            <UpdateProduct
+              product={{
+                code,
+                ingredients,
+                isBlocked,
+                name,
+                price,
+                type,
+                provider,
+                accessLevel,
+              }}
+              productsList={productsList}
+              changeProductsList={changeProductsList}
+              changeUpdateProductModalIsActive={setUpdateProductModalIsActive}
+            />
+          </Modal>
+
           <div className="block-button" />
         </div>
       );
@@ -102,6 +130,24 @@ function ProductPresentation(props) {
         </span>
 
         {renderUpdateProductButton()}
+
+        <Modal isVisible={updateProductModalIsActive}>
+            <UpdateProduct
+              product={{
+                code,
+                ingredients,
+                isBlocked,
+                name,
+                price,
+                type,
+                provider,
+                accessLevel,
+              }}
+              productsList={productsList}
+              changeProductsList={changeProductsList}
+              changeUpdateProductModalIsActive={setUpdateProductModalIsActive}
+            />
+          </Modal>
 
         <div className="block-button" />
       </div>
