@@ -8,5 +8,4 @@ export { DepositsPage } from './DepositsPage'
 export { StatementPage } from './StatementPage'
 
 export * from './templates';
-export * from './management';
 export * from './templates';
