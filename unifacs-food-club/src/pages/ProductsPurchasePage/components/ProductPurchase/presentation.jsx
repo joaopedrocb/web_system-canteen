@@ -4,8 +4,19 @@ import React from "react";
 // css
 import "./styles.css";
 
+import { BuyProduct } from "../BuyProduct";
+
+import { Modal } from "../../../../components/Modal";
+
 function ProductPurchasePresentation(props) {
-  const { ingredients, isBlocked, name, price } = props;
+  const {
+    ingredients,
+    isBlocked,
+    name,
+    price,
+    buyProductModalActive,
+    setBuyProductModalIsActive,
+  } = props;
 
   function renderIngredients() {
     if (!ingredients) {
@@ -35,12 +46,19 @@ function ProductPurchasePresentation(props) {
             }).format(price)}
           </span>
 
-          <div className="purchase-button-container">
-          <button className="purchase-button">Comprar</button>
-        </div>
+          <div className="purchase-button-container"></div>
         </div>
       );
     }
+
+    <Modal isVisible={buyProductModalActive}>
+      <BuyProduct
+        ingredients={ingredients}
+        name={name}
+        price={price}
+        setBuyProductModalIsActive={setBuyProductModalIsActive}
+      />
+    </Modal>
 
     return (
       <div id="purchase-product">
@@ -59,7 +77,12 @@ function ProductPurchasePresentation(props) {
         </span>
 
         <div className="purchase-button-container">
-          <button className="purchase-button">Comprar</button>
+          <button
+            onClick={() => setBuyProductModalIsActive(true)}
+            className="purchase-button"
+          >
+            Comprar
+          </button>
         </div>
       </div>
     );
