@@ -56,15 +56,16 @@ export function UpdateProduct(props) {
   }
 
   return React.createElement(UpdateProductPresentational, {
-      product,
-      name,
-      price,
-      ingredients,
+    changeUpdateProductModalIsActive,
+    product,
+    name,
+    price,
+    ingredients,
 
-      onNameInputChange,
-      onPriceInputChange,
-      onProviderInputChange,
-      onIngredientsInputChange,
-      onSubmit
+    onNameInputChange,
+    onPriceInputChange,
+    onProviderInputChange,
+    onIngredientsInputChange,
+    onSubmit
   })
 }

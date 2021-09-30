@@ -7,6 +7,9 @@ import { ProductTypeEnum } from '../../../../common/domain';
 // css
 import './styles.css';
 
+// external components
+import { CloseButton } from '../../../../components';
+
 export function InsertProductPresentational(props) {
     const { 
       productType,
@@ -50,7 +53,9 @@ export function InsertProductPresentational(props) {
     return (
       <>
         <main className="insert-product">
-          <span onClick={() => createProductModalIsActive(false)}> X </span>
+          <div className="close-button-container">
+            <CloseButton onClick={() => createProductModalIsActive(false)} />
+          </div>
 
           <section class="insert-product-page_section">
               <span class="insert-product-page_section-title">Cadastrar um novo produto</span>

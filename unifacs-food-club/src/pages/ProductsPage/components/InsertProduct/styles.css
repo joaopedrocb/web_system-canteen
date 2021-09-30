@@ -4,11 +4,10 @@
     align-items: center;
 }
 
-.insert-product > span {
-    align-self: flex-end;
+.close-button-container {
+    display: flex;
+    justify-content: flex-end;
 }
-
-
 
 .backToProducts {
     justify-self: flex-end;
