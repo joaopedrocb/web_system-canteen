@@ -71,6 +71,7 @@ export default function StudentsPagePresentation({
               email={email}
               responsibleCpf={responsibleCpf}
               balance={balance}
+              updateStudents={updateStudents}
             />
           );
         })}
