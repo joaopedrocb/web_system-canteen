@@ -4,8 +4,19 @@ import React from "react";
 // css
 import "./styles.css";
 
+import { BuyProduct } from "../BuyProduct";
+
+import { Modal } from "../../../../components/Modal";
+
 function ProductPurchasePresentation(props) {
-  const { ingredients, isBlocked, name, price } = props;
+  const {
+    ingredients,
+    isBlocked,
+    name,
+    price,
+    buyProductModalActive,
+    setBuyProductModalIsActive,
+  } = props;
 
   function renderIngredients() {
     if (!ingredients) {
