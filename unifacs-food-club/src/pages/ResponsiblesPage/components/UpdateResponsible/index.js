@@ -1,16 +1,15 @@
-import { UpdateResponsiblePresentational } from "./presentation";
 import React from "react";
-import { LocalStorageAdapter } from "../../../infra";
+
+import { UpdateResponsiblePresentational } from "./presentation";
 
 // enums
-import { AccessLevelEnum } from "../../../common/domain";
+import { AccessLevelEnum } from "../../../../common/domain";
 
-export function UpdateResponsible(
+export function UpdateResponsible({
   responsible,
   updateResponsibles,
-  setUpdateResponsibleModalIsActive
-) {
-
+  setUpdateResponsibleModalIsActive,
+}) {
   const [name, setName] = React.useState("");
 
   function onNameInputChange(event) {
@@ -52,13 +51,13 @@ export function UpdateResponsible(
       accessLevel: AccessLevelEnum.RESPONSIBLE,
     };
 
-    
-
     updateResponsibles((prevResponsiblesList) => {
       const updatedIndex = prevResponsiblesList.findIndex(
         (item) => item.cpf === responsible.cpf
       );
-      return (prevResponsiblesList[updatedIndex] = updatedResponsible);
+      console.log(prevResponsiblesList)
+      console.log((prevResponsiblesList[updatedIndex] = updatedResponsible))
+      // return (prevResponsiblesList[updatedIndex] = updatedResponsible);
     });
   }
 

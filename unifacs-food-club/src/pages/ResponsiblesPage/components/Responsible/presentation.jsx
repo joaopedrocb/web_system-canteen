@@ -4,8 +4,8 @@ import React from "react";
 // css
 import "./styles.css";
 
-import { Link } from "react-router-dom";
-import { UpdateResponsible } from "../../..";
+import { UpdateResponsible } from '../../components/UpdateResponsible'
+
 import { Modal } from "../../../../components";
 
 export default function ResponsiblePresentation(props) {

@@ -60,7 +60,7 @@ export function UpdateResponsiblePresentational(props) {
             <input
               placeholder="Telefone"
               onChange={onPhoneInputChange}
-              defaultValue={responsible.phoneNumber}
+              defaultValue={responsible.phone}
             />
             <input
               placeholder="Email"
