@@ -4,6 +4,9 @@ import React from "react";
 // css
 import "./styles.css";
 
+// external components
+import { CloseButton } from "../../../../components";
+
 export function InsertBalancePresentational(props) {
   const {
     balance,
@@ -34,12 +37,9 @@ export function InsertBalancePresentational(props) {
 
   return (
     <>
-      <span
-        className="back"
-        onClick={() => setInsertBalanceModalIsActive(false)}
-      >
-        Fechar
-      </span>
+      <div className="close-button-container">
+        <CloseButton onClick={() => setInsertBalanceModalIsActive(false)}/>
+      </div>
 
       <main>
         <section class="insert-balance-page_section">

@@ -1,3 +1,46 @@
+.management-header {
+    background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid rgb(218, 224, 227);
+    box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%);
+    display: grid;
+    grid-template-columns: 400px auto auto auto;
+    align-items: center;
+}
+
+.logo {
+    background-image: url('../../../assets/images/logo-empresa.png');
+    background-position: center;
+    background-size: cover;
+    height: 72px;
+    width: 95px;
+    margin-left: 10px;
+}
+
+.search-input {
+    height: 30px;
+    width: 400px;
+    border-radius: 20px;
+    border: 1px solid rgb(225, 229, 231);
+    font-size: 14px;
+    font-weight: 600;
+    color: #3b3663;
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.welcome-content {
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid rgb(225, 229, 231);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+    margin-right: 20px;
+}
+
 #management-page {
     display: grid;
     grid-template-columns: 220px auto;

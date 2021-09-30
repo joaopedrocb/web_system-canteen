@@ -4,6 +4,9 @@ import React from "react";
 // css
 import "./styles.css";
 
+// external components
+import { CloseButton } from "../../../../components";
+
 export function InsertStudentPresentational(props) {
   const {
     shift,
@@ -52,12 +55,9 @@ export function InsertStudentPresentational(props) {
 
   return (
     <>
-      <span
-        className="back"
-        onClick={() => setInsertStudentModalIsActive(false)}
-      >
-        Fechar
-      </span>
+      <div className="close-button-container">
+        <CloseButton onClick={() => setInsertStudentModalIsActive(false)}/>
+      </div>
 
       <main id="insert-student-page">
         <section class="insert-student-page_section">

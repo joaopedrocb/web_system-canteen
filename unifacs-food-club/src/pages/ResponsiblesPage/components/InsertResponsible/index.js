@@ -9,7 +9,13 @@ export function InsertResponsible({ responsiblesList, updateResponsibles, setIns
   const [cpf, setCpf] = React.useState('');
 
   function onCPFInputChange(event) {
-    setCpf(event?.target?.value);
+    const formattedCpf = event?.target?.value.replace(/\D/g, '') 
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+    .replace(/(-\d{2})\d+?$/, '$1')
+
+    setCpf(formattedCpf);
   }
   
   const [name, setName] = React.useState('');
@@ -21,7 +27,11 @@ export function InsertResponsible({ responsiblesList, updateResponsibles, setIns
   const [phone, setPhone] = React.useState('');
 
   function onPhoneInputChange(event) {
-    setPhone(event?.target?.value);
+    const formattedPhone = event?.target?.value.replace(
+        /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/
+      );
+
+    setPhone(formattedPhone);
   }
 
   const [email, setEmail] = React.useState('');
@@ -71,7 +81,8 @@ export function InsertResponsible({ responsiblesList, updateResponsibles, setIns
         accessLevel: AccessLevelEnum.RESPONSIBLE
       }]
 
-      updateResponsibles(newList)
+      updateResponsibles(newList);
+      setInsertResponsibleModalIsActive(false);
       return;
     }
   }

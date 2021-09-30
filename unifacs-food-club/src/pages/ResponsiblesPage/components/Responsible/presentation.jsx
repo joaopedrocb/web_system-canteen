@@ -4,24 +4,35 @@ import React from "react";
 // css
 import "./styles.css";
 
+// components
+import { DeleteResponsible } from './components'
 import { UpdateResponsible } from '../../components/UpdateResponsible'
-
 import { Modal } from "../../../../components";
+
+// enums
+import { AccessLevelEnum } from "../../../../common/domain";
 
 export default function ResponsiblePresentation(props) {
   const {
+    userData,
     cpf,
     name,
     phoneNumber,
     email,
-    studentsEnrollment,
     login,
     password,
+    studentsEnrollment,
 
+    updateResponsibles,
+    
     updateResponsibleModalIsActive,
     setUpdateResponsibleModalIsActive,
-    updateResponsibles,
+
+    deleteResponsibleModalIsActive,
+    setDeleteResponsibleModalIsActive,
   } = props;
+
+  console.log(userData)
 
   const responsible = {
     name,
@@ -30,10 +41,21 @@ export default function ResponsiblePresentation(props) {
     login,
     password,
   };
+
   function renderEnrollmentList() {
     return studentsEnrollment.map((item) => {
       return <span>{item}</span>;
     });
+  }
+
+  function renderDeleteButton() {
+    if (userData?.accessLevel?.id === AccessLevelEnum.STAFF.id) {
+      return (
+        <div className="delete-button" onClick={() => setDeleteResponsibleModalIsActive(true)}/>
+      );
+    }
+
+    return null;
   }
 
   return (
@@ -54,10 +76,17 @@ export default function ResponsiblePresentation(props) {
         />
       </Modal>
 
-      <div
-        onClick={() => setUpdateResponsibleModalIsActive(true)}
-        className="management-button"
-      />
+      <Modal isVisible={deleteResponsibleModalIsActive}>
+        <DeleteResponsible setDeleteResponsibleModalIsActive={setDeleteResponsibleModalIsActive} />
+      </Modal>
+
+      <div className="buttons-container">
+        <div
+          onClick={() => setUpdateResponsibleModalIsActive(true)}
+          className="management-button"
+        />
+        {renderDeleteButton()}
+      </div>
     </div>
   );
 }

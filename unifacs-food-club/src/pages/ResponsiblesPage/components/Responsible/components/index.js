@@ -1,0 +1,1 @@
+export { DeleteResponsible } from './DeleteResponsible'

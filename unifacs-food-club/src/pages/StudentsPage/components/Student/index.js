@@ -23,6 +23,9 @@ export function Student(props) {
   const [insertBalanceModalActive, setInsertBalanceModalIsActive] =
     React.useState(false);
 
+  const [blockStudenteModalIsActive, setBlockStudentModalIsActive] =
+    React.useState(false);
+
   return React.createElement(StudentPresentation, {
     enrollment,
     studentClass,
@@ -39,5 +42,8 @@ export function Student(props) {
 
     insertBalanceModalActive,
     setInsertBalanceModalIsActive,
+
+    blockStudenteModalIsActive, 
+    setBlockStudentModalIsActive,
   });
 }

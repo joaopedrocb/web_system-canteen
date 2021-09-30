@@ -8,7 +8,7 @@ import "./styles.css";
 import { ProductTypeEnum, AccessLevelEnum } from '../../../../common/domain';
 
 // local components
-import { UpdateProduct } from './components';
+import { UpdateProduct, BlockProduct } from './components';
 
 // external components
 import { Modal } from '../../../../components';
@@ -27,7 +27,10 @@ function ProductPresentation(props) {
     changeProductsList,
 
     updateProductModalIsActive,
-    setUpdateProductModalIsActive
+    setUpdateProductModalIsActive,
+
+    blockProductModalIsActive,
+    setBlockProductModalIsActive,
   } = props;
 
   function renderProductType() {
@@ -102,7 +105,15 @@ function ProductPresentation(props) {
             />
           </Modal>
 
-          <div className="block-button" />
+          <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
+
+          <Modal isVisible={blockProductModalIsActive}>
+            <BlockProduct
+              accessLevel={accessLevel}
+              setBlockProductModalIsActive={setBlockProductModalIsActive}
+              isBlocked={isBlocked}
+            />
+          </Modal>
         </div>
       );
     }
@@ -149,7 +160,15 @@ function ProductPresentation(props) {
             />
           </Modal>
 
-        <div className="block-button" />
+        <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
+
+          <Modal isVisible={blockProductModalIsActive}>
+            <BlockProduct
+              accessLevel={accessLevel}
+              setBlockProductModalIsActive={setBlockProductModalIsActive}
+              isBlocked={isBlocked}
+            />
+          </Modal>
       </div>
     );
   }

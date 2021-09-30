@@ -4,6 +4,9 @@ import React from "react";
 // css
 import "./styles.css";
 
+// external components
+import { CloseButton } from "../../../../components";
+
 export function InsertResponsiblePresentational(props) {
   const {
     cpf,
@@ -42,18 +45,18 @@ export function InsertResponsiblePresentational(props) {
   return (
     <>
       <main id="insert-responsible-page">
-        <span className="back" onClick={() => setInsertResponsibleModalIsActive(false)}>
-          Fechar
-        </span>
+          <div className="close-button-container">
+            <CloseButton onClick={() => setInsertResponsibleModalIsActive(false)}/>
+          </div>
 
         <section class="insert-responsible-page_section">
           <span class="insert-responsible-page_section-title">
             Cadastrar responsável
           </span>
           <form class="insert-responsible-page_section-form">
-            <input placeholder="CPF" onChange={onCPFInputChange} />
+            <input placeholder="CPF" value={cpf} onChange={onCPFInputChange} />
             <input placeholder="Nome" onChange={onNameInputChange} />
-            <input placeholder="Telefone" onChange={onPhoneInputChange} />
+            <input placeholder="Telefone" onChange={onPhoneInputChange} value={phone} />
             <input
               name="email"
               type="text"

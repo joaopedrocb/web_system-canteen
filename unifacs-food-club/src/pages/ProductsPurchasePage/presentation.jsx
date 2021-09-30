@@ -1,9 +1,6 @@
 // dependencies
 import React from "react";
 
-// template
-import { ManagementTemplate } from "../templates";
-
 // components
 import { ProductPurchase } from "./components";
 
@@ -15,14 +12,7 @@ function ProductsPurchasePagePresentation(props) {
 
   return (
     <>
-      <div className="productsList">
-        <div className="purchase-list-header">
-          <span>Nome</span>
-          <span>Ingredientes</span>
-          <span>Valor</span>
-          <div style={{ width: "30px" }} />
-        </div>
-
+      <div className="purchase-products-list">
         {productsList.map((product) => {
           const {
             ingredients,

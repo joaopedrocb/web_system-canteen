@@ -1,6 +1,5 @@
 // dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
 // components
 import { Responsible } from "./components";
@@ -23,14 +22,17 @@ export default function ResponsiblesPagePresentation({
 }) {
   return (
     <>
-      <div className="create-responsible-button-container">
-        <button
+
+      <div className="products-page_header">
+      <span>Responsáveis</span>
+      
+      <button
           onClick={() => setInsertResponsibleModalIsActive(true)}
           className="create-responsible-button"
         >
           Adicionar responsável
         </button>
-      </div>
+    </div>        
 
       <Modal isVisible={insertResponsibleModalIsActive}>
         <InsertResponsible
@@ -62,6 +64,7 @@ export default function ResponsiblesPagePresentation({
               email={email}
               studentsEnrollment={studentsEnrollment}
               updateResponsibles={updateResponsibles}
+              userData={userData}
             />
           );
         })}

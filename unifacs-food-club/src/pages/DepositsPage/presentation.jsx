@@ -13,6 +13,10 @@ export function DepositsPage() {
   
   return (
     <>
+      <div className="products-page_header">
+        <span>Extrato de Depósitos</span>
+      </div>
+
       <div className="statement">
         <div className="statement-header">
           <span>Nome do aluno</span>
@@ -24,7 +28,6 @@ export function DepositsPage() {
 
         {depositStatement.map((purchase) => {
           const { date, studentName, value, studentEnrollment } = purchase;
-     
 
           return (
             <DepositItem

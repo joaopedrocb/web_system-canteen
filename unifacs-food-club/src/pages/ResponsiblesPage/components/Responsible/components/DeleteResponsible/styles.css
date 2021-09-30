@@ -1,0 +1,46 @@
+.block-product-content {
+    display: grid;
+    grid-gap: 25px;
+    padding: 10px;
+    width: 450px;
+}
+
+.block-product-form {
+    display: grid;
+    grid-gap: 20px;
+    margin-top: 40px;
+}
+
+.block-product-form > input {
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(194, 186, 186);
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #3b3663;
+}
+
+.block-product-form > label {
+    font-weight: 600;
+}
+
+.block-product-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.block-product-footer button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid rgb(225, 229, 231);
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}

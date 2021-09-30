@@ -28,8 +28,11 @@ export function InsertProduct(props) {
   const [price, setPrice] = React.useState('');
 
   function onPriceInputChange(event) {
-    setPrice(event?.target?.value);
+    const formattedPrice = event?.target?.value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
+    setPrice(formattedPrice);
   }
+  
   const [provider, setProvider] = React.useState('');
 
   function onProviderInputChange(event) {
@@ -100,6 +103,8 @@ export function InsertProduct(props) {
   return React.createElement(InsertProductPresentational, {
       productType,
       buttonIsDisabled,
+
+      price,
 
       onProductTypeInputChange,
       onCodeInputChange,

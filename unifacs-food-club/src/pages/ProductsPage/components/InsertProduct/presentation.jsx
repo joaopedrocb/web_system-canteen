@@ -15,6 +15,8 @@ export function InsertProductPresentational(props) {
       productType,
       buttonIsDisabled,
 
+      price,
+
       onProductTypeInputChange,
       onCodeInputChange,
       onNameInputChange,
@@ -85,7 +87,7 @@ export function InsertProductPresentational(props) {
               <form class="insert-product-page_section-form">
                 <input placeholder="Código do produto" onChange={onCodeInputChange} />
                 <input placeholder="Nome do produto" onChange={onNameInputChange} />
-                <input type="number" placeholder="Preço do produto" onChange={onPriceInputChange} />
+                <input placeholder="Preço do produto" onChange={onPriceInputChange} value={price}/>
                 
                 {renderProviderInput()}
                 {renderIngredientsInput()}

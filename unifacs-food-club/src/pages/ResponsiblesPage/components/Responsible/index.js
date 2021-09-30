@@ -6,6 +6,7 @@ import ResponsiblePresentation from "./presentation";
 
 export function Responsible(props) {
   const {
+    userData,
     cpf,
     name,
     phoneNumber,
@@ -19,7 +20,10 @@ export function Responsible(props) {
   const [updateResponsibleModalIsActive, setUpdateResponsibleModalIsActive] =
     React.useState(false);
 
+  const [deleteResponsibleModalIsActive, setDeleteResponsibleModalIsActive] = React.useState(false);
+
   return React.createElement(ResponsiblePresentation, {
+    userData,
     cpf,
     name,
     phoneNumber,
@@ -28,8 +32,12 @@ export function Responsible(props) {
     password,
     studentsEnrollment,
 
+    updateResponsibles,
+    
     updateResponsibleModalIsActive,
     setUpdateResponsibleModalIsActive,
-    updateResponsibles,
+
+    deleteResponsibleModalIsActive,
+    setDeleteResponsibleModalIsActive,
   });
 }

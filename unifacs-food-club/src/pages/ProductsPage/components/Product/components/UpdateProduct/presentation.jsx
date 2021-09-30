@@ -17,7 +17,6 @@ export function UpdateProductPresentational(props) {
 
       onNameInputChange,
       onPriceInputChange,
-      onProviderInputChange,
       onIngredientsInputChange,
       onSubmit
     } = props;

@@ -4,6 +4,9 @@ import React from "react";
 // css
 import "./styles.css";
 
+// external components
+import { CloseButton } from "../../../../components";
+
 export function UpdateStudentPresentational(props) {
   const {
     student,
@@ -44,12 +47,10 @@ export function UpdateStudentPresentational(props) {
 
   return (
     <>
-       <span
-        className="back"
-        onClick={() => setUpdateResponsibleModalIsActive(false)}
-      >
-        Fechar
-      </span>
+      <div className="close-button-container">
+        <CloseButton onClick={() => setUpdateResponsibleModalIsActive(false)}/>
+      </div>
+
       <main id="update-student-page">
         <section class="update-student-page_section">
           <span class="update-student-page_section-title">Editar aluno</span>

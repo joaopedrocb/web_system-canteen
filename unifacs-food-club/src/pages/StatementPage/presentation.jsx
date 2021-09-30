@@ -1,9 +1,6 @@
 // dependencies
 import React from "react";
 
-// template
-import { ManagementTemplate } from "../templates";
-
 // components
 import { StatementItem } from "./components";
 
@@ -16,6 +13,10 @@ export function StatementPage() {
   
   return (
     <>
+      <div className="products-page_header">
+        <span>Extrato de Consumo</span>
+      </div>
+
       <div className="statement">
         <div className="statement-header">
           <span>Nome</span>

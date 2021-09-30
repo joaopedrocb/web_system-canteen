@@ -12,9 +12,6 @@ function ManagementTemplatePresentation(props) {
   const { children, userData } = props;
 
   function renderBalance() {
-    if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
-      return null;
-    }
     return (
       <div className="user-infos">
         <span>Saldo:</span>
@@ -25,9 +22,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
-      return null;
-    }
+    // if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
+    //   return null;
+    // }
 
     return (
       <Link to="/gerenciamento/produtos">
@@ -40,9 +37,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderResponsiblesListButton() {
-    if (userData?.accessLevel.id !== AccessLevelEnum.STAFF.id) {
-      return null;
-    }
+    // if (userData?.accessLevel.id !== AccessLevelEnum.STAFF.id) {
+    //   return null;
+    // }
 
     return (
       <Link replace to="/gerenciamento/responsaveis">
@@ -55,9 +52,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStudentsButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
-      return null;
-    }
+    // if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
+    //   return null;
+    // }
 
     return (
       <Link to="/gerenciamento/alunos">
@@ -73,6 +70,7 @@ function ManagementTemplatePresentation(props) {
     // if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
     //   return null;
     // }
+
     return (
       <Link to="/comprar">
         <div className="navbar-item">
@@ -84,7 +82,8 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStatementButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
+    // @TODO mudar dps xd
+    if (userData?.accessLevel.id !== AccessLevelEnum.RESPONSIBLE.id) {
       return (
         <Link to="/gerenciamento/extrato">
           <div className="navbar-item">
@@ -99,7 +98,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderDepositsButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
+    // @TODO mudar dps xd
+
+    if (userData?.accessLevel.id !== AccessLevelEnum.RESPONSIBLE.id) {
       return (
         <Link to="/gerenciamento/depositos">
           <div className="navbar-item">
@@ -114,38 +115,45 @@ function ManagementTemplatePresentation(props) {
   }
 
   return (
-    <section id="management-page">
-      <div class="management-page_navbar">
-        <div className="actions-container">
-          <Link to="/">Voltar ao início</Link>
-        </div>
+    <>
+      <header className="management-header">
+        <div className="logo"/>
 
-        <div className="navbar-header">
+        <input className="search-input" placeholder="Procurar aluno, responsável ou produto"/>
+
+        {renderBalance()}
+
+        <div className="welcome-content">
           <div className="user-logo" />
 
-          <span className="user-name">{userData?.name}</span>
+          Olá {userData?.name}
+        </div>
+      </header>
 
-          {renderBalance()}
+      <section id="management-page">
+
+        <div class="management-page_navbar">
+          <div className="actions-container">
+            <Link to="/">Voltar ao início</Link>
+          </div>
+
+          {renderProductsButton()}
+
+          {renderResponsiblesListButton()}
+
+          {renderStudentsButton()}
+
+          {renderProductsPurchaseButton()}
+
+          {renderStatementButton()}
+
+          {renderDepositsButton()}
+        
         </div>
 
-        <hr />
-
-        {renderProductsButton()}
-
-        {renderResponsiblesListButton()}
-
-        {renderStudentsButton()}
-
-        {renderProductsPurchaseButton()}
-
-        {renderStatementButton()}
-
-        {renderDepositsButton()}
-      
-      </div>
-
-      <div className="management-page_main">{children}</div>
-    </section>
+        <div className="management-page_main">{children}</div>
+      </section>
+    </>
   );
 }
 

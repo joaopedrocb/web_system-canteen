@@ -19,7 +19,9 @@ export default function StudentsPagePresentation({
 }) {
   return (
     <>
-      <div className="create-student-button-container">
+      <div className="products-page_header">
+      <span>Alunos</span>
+
         <button
           onClick={() => setInsertStudentModalIsActive(true)}
           className="create-student-button"

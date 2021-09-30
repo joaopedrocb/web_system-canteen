@@ -1,9 +1,11 @@
 // dependencies
 import React from "react";
 
+// components
 import { Modal } from "../../../../components";
 import { UpdateStudent } from "../UpdateStudent";
 import { InsertBalance } from "../InsertBalance";
+import { BlockStudent } from "../BlockStudent";
 
 // css
 import "./styles.css";
@@ -25,6 +27,9 @@ export default function StudentPresentation(props) {
 
     insertBalanceModalActive,
     setInsertBalanceModalIsActive,
+
+    blockStudenteModalIsActive, 
+    setBlockStudentModalIsActive,
   } = props;
 
   const student = {
@@ -67,14 +72,24 @@ export default function StudentPresentation(props) {
         />
       </Modal>
 
+      <Modal isVisible={blockStudenteModalIsActive}>
+        <BlockStudent setBlockStudentModalIsActive={setBlockStudentModalIsActive}/>
+      </Modal>
+
       <div style={{ display: "flex", gridGap: "10px" }}>
         <div
           onClick={() => setUpdateStudentModalActive(true)}
           className="management-button"
         />
+
         <div
           onClick={() => setInsertBalanceModalIsActive(true)}
           className="management-button deposite"
+        />
+
+        <div
+          onClick={() => setBlockStudentModalIsActive(true)}
+          className="block-button"
         />
       </div>
     </div>

@@ -15,11 +15,10 @@
     display: grid;
     grid-gap: 50px;
     grid-template-rows: auto 1fr auto;
-    padding: 50px;
+    padding: 25px;
     
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%)
 }
 
 .insert-responsible-page_section-title {
@@ -81,6 +80,8 @@
     font-weight: 600;
     font-size: 16px;
     background-color: #9146ff;
+
+    cursor: pointer;
 }
 
 .insert-responsible-page_section-footer a {

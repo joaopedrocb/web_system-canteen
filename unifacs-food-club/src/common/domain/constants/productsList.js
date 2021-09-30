@@ -8,7 +8,7 @@ export const productsList = [
     picture: '',
     price: 5,
     isBlocked: true,
-    ingredients: ['Farinha de trigo', 'Presunto', 'Maionese', 'Pimenta'],
+    ingredients: ['Presunto', 'Maionese', 'Pimenta'],
   },
   {
     type: ProductTypeEnum.FOOD,
@@ -53,7 +53,7 @@ export const productsList = [
     picture: '',
     price: 10,
     isBlocked: true,
-    ingredients: ['Soba', 'Óleo de gergelim', 'Carne', 'Frango', 'Cenoura', 'Repolho'],
+    ingredients: ['Soba', 'Óleo de gergelim', 'Carne', 'Frango'],
   },
   {
     type: ProductTypeEnum.FOOD,
@@ -62,7 +62,7 @@ export const productsList = [
     picture: '',
     price: 5,
     isBlocked: false,
-    ingredients: ['Farinha de trigo', 'Frango desfiado', 'Batata', 'Pimenta'],
+    ingredients: ['Farinha de trigo', 'Frango desfiado', 'Batata'],
   },
   {
     type: ProductTypeEnum.FOOD,
@@ -71,7 +71,7 @@ export const productsList = [
     picture: '',
     price: 5,
     isBlocked: false,
-    ingredients: ['Farinha de trigo', 'Presunto', 'Maionese', 'Salsicha'],
+    ingredients: ['Farinha de trigo', 'Presunto', 'Maionese'],
   },
   {
     type: ProductTypeEnum.FOOD,

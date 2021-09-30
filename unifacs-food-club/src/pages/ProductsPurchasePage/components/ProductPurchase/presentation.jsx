@@ -18,51 +18,29 @@ function ProductPurchasePresentation(props) {
   }
 
   function renderProduct() {
-    if (isBlocked) {
-      return (
-        <div id="produc" className="isBlocked">
-          <div className="product-data">
-            <div className="product-image"></div>
-            <span className="product-name">{name}</span>
-          </div>
+    return (
+      <div className="product-item">
+        <div className="product-photo"/>
 
-          <span>{renderIngredients()}</span>
+        <div className="informations-container">
+          <span>Nome: {name}</span>
 
-          <span className="product-price">
-            {new Intl.NumberFormat("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            }).format(price)}
+          <span>
+            Ingredientes: {renderIngredients()}
           </span>
 
-          <div className="purchase-button-container">
-          <button className="purchase-button">Comprar</button>
+          <span>Preço: {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(price)}
+          </span>
         </div>
-        </div>
-      );
-    }
-
-    return (
-      <div id="purchase-product">
-        <div className="product-data">
-          <div className="product-image"></div>
-          <span className="product-name">{name}</span>
-        </div>
-
-        <span>{renderIngredients()}</span>
-
-        <span className="product-price">
-          {new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          }).format(price)}
-        </span>
 
         <div className="purchase-button-container">
-          <button className="purchase-button">Comprar</button>
+          <button className="purchase-button">Adicionar ao carrinho</button>
         </div>
       </div>
-    );
+    )
   }
 
   return renderProduct();

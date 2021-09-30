@@ -1,27 +1,25 @@
-#purchase-product {
+#purchase-product-item {
     display: grid;
-    grid-template-columns: 0.8fr 1fr 0.5fr 0.5fr;
     align-items: center;
     padding: 15px;
-    width: 100%;
+    height: 100px;
+    width: 200px;
     
     background-color: white;
-    border-bottom: 1px solid rgb(236, 240, 242);
 
     color: #3b3663;
 }
 
 .isBlocked {
-    color: grey;
-
     display: grid;
-    grid-template-columns: 0.8fr 1fr 0.5fr 0.5fr;
     align-items: center;
     padding: 15px;
-    width: 100%;
+    height: 100px;
+    width: 200px;
     
     background-color: white;
-    border-bottom: 1px solid rgb(236, 240, 242);
+
+    color: #3b3663;
 }
 
 .isBlocked:hover {
@@ -98,6 +96,56 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 18px;
+
+    cursor: pointer;
+}
+
+.product-item {
+    height: 400px;
+    width: 300px;
+    display: grid;
+    grid-template-rows: 150px 1fr auto;
+    grid-row-gap: 20px;
+    
+    border-radius: 20px;
+    background-color: white;
+}
+
+.product-photo {
+    background-image: url('/src/assets/images/acai.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.informations-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.purchase-button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.purchase-button {
+    height: 40px;
+    padding: 10px;
+
+    border-radius: 20px;
+    border: 0;
+
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: #9146ff;
 
     cursor: pointer;
 }

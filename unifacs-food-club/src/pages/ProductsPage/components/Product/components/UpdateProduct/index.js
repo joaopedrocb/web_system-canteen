@@ -18,11 +18,6 @@ export function UpdateProduct(props) {
   function onPriceInputChange(event) {
     setPrice(event?.target?.value);
   }
-  const [provider, setProvider] = React.useState(product.provider);
-
-  function onProviderInputChange(event) {
-    setProvider(event?.target?.value);
-  }
 
   const [ingredients, setIngredients] = React.useState(product.ingredients);
 
@@ -64,7 +59,6 @@ export function UpdateProduct(props) {
 
     onNameInputChange,
     onPriceInputChange,
-    onProviderInputChange,
     onIngredientsInputChange,
     onSubmit
   })
