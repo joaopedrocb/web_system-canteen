@@ -14,10 +14,13 @@ export function Student(props) {
     email,
     responsibleCpf,
     balance,
-    updateStudents
+    updateStudents,
   } = props;
 
   const [updateStudentModalActive, setUpdateStudentModalActive] =
+    React.useState(false);
+
+  const [insertBalanceModalActive, setInsertBalanceModalIsActive] =
     React.useState(false);
 
   return React.createElement(StudentPresentation, {
@@ -33,5 +36,8 @@ export function Student(props) {
     updateStudents,
     updateStudentModalActive,
     setUpdateStudentModalActive,
+
+    insertBalanceModalActive,
+    setInsertBalanceModalIsActive,
   });
 }
