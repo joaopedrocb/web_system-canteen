@@ -1,9 +1,6 @@
 // dependencies
 import React from "react";
 
-// template
-import { ManagementTemplate } from "../templates";
-
 // components
 import { DepositItem } from "./components";
 
@@ -15,7 +12,7 @@ import "./styles.css";
 export function DepositsPage() {
   
   return (
-    <ManagementTemplate>
+    <>
       <div className="statement">
         <div className="statement-header">
           <span>Nome do aluno</span>
@@ -39,7 +36,7 @@ export function DepositsPage() {
           );
         })}
       </div>
-    </ManagementTemplate>
+    </>
   );
 }
 

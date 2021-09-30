@@ -1,61 +1,89 @@
 // dependencies
-import React from 'react';
-
-// template
-import { ManagementTemplate } from "../../templates";
+import React from "react";
 
 // css
-import './styles.css';
+import "./styles.css";
 
 export function UpdateResponsiblePresentational(props) {
-    const {
-      responsible,
-      name,
-      phone,
-      email,
-      login,
-      password,
+  const {
+    responsible,
+    name,
+    phone,
+    email,
+    login,
+    password,
 
     onNameInputChange,
     onPhoneInputChange,
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
-    onSubmit
-    } = props;
+    onSubmit,
 
-    const buttonIsDisabled = !name ||
-                              !phone ||
-                              !email ||
-                              !login ||
-                              !password;
+    setUpdateResponsibleModalIsActive,
+  } = props;
 
-    function renderButton() {
-      if (buttonIsDisabled) {
-          return <button type="button" className="buttonIsDisabled">Editar</button>;
-      }
+  const buttonIsDisabled = !name || !phone || !email || !login || !password;
 
-      return <button onClick={onSubmit}>Editar</button>;
+  function renderButton() {
+    if (buttonIsDisabled) {
+      return (
+        <button type="button" className="buttonIsDisabled">
+          Editar
+        </button>
+      );
     }
 
-    return (
-      <ManagementTemplate>
-        <main id="update-responsible-page">
-          <section class="update-responsible-page_section">
-              <span class="update-responsible-page_section-title">Editar responsável</span>
-              <form class="update-responsible-page_section-form">
-                <input placeholder="Nome" onChange={onNameInputChange} defaultValue={responsible.name}/>
-                <input placeholder="Telefone" onChange={onPhoneInputChange} defaultValue={responsible.phoneNumber} />
-                <input placeholder="Email" onChange={onEmailInputChange} defaultValue={responsible.email} />
-                <input placeholder="Login" onChange={onLoginInputChange} defaultValue={responsible.login} />
-                <input placeholder="Senha" onChange={onPasswordInputChange} defaultValue={responsible.password} />
-              </form>
+    return <button onClick={onSubmit}>Editar</button>;
+  }
 
-              <footer class="update-responsible-page_section-footer">
-                  {renderButton()}
-              </footer>
-          </section>
-        </main>
-        </ManagementTemplate>
-    )
+  return (
+    <>
+      <span
+        className="back"
+        onClick={() => setUpdateResponsibleModalIsActive(false)}
+      >
+        Fechar
+      </span>
+
+      <main id="update-responsible-page">
+        <section class="update-responsible-page_section">
+          <span class="update-responsible-page_section-title">
+            Editar responsável
+          </span>
+          <form class="update-responsible-page_section-form">
+            <input
+              placeholder="Nome"
+              onChange={onNameInputChange}
+              defaultValue={responsible.name}
+            />
+            <input
+              placeholder="Telefone"
+              onChange={onPhoneInputChange}
+              defaultValue={responsible.phoneNumber}
+            />
+            <input
+              placeholder="Email"
+              onChange={onEmailInputChange}
+              defaultValue={responsible.email}
+            />
+            <input
+              placeholder="Login"
+              onChange={onLoginInputChange}
+              defaultValue={responsible.login}
+            />
+            <input
+              placeholder="Senha"
+              onChange={onPasswordInputChange}
+              defaultValue={responsible.password}
+            />
+          </form>
+
+          <footer class="update-responsible-page_section-footer">
+            {renderButton()}
+          </footer>
+        </section>
+      </main>
+    </>
+  );
 }

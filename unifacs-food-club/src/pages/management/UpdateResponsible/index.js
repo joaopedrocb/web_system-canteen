@@ -1,45 +1,45 @@
-import { UpdateResponsiblePresentational } from './presentation'
-import React from 'react';
-import { LocalStorageAdapter } from '../../../infra'
+import { UpdateResponsiblePresentational } from "./presentation";
+import React from "react";
+import { LocalStorageAdapter } from "../../../infra";
 
 // enums
-import { AccessLevelEnum } from '../../../common/domain';
+import { AccessLevelEnum } from "../../../common/domain";
 
-export function UpdateResponsible(responsible) {
-  const storage = new LocalStorageAdapter()
+export function UpdateResponsible(
+  responsible,
+  updateResponsibles,
+  setUpdateResponsibleModalIsActive
+) {
 
-  const responsiblesList = storage.getItem();
-  
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState("");
 
   function onNameInputChange(event) {
     setName(event?.target?.value);
   }
 
-  const [phone, setPhone] = React.useState('');
+  const [phone, setPhone] = React.useState("");
 
   function onPhoneInputChange(event) {
     setPhone(event?.target?.value);
   }
 
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState("");
 
   function onEmailInputChange(event) {
     setEmail(event?.target?.value);
   }
 
-  const [login, setLogin] = React.useState('');
+  const [login, setLogin] = React.useState("");
 
   function onLoginInputChange(event) {
     setLogin(event?.target?.value);
   }
 
-  const [password, setPassword] = React.useState('');
+  const [password, setPassword] = React.useState("");
 
   function onPasswordInputChange(event) {
     setPassword(event?.target?.value);
   }
-
 
   function onSubmit() {
     const updatedResponsible = {
@@ -49,14 +49,17 @@ export function UpdateResponsible(responsible) {
       email,
       login,
       password,
-      accessLevel: AccessLevelEnum.RESPONSIBLE
-    }
+      accessLevel: AccessLevelEnum.RESPONSIBLE,
+    };
+
     
-    const updatedIndex = responsiblesList.findIndex(item => item.cpf === responsible.cpf)
 
-    const newList = responsiblesList[updatedIndex] = updatedResponsible;
-
-    // storage.setItem(RESPONSIBLES_LIST, [newList]);
+    updateResponsibles((prevResponsiblesList) => {
+      const updatedIndex = prevResponsiblesList.findIndex(
+        (item) => item.cpf === responsible.cpf
+      );
+      return (prevResponsiblesList[updatedIndex] = updatedResponsible);
+    });
   }
 
   return React.createElement(UpdateResponsiblePresentational, {
@@ -72,6 +75,8 @@ export function UpdateResponsible(responsible) {
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
-    onSubmit
-  })
+    onSubmit,
+
+    setUpdateResponsibleModalIsActive,
+  });
 }

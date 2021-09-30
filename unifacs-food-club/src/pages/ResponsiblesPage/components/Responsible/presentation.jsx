@@ -4,12 +4,32 @@ import React from "react";
 // css
 import "./styles.css";
 
-
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { UpdateResponsible } from "../../..";
+import { Modal } from "../../../../components";
 
 export default function ResponsiblePresentation(props) {
-  const { cpf, name, phoneNumber, email, studentsEnrollment } = props;
+  const {
+    cpf,
+    name,
+    phoneNumber,
+    email,
+    studentsEnrollment,
+    login,
+    password,
 
+    updateResponsibleModalIsActive,
+    setUpdateResponsibleModalIsActive,
+    updateResponsibles,
+  } = props;
+
+  const responsible = {
+    name,
+    phone: phoneNumber,
+    email,
+    login,
+    password,
+  };
   function renderEnrollmentList() {
     return studentsEnrollment.map((item) => {
       return <span>{item}</span>;
@@ -26,7 +46,18 @@ export default function ResponsiblePresentation(props) {
       <span className="responsible-id">{email}</span>
       <div className="enrollment-list">{renderEnrollmentList()}</div>
 
-      <Link replace to="../gerenciamento/responsaveis/alterar"><div className="management-button"/></Link>
+      <Modal isVisible={updateResponsibleModalIsActive}>
+        <UpdateResponsible
+          responsible={responsible}
+          updateResponsibles={updateResponsibles}
+          setUpdateResponsibleModalIsActive={setUpdateResponsibleModalIsActive}
+        />
+      </Modal>
+
+      <div
+        onClick={() => setUpdateResponsibleModalIsActive(true)}
+        className="management-button"
+      />
     </div>
   );
 }

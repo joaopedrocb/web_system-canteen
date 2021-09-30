@@ -1,6 +1,6 @@
 // dependencies
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // css
 import "./styles.css";
@@ -24,29 +24,31 @@ export function InsertResponsiblePresentational(props) {
     onLoginInputChange,
     onPasswordInputChange,
     onSubmit,
+
+    setInsertResponsibleModalIsActive,
   } = props;
 
-  const buttonIsDisabled = !cpf ||
-                            !name ||
-                            !phone ||
-                            !email ||
-                            !login ||
-                            !password;
+  const buttonIsDisabled =
+    !cpf || !name || !phone || !email || !login || !password;
 
   function renderButton() {
     if (buttonIsDisabled) {
-        return <button type="button" className="buttonIsDisabled">Cadastrar</button>;
+      return (
+        <button type="button" className="buttonIsDisabled">
+          Cadastrar
+        </button>
+      );
     }
 
-    return <button onClick={onSubmit}>Cadastrar</button>
-}
+    return <button onClick={onSubmit}>Cadastrar</button>;
+  }
 
   return (
-    <ManagementTemplate>
+    <>
       <main id="insert-responsible-page">
-        <Link replace to="/gerenciamento/responsaveis" className="backToProducts">
-            <span >Voltar para responsáveis</span> 
-        </Link>
+        <span className="back" onClick={() => setInsertResponsibleModalIsActive(false)}>
+          Fechar
+        </span>
 
         <section class="insert-responsible-page_section">
           <span class="insert-responsible-page_section-title">
@@ -73,6 +75,6 @@ export function InsertResponsiblePresentational(props) {
           </footer>
         </section>
       </main>
-    </ManagementTemplate>
+    </>
   );
 }

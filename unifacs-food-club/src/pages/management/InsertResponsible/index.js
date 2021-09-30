@@ -1,14 +1,10 @@
 import { InsertResponsiblePresentational } from './presentation'
 import React from 'react';
-import { LocalStorageAdapter } from '../../../infra'
 
 //enums
 import { AccessLevelEnum } from '../../../common/domain';
 
-export function InsertResponsible() {
-  const storage = new LocalStorageAdapter()
-
-  const responsiblesList = storage.getItem();
+export function InsertResponsible({ responsiblesList, updateResponsibles, setInsertResponsibleModalIsActive }) {
 
   const [cpf, setCpf] = React.useState('');
 
@@ -75,7 +71,7 @@ export function InsertResponsible() {
         accessLevel: AccessLevelEnum.RESPONSIBLE
       }]
 
-      // storage.setItem(RESPONSIBLES_LIST, [...newList])
+      updateResponsibles(newList)
       return;
     }
   }
@@ -95,5 +91,7 @@ export function InsertResponsible() {
     onLoginInputChange,
     onPasswordInputChange,
     onSubmit,
+
+    setInsertResponsibleModalIsActive
   })
 }

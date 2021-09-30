@@ -18,7 +18,9 @@ export function InsertProductPresentational(props) {
       onPriceInputChange,
       onProviderInputChange,
       onIngredientsInputChange,
-      onSubmit 
+      onSubmit ,
+
+      createProductModalIsActive
     } = props;
 
     function renderButton() {
@@ -48,7 +50,7 @@ export function InsertProductPresentational(props) {
     return (
       <>
         <main className="insert-product">
-          <span> X </span>
+          <span onClick={() => createProductModalIsActive(false)}> X </span>
 
           <section class="insert-product-page_section">
               <span class="insert-product-page_section-title">Cadastrar um novo produto</span>

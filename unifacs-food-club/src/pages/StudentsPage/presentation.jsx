@@ -2,9 +2,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
 
-// template
-import { ManagementTemplate } from "../templates";
-
 // components
 import { Student } from "./components";
 
@@ -15,7 +12,7 @@ export default function StudentsPagePresentation(props) {
   const { studentsList } = props;
 
   return (
-    <ManagementTemplate>
+    <>
       <Link to="/gerenciamento/alunos/adicionar">
         <div className="create-student-button-container">
           <button className="create-student-button">Adicionar aluno</button>
@@ -61,6 +58,6 @@ export default function StudentsPagePresentation(props) {
           );
         })}
       </div>
-    </ManagementTemplate>
+    </>
   );
 }

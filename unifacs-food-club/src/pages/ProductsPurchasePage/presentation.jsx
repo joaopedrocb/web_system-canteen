@@ -14,7 +14,7 @@ function ProductsPurchasePagePresentation(props) {
   const { productsList } = props;
 
   return (
-    <ManagementTemplate>
+    <>
       <div className="productsList">
         <div className="purchase-list-header">
           <span>Nome</span>
@@ -43,7 +43,7 @@ function ProductsPurchasePagePresentation(props) {
           );
         })}
       </div>
-    </ManagementTemplate>
+    </>
   );
 }
 

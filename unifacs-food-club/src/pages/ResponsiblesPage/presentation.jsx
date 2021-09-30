@@ -2,27 +2,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// template
-import { ManagementTemplate } from "../templates";
-
 // components
 import { Responsible } from "./components";
+
+import { InsertResponsible } from "../management/InsertResponsible";
+
+import { Modal } from "../../components";
 
 // css
 import "./styles.css";
 
-export default function ResponsiblesPagePresentation(props) {
-  const { responsiblesList } = props;
+export default function ResponsiblesPagePresentation({
+  responsiblesList,
+  userData,
+  updateResponsibles,
 
+  insertResponsibleModalIsActive,
+  setInsertResponsibleModalIsActive,
+
+}) {
   return (
-    <ManagementTemplate>
-      <Link to="/gerenciamento/responsaveis/adicionar">
-        <div className="create-responsible-button-container">
-          <button className="create-responsible-button">
-            Adicionar responsável
-          </button>
-        </div>
-      </Link>
+    <>
+      <div className="create-responsible-button-container">
+        <button
+          onClick={() => setInsertResponsibleModalIsActive(true)}
+          className="create-responsible-button"
+        >
+          Adicionar responsável
+        </button>
+      </div>
+
+      <Modal isVisible={insertResponsibleModalIsActive}>
+        <InsertResponsible
+          responsiblesList={responsiblesList}
+          updateResponsibles={updateResponsibles}
+          setInsertResponsibleModalIsActive={setInsertResponsibleModalIsActive}
+        />
+      </Modal>
 
       <div className="responsiblesList">
         <div className="list-header">
@@ -35,7 +51,7 @@ export default function ResponsiblesPagePresentation(props) {
         </div>
 
         {responsiblesList.map((responsible) => {
-          const { cpf, name, phoneNumber, email, studentsEnrollment } =
+          const { cpf, name, phoneNumber, email, studentsEnrollment = [] } =
             responsible;
 
           return (
@@ -45,10 +61,11 @@ export default function ResponsiblesPagePresentation(props) {
               phoneNumber={phoneNumber}
               email={email}
               studentsEnrollment={studentsEnrollment}
+              updateResponsibles={updateResponsibles}
             />
           );
         })}
       </div>
-    </ManagementTemplate>
+    </>
   );
 }

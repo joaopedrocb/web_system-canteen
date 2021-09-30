@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "../global.css";
 
 // constants
-import { productsList as productsListFromDomain } from '../common/domain';
+import { productsList as productsListFromDomain, responsiblesList as responsiblesListFromDomain, studentsList as studentsListFromDomain } from '../common/domain';
 
 // pages
 import {
@@ -19,7 +19,6 @@ import {
   ProductsPurchasePage,
   UpdateProduct,
   InsertStudent,
-  InsertResponsible,
   UpdateResponsible,
   UpdateStudent,
   StatementPage,
@@ -45,6 +44,14 @@ function App() {
   const [productsList, setProductsList] = React.useState(productsListFromDomain);
 
   console.log('productsList', productsList);
+
+  const [responsiblesList, setResponsiblesList] = React.useState(responsiblesListFromDomain);
+
+  console.log('responsiblesList', responsiblesList);
+
+  const [studentsList, setStudentsList] = React.useState(studentsListFromDomain);
+
+  console.log('studentsList', studentsList);
 
   return (
     <div className="App">
@@ -75,28 +82,65 @@ function App() {
               </ManagementTemplate>
             )} />
 
+            <Route path="/comprar" exact component={() => (
+              <ManagementTemplate userData={userData}>
+                <ProductsPurchasePage 
+                  productsList={productsList} 
+                  userData={userData} 
+                />
+              </ManagementTemplate>
+            )} />
+
+            <Route path="/gerenciamento/responsaveis" exact component={() => (
+              <ManagementTemplate userData={userData}>
+                <ResponsiblesPage 
+                  responsiblesList={responsiblesList} 
+                  userData={userData} 
+                  updateResponsibles={setResponsiblesList}
+                />
+              </ManagementTemplate>
+            )} />
+
+            <Route path="/gerenciamento/alunos" exact component={() => (
+              <ManagementTemplate userData={userData}>
+                <StudentsPage 
+                  studentsList={studentsList} 
+                  userData={userData} 
+                  changeStudentsList={setStudentsList}
+                />
+              </ManagementTemplate>
+            )} />
+      
+            <Route path="/gerenciamento/extrato" exact component={() => (
+              <ManagementTemplate userData={userData}>
+                <StatementPage />
+              </ManagementTemplate>
+            )} />
+
+            <Route path="/gerenciamento/depositos" exact component={() => (
+              <ManagementTemplate userData={userData}>
+                <DepositsPage />
+              </ManagementTemplate>
+            )} />
+
+
+
+
+
             {/* <Route path="/gerenciamento/produtos/adicionar" component={InsertProduct}/>
 
             <Route path="/gerenciamento/produtos/alterar" component={UpdateProduct}/>
 
             <Route path="/gerenciamento/alunos/adicionar" component={InsertStudent}/>
 
-            <Route path="/gerenciamento/responsaveis/adicionar" component={InsertResponsible}/>
-
             <Route path="/gerenciamento/responsaveis/alterar" component={UpdateResponsible}/>
 
             <Route path="/gerenciamento/alunos/alterar" component={UpdateStudent}/>
 
-            <Route path="/gerenciamento/extrato" component={StatementPage}/>
 
-            <Route path="/gerenciamento/depositos" component={DepositsPage}/>
 
-            <Route
-              path="/gerenciamento/responsaveis"
-              component={ResponsiblesPage}
-            />
+          
 
-            <Route path="/gerenciamento/alunos" component={StudentsPage} />
 
             <Route path="/comprar" component={ProductsPurchasePage} /> */}
           </Switch>

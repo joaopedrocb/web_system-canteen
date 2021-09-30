@@ -70,9 +70,9 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsPurchaseButton() {
-    if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
-      return null;
-    }
+    // if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
+    //   return null;
+    // }
     return (
       <Link to="/comprar">
         <div className="navbar-item">

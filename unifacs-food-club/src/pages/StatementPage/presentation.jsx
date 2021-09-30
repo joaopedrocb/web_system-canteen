@@ -15,7 +15,7 @@ import "./styles.css";
 export function StatementPage() {
   
   return (
-    <ManagementTemplate>
+    <>
       <div className="statement">
         <div className="statement-header">
           <span>Nome</span>
@@ -38,7 +38,7 @@ export function StatementPage() {
           );
         })}
       </div>
-    </ManagementTemplate>
+    </>
   );
 }
 

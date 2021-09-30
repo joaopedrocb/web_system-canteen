@@ -107,6 +107,8 @@ export function InsertProduct(props) {
       onPriceInputChange,
       onProviderInputChange,
       onIngredientsInputChange,
-      onSubmit 
+      onSubmit,
+
+      createProductModalIsActive,
   })
 }
