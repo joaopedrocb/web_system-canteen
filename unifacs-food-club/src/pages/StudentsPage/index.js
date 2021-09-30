@@ -5,9 +5,15 @@ import React from "react";
 import StudentsPagePresentation from "./presentation";
 
 export function StudentsPage({ studentsList, userData, changeStudentsList }) {
+
+  const [insertStudentModalIsActive, setInsertStudentModalIsActive] = React.useState(false);
+
   return React.createElement(StudentsPagePresentation, {
     studentsList,
     userData,
-    changeStudentsList,
+    updateStudents: changeStudentsList,
+
+    insertStudentModalIsActive,
+    setInsertStudentModalIsActive
   });
 }

@@ -1,23 +1,40 @@
 // dependencies
-import { Link } from "react-router-dom";
 import React from "react";
 
 // components
 import { Student } from "./components";
 
+import { InsertStudent } from './components/InsertStudent';
+
+import { Modal } from "../../components";
+
 // css
 import "./styles.css";
 
-export default function StudentsPagePresentation(props) {
-  const { studentsList } = props;
-
+export default function StudentsPagePresentation({
+  studentsList,
+  updateStudents,
+  insertStudentModalIsActive,
+  setInsertStudentModalIsActive,
+}) {
   return (
     <>
-      <Link to="/gerenciamento/alunos/adicionar">
-        <div className="create-student-button-container">
-          <button className="create-student-button">Adicionar aluno</button>
-        </div>
-      </Link>
+      <div className="create-student-button-container">
+        <button
+          onClick={() => setInsertStudentModalIsActive(true)}
+          className="create-student-button"
+        >
+          Adicionar aluno
+        </button>
+      </div>
+
+      <Modal isVisible={insertStudentModalIsActive}>
+        <InsertStudent
+          studentsList={studentsList}
+          updateStudents={updateStudents}
+          setInsertStudentModalIsActive={setInsertStudentModalIsActive}
+        />
+      </Modal>
 
       <div className="studentsList">
         <div className="list-header-students">

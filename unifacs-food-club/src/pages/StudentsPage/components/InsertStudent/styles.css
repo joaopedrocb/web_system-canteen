@@ -1,9 +1,8 @@
-#insert-student-page {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    
-    padding: 100px;
+
+.back {
+    justify-self: flex-end;
+    margin-bottom: 20px;
+    text-decoration: none;
 }
 
 .insert-student-page_section {
