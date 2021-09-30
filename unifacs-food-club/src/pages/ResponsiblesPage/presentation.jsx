@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // components
 import { Responsible } from "./components";
 
-import { InsertResponsible } from "../management/InsertResponsible";
+import { InsertResponsible } from "./components/InsertResponsible";
 
 import { Modal } from "../../components";
 

@@ -1,12 +1,8 @@
 // dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
 // css
 import "./styles.css";
-
-// template
-import { ManagementTemplate } from "../../templates";
 
 export function InsertResponsiblePresentational(props) {
   const {
