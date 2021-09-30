@@ -55,9 +55,6 @@ export function UpdateResponsible({
       const updatedIndex = prevResponsiblesList.findIndex(
         (item) => item.cpf === responsible.cpf
       );
-      console.log(prevResponsiblesList)
-      console.log((prevResponsiblesList[updatedIndex] = updatedResponsible))
-      // return (prevResponsiblesList[updatedIndex] = updatedResponsible);
     });
   }
 

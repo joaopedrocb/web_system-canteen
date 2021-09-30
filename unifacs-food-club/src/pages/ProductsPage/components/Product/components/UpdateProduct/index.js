@@ -41,8 +41,7 @@ export function UpdateProduct(props) {
     const productIndex = productsList.findIndex(product => product.name === name);
 
     temporaryProductsList[productIndex] = updatedProduct;
-    console.log('temporaryProductsList', temporaryProductsList);
-
+    
     changeProductsList(temporaryProductsList);
 
     changeUpdateProductModalIsActive(false);

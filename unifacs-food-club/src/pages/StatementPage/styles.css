@@ -42,3 +42,68 @@
     font-weight: 600;
     color: #3b3663;
 }
+
+.choose-students-header {
+    display: grid;
+    grid-gap:10px;
+    height: 50px;
+}
+
+.choose-students-header input {
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(194, 186, 186);
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #3b3663;
+}
+
+.choose-student-select {
+    width: 80%;
+    height: 40px;
+    justify-self: center;
+    align-self: flex-end;
+
+    border-radius: 10px;
+    border: 0;
+
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #9146ff;
+    cursor: pointer;
+}
+
+.block-product-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 400px;
+    height: 150px;
+    display: grid;
+}
+
+.choose-student {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-student-button {
+    height: 40px;
+    justify-self: center;
+    align-self: flex-end;
+
+    border-radius: 10px;
+    padding :10px;
+    border: 0;
+
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #9146ff;
+    cursor: pointer;
+}

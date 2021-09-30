@@ -32,8 +32,6 @@ export default function ResponsiblePresentation(props) {
     setDeleteResponsibleModalIsActive,
   } = props;
 
-  console.log(userData)
-
   const responsible = {
     name,
     phone: phoneNumber,

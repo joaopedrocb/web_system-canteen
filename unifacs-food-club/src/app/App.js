@@ -26,38 +26,20 @@ import {
   ManagementTemplate,
 } from "../pages";
 
-// enums
-import { AccessLevelEnum } from "../common/domain";
-
 function App() {
-  const [userData, setUserData] = React.useState({
-    name: "Unifacs",
-    adress:
-      "Av. Juracy Magalhães Júnior, S/N - Rio Vermelho, Salvador - BA, 41940-060",
-    phoneNumber: "(71) 3021-2800",
-    email: "funcionario@gmail.com",
-    accessLevel: AccessLevelEnum.STAFF,
-  });
-
-  console.log("userData", userData);
+  const [userData, setUserData] = React.useState();
 
   const [productsList, setProductsList] = React.useState(
     productsListFromDomain
   );
 
-  console.log("productsList", productsList);
-
   const [responsiblesList, setResponsiblesList] = React.useState(
     responsiblesListFromDomain
   );
 
-  console.log("responsiblesList", responsiblesList);
-
   const [studentsList, setStudentsList] = React.useState(
     studentsListFromDomain
   );
-
-  console.log("studentsList", studentsList);
 
   return (
     <div className="App">
