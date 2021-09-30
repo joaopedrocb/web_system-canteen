@@ -1,9 +1,10 @@
 // dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { Modal } from "../../../../components";
 import { UpdateStudent } from "../UpdateStudent";
+import { InsertBalance } from "../InsertBalance";
+
 // css
 import "./styles.css";
 
@@ -21,6 +22,9 @@ export default function StudentPresentation(props) {
     updateStudents,
     updateStudentModalActive,
     setUpdateStudentModalActive,
+
+    insertBalanceModalActive,
+    setInsertBalanceModalIsActive,
   } = props;
 
   const student = {
@@ -55,12 +59,23 @@ export default function StudentPresentation(props) {
         />
       </Modal>
 
+      <Modal isVisible={insertBalanceModalActive}>
+        <InsertBalance
+          student={student}
+          updateStudents={updateStudents}
+          setInsertBalanceModalIsActive={setInsertBalanceModalIsActive}
+        />
+      </Modal>
+
       <div style={{ display: "flex", gridGap: "10px" }}>
         <div
           onClick={() => setUpdateStudentModalActive(true)}
           className="management-button"
         />
-        <div className="management-button deposite" />
+        <div
+          onClick={() => setInsertBalanceModalIsActive(true)}
+          className="management-button deposite"
+        />
       </div>
     </div>
   );
