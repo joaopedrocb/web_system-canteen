@@ -22,6 +22,8 @@ export function Product(props) {
 
     const [blockProductModalIsActive, setBlockProductModalIsActive] = React.useState(false);
 
+    const [deleteProductModalIsActive, setDeleteProductModalIsActive] = React.useState(false);
+
     return React.createElement(ProductPresentation, {
         code,
         ingredients,
@@ -39,5 +41,8 @@ export function Product(props) {
 
         blockProductModalIsActive,
         setBlockProductModalIsActive,
+
+        deleteProductModalIsActive, 
+        setDeleteProductModalIsActive
     });
 }

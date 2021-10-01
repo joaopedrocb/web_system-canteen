@@ -7,6 +7,7 @@ import "./styles.css";
 function ProductPurchasePresentation(props) {
   const {
     ingredients,
+    isBlocked,
     name,
     price,
   } = props;
@@ -21,9 +22,20 @@ function ProductPurchasePresentation(props) {
     });
   }
 
+  function renderBlockedProduct() {
+    if (isBlocked) {
+      return <div className="blocked-product-to-purchase"/>
+    }
+
+    return null;
+  }
+
   function renderProduct() {
     return (
       <div className="product-item">
+
+        {renderBlockedProduct()}
+
         <div className="product-photo"/>
 
         <div className="informations-container">

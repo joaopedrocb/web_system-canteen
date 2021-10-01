@@ -6,6 +6,7 @@ import { Modal } from "../../../../components";
 import { UpdateStudent } from "../UpdateStudent";
 import { InsertBalance } from "../InsertBalance";
 import { BlockStudent } from "../BlockStudent";
+import { DeleteStudent } from '../DeleteStudent'
 
 // css
 import "./styles.css";
@@ -30,6 +31,9 @@ export default function StudentPresentation(props) {
 
     blockStudenteModalIsActive, 
     setBlockStudentModalIsActive,
+
+    deleteStudentModalIsActive,
+    setDeleteStudentModalIsActive,
   } = props;
 
   const student = {
@@ -76,6 +80,10 @@ export default function StudentPresentation(props) {
         <BlockStudent setBlockStudentModalIsActive={setBlockStudentModalIsActive}/>
       </Modal>
 
+      <Modal isVisible={deleteStudentModalIsActive}>
+        <DeleteStudent setDeleteStudentModalIsActive={setDeleteStudentModalIsActive}/>
+      </Modal>
+
       <div style={{ display: "flex", gridGap: "10px" }}>
         <div
           onClick={() => setUpdateStudentModalActive(true)}
@@ -90,6 +98,11 @@ export default function StudentPresentation(props) {
         <div
           onClick={() => setBlockStudentModalIsActive(true)}
           className="block-button"
+        />
+
+        <div
+          onClick={() => setDeleteStudentModalIsActive(true)}
+          className="delete-student-button"
         />
       </div>
     </div>

@@ -26,6 +26,9 @@ export function Student(props) {
   const [blockStudenteModalIsActive, setBlockStudentModalIsActive] =
     React.useState(false);
 
+  const [deleteStudentModalIsActive, setDeleteStudentModalIsActive] = 
+    React.useState(false);
+
   return React.createElement(StudentPresentation, {
     enrollment,
     studentClass,
@@ -45,5 +48,9 @@ export function Student(props) {
 
     blockStudenteModalIsActive, 
     setBlockStudentModalIsActive,
+
+    deleteStudentModalIsActive,
+    setDeleteStudentModalIsActive,
   });
 }
+

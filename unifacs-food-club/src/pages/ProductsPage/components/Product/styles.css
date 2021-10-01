@@ -88,6 +88,10 @@
     color: grey ;
 }
 
+.product-buttons-container {
+    display: flex;
+}
+
 .management-button {
     height: 30px;
     width: 30px;
@@ -110,6 +114,21 @@
     margin-left: 5px;
 
     background-image: url('/src//assets/icons/block.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+
+    cursor: pointer;
+}
+
+.delete-product-button {
+    height: 30px;
+    width: 30px;
+    background-color: rgb(238, 242, 244);
+    border-radius: 50%;
+    margin-left: 5px;
+
+    background-image: url('/src//assets/icons/excluir-pasta.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 18px;

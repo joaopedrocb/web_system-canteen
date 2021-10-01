@@ -25,7 +25,7 @@ export const productsList = [
     name: 'Fanta laranja',
     picture: '',
     price: 4,
-    isBlocked: false,
+    isBlocked: true,
     provider: 'Depósito de bebidas',
   },
   {
@@ -79,7 +79,7 @@ export const productsList = [
     name: 'Açai',
     picture: '',
     price: 20,
-    isBlocked: false,
+    isBlocked: true,
     ingredients: ['Açai', 'Guaraná em pó', 'Banana'],
   },
   {

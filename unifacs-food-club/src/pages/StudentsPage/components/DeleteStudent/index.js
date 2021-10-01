@@ -1,0 +1,1 @@
+export { default as DeleteStudent } from './presentation';

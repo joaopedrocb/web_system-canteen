@@ -8,7 +8,7 @@ import "./styles.css";
 import { ProductTypeEnum, AccessLevelEnum } from '../../../../common/domain';
 
 // local components
-import { UpdateProduct, BlockProduct } from './components';
+import { UpdateProduct, BlockProduct, DeleteProduct } from './components';
 
 // external components
 import { Modal } from '../../../../components';
@@ -31,6 +31,9 @@ function ProductPresentation(props) {
 
     blockProductModalIsActive,
     setBlockProductModalIsActive,
+
+    deleteProductModalIsActive, 
+    setDeleteProductModalIsActive
   } = props;
 
   function renderProductType() {
@@ -61,6 +64,16 @@ function ProductPresentation(props) {
     );
   }
 
+  function renderDeleteProductButton() {
+    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+      return null;
+    }
+
+    return (
+      <div className="delete-product-button" onClick={() => {setDeleteProductModalIsActive(true)}} />
+    )
+  }
+
   function renderProduct() {
     if (isBlocked) {
       return (
@@ -85,8 +98,6 @@ function ProductPresentation(props) {
             }).format(price)}
           </span>
 
-          {renderUpdateProductButton()}
-
           <Modal isVisible={updateProductModalIsActive}>
             <UpdateProduct
               product={{
@@ -105,8 +116,6 @@ function ProductPresentation(props) {
             />
           </Modal>
 
-          <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
-
           <Modal isVisible={blockProductModalIsActive}>
             <BlockProduct
               accessLevel={accessLevel}
@@ -114,6 +123,18 @@ function ProductPresentation(props) {
               isBlocked={isBlocked}
             />
           </Modal>
+
+          <Modal isVisible={deleteProductModalIsActive}>
+              <DeleteProduct setDeleteProductModalIsActive={setDeleteProductModalIsActive}/>
+          </Modal>
+
+          <div className="product-buttons-container">
+            {renderUpdateProductButton()}
+
+            <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
+
+            {renderDeleteProductButton()}
+          </div>
         </div>
       );
     }
@@ -140,7 +161,6 @@ function ProductPresentation(props) {
           }).format(price)}
         </span>
 
-        {renderUpdateProductButton()}
 
         <Modal isVisible={updateProductModalIsActive}>
             <UpdateProduct
@@ -160,7 +180,6 @@ function ProductPresentation(props) {
             />
           </Modal>
 
-        <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
 
           <Modal isVisible={blockProductModalIsActive}>
             <BlockProduct
@@ -169,6 +188,18 @@ function ProductPresentation(props) {
               isBlocked={isBlocked}
             />
           </Modal>
+
+          <Modal isVisible={deleteProductModalIsActive}>
+              <DeleteProduct setDeleteProductModalIsActive={setDeleteProductModalIsActive}/>
+          </Modal>
+
+          <div className="product-buttons-container">
+            {renderUpdateProductButton()}
+
+            <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
+
+            {renderDeleteProductButton()}
+          </div>
       </div>
     );
   }
