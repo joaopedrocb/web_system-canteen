@@ -151,12 +151,6 @@ function App() {
                 </ManagementTemplate>
               )}
             />
-
-            {/* 
-            
-            <Route path="/gerenciamento/produtos/alterar" component={UpdateProduct}/>
-
-            */}
           </Switch>
         </DashboardTemplate>
       </Router>
