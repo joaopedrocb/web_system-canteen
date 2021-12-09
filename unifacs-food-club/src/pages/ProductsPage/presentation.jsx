@@ -25,9 +25,9 @@ function ProductsPagePresentation(props) {
   } = props;
 
   function renderCreateProductButton() {
-    // if (userData?.accessLevel?.id !== AccessLevelEnum.STAFF.id) {
-    //   return null;
-    // }
+    if (userData?.access_level !== AccessLevelEnum.STAFF.id) {
+      return null;
+    }
 
     return (
         <button
@@ -63,7 +63,7 @@ function ProductsPagePresentation(props) {
           price={price}
           type={type}
           provider={provider}
-          accessLevel={userData?.accessLevel}
+          accessLevel={userData?.access_level}
           productsList={productsList}
           changeProductsList={changeProductsList}
           fetchProductsList={fetchProductsList}
@@ -72,7 +72,7 @@ function ProductsPagePresentation(props) {
     });
 
     return mappedProductsList;
-  }, [changeProductsList, productsList, userData?.accessLevel, fetchProductsList])
+  }, [productsList, userData?.access_level, changeProductsList, fetchProductsList])
 
   return (
     <>

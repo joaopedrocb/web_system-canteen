@@ -11,16 +11,6 @@ import "./styles.css";
 function ManagementTemplatePresentation(props) {
   const { children, userData } = props;
 
-  function renderBalance() {
-    return (
-      <div className="user-infos">
-        <span>Saldo:</span>
-
-        <span>R$ {userData?.balance || "-"}</span>
-      </div>
-    );
-  }
-
   function renderProductsButton() {
     if (userData?.access_level === AccessLevelEnum.STUDENT.id) {
       return null;
@@ -91,8 +81,6 @@ function ManagementTemplatePresentation(props) {
           placeholder="Procurar aluno, responsável ou produto"
         />
 
-        {renderBalance()}
-
         <div className="welcome-content">
           <div className="user-logo" />
           Olá {userData?.name}
@@ -101,7 +89,7 @@ function ManagementTemplatePresentation(props) {
 
       <section id="management-page">
         <div class="management-page_navbar">
-          <div className="actions-container">
+          <div onClick={() => localStorage.removeItem('userData')} className="actions-container">
             <Link to="/">Voltar ao início</Link>
           </div>
 

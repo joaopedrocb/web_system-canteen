@@ -10,11 +10,7 @@ import { CloseButton } from "../../../../components";
 export function InsertResponsiblePresentational(props) {
   const {
     cpf,
-    name,
     phone,
-    email,
-    login,
-    password,
 
     onCPFInputChange,
     onNameInputChange,
@@ -26,22 +22,6 @@ export function InsertResponsiblePresentational(props) {
 
     setInsertResponsibleModalIsActive,
   } = props;
-
-
-  const buttonIsDisabled =
-    !cpf || !name || !phone || !email || !login || !password;
-
-  function renderButton() {
-    if (buttonIsDisabled) {
-      return (
-        <button type="button" className="buttonIsDisabled">
-          Cadastrar
-        </button>
-      );
-    }
-
-    return ;
-  }
 
   return (
     <>
@@ -71,7 +51,6 @@ export function InsertResponsiblePresentational(props) {
           </form>
 
           <footer class="insert-responsible-page_section-footer">
-            {/* {renderButton()} */}
             <button onClick={onSubmit}>Cadastrar</button>
           </footer>
         </section>

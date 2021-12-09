@@ -13,7 +13,7 @@ function ProductsPurchasePagePresentation(props) {
   return (
     <>
       <div className="purchase-products-list">
-        {productsList.map((product) => {
+        {productsList?.map((product) => {
           const {
             ingredients,
             isBlocked,

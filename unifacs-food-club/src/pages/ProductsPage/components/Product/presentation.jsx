@@ -52,9 +52,9 @@ function ProductPresentation(props) {
   }
 
   function renderUpdateProductButton() {
-    // if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
-    //   return null;
-    // }
+    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+      return null;
+    }
 
     return (
         <div className="management-button" onClick={() => setUpdateProductModalIsActive(true)}/>
@@ -62,9 +62,9 @@ function ProductPresentation(props) {
   }
 
   function renderDeleteProductButton() {
-    // if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
-    //   return null;
-    // }
+    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+      return null;
+    }
 
     return (
       <div className="delete-product-button" onClick={() => {setDeleteProductModalIsActive(true)}} />

@@ -33,6 +33,7 @@ export function LoginPage() {
       if (response?.data?.status === 'success') {
         history.push('/gerenciamento/produtos');
 
+        localStorage.setItem('userData', '');
         localStorage.setItem('userData', JSON.stringify(response?.data.data));
       }
     });

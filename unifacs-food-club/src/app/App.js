@@ -14,8 +14,6 @@ import {
   ResponsiblesPage,
   StudentsPage,
   ProductsPurchasePage,
-  StatementPage,
-  DepositsPage,
   ManagementTemplate,
 } from "../pages";
 
@@ -49,7 +47,7 @@ function App() {
             />
 
             <Route
-              path="/gerenciamento/produtos/:data?"
+              path="/gerenciamento/produtos"
               exact
               component={() => (
                 <ManagementTemplate>

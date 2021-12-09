@@ -49,13 +49,13 @@ export default function ResponsiblePresentation(props) {
   }
 
   function renderDeleteButton() {
-    // if (userData?.accessLevel?.id === AccessLevelEnum.STAFF.id) {
+    if (userData?.access_level === AccessLevelEnum.STAFF.id) {
       return (
         <div className="delete-button" onClick={() => setDeleteResponsibleModalIsActive(true)}/>
       );
-    // }
+    }
 
-    // return null;
+    return null;
   }
 
   return (

@@ -4,9 +4,6 @@ import React from 'react';
 // presentation
 import { InsertResponsiblePresentational } from './presentation';
 
-// enums
-import { AccessLevelEnum } from '../../../../common/domain';
-
 // api
 import { post } from '../../../../common/main/infra';
 
@@ -71,13 +68,6 @@ export function InsertResponsible({ responsiblesList, updateResponsibles, setIns
     return cpfAlreadyExists
   }
 
-  
-  console.log(cpf,
-    name,
-    phone,
-    email,
-    login,
-    password,);
 
   async function onSubmit() {
     const error = cpfAlreadyExists();

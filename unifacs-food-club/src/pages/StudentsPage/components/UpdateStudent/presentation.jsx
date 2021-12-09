@@ -10,13 +10,6 @@ import { CloseButton } from "../../../../components";
 export function UpdateStudentPresentational(props) {
   const {
     student,
-    shift,
-    name,
-    studentClass,
-    phone,
-    email,
-    login,
-    password,
 
     onShiftInputChange,
     onClassInputChange,
