@@ -5,7 +5,7 @@ import React from "react";
 import ProductPurchasePresentation from "./presentation";
 
 export function ProductPurchase(props) {
-  const { ingredients, isBlocked, name, picture, price } = props;
+  const { ingredients, isBlocked, name, picture, price, onPurchase, code } = props;
 
   const [buyProductModalActive, setBuyProductModalIsActive] =
     React.useState(false);
@@ -16,6 +16,8 @@ export function ProductPurchase(props) {
     name,
     picture,
     price,
+    onPurchase,
+    code,
 
     buyProductModalActive,
     setBuyProductModalIsActive,

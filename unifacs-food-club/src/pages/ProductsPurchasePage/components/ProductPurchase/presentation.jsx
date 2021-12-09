@@ -10,21 +10,27 @@ function ProductPurchasePresentation(props) {
     isBlocked,
     name,
     price,
+    onPurchase,
+    code,
   } = props;
 
+  const onClick = () => {
+    onPurchase(code);
+  }
+  
   function renderIngredients() {
     if (!ingredients) {
       return "-";
     }
 
-    return ingredients.map((ingredient) => {
-      return <li className="ingredient">{ingredient}</li>;
-    });
+
+    return <li className="ingredient">{ingredients}</li>
+
   }
 
   function renderBlockedProduct() {
     if (isBlocked) {
-      return <div className="blocked-product-to-purchase"/>
+      return <div className="blocked-product-to-purchase" />
     }
 
     return null;
@@ -36,7 +42,7 @@ function ProductPurchasePresentation(props) {
 
         {renderBlockedProduct()}
 
-        <div className="product-photo"/>
+        <div className="product-photo" />
 
         <div className="informations-container">
           <span>Nome: {name}</span>
@@ -46,14 +52,14 @@ function ProductPurchasePresentation(props) {
           </span>
 
           <span>Preço: {new Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              }).format(price)}
+            style: "currency",
+            currency: "BRL",
+          }).format(price)}
           </span>
         </div>
 
         <div className="purchase-button-container">
-          <button className="purchase-button">Adicionar ao carrinho</button>
+          <button className="purchase-button" onClick={onClick}>Comprar produto </button>
         </div>
       </div>
     )
