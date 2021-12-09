@@ -5,13 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // css
 import "../global.css";
 
-// constants
-import {
-  productsList as productsListFromDomain,
-  responsiblesList as responsiblesListFromDomain,
-  studentsList as studentsListFromDomain,
-} from "../common/domain";
-
 // pages
 import {
   DashboardTemplate,
@@ -27,20 +20,6 @@ import {
 } from "../pages";
 
 function App() {
-  const [userData, setUserData] = React.useState();
-
-  const [productsList, setProductsList] = React.useState(
-    productsListFromDomain
-  );
-
-  const [responsiblesList, setResponsiblesList] = React.useState(
-    responsiblesListFromDomain
-  );
-
-  const [studentsList, setStudentsList] = React.useState(
-    studentsListFromDomain
-  );
-
   return (
     <div className="App">
       <Router>
@@ -49,17 +28,13 @@ function App() {
             <Route
               path="/"
               exact
-              component={() => <LandingPage userData={userData} />}
+              component={() => <LandingPage />}
             />
 
             <Route
               path="/login"
               component={() => (
-                <LoginPage
-                  userData={userData}
-                  changeUserData={setUserData}
-                  setUserData={setUserData}
-                />
+                <LoginPage />
               )}
             />
 
@@ -67,26 +42,18 @@ function App() {
               path="/gerenciamento"
               exact
               component={() => (
-                <ManagementTemplate userData={userData}>
-                  <ProductsPage
-                    productsList={productsList}
-                    userData={userData}
-                    changeProductsList={setProductsList}
-                  />
+                <ManagementTemplate>
+                  <ProductsPage />
                 </ManagementTemplate>
               )}
             />
 
             <Route
-              path="/gerenciamento/produtos"
+              path="/gerenciamento/produtos/:data?"
               exact
               component={() => (
-                <ManagementTemplate userData={userData}>
-                  <ProductsPage
-                    productsList={productsList}
-                    userData={userData}
-                    changeProductsList={setProductsList}
-                  />
+                <ManagementTemplate>
+                  <ProductsPage />
                 </ManagementTemplate>
               )}
             />
@@ -95,11 +62,8 @@ function App() {
               path="/comprar"
               exact
               component={() => (
-                <ManagementTemplate userData={userData}>
-                  <ProductsPurchasePage
-                    productsList={productsList}
-                    userData={userData}
-                  />
+                <ManagementTemplate>
+                  <ProductsPurchasePage />
                 </ManagementTemplate>
               )}
             />
@@ -108,12 +72,8 @@ function App() {
               path="/gerenciamento/responsaveis"
               exact
               component={() => (
-                <ManagementTemplate userData={userData}>
-                  <ResponsiblesPage
-                    responsiblesList={responsiblesList}
-                    userData={userData}
-                    updateResponsibles={setResponsiblesList}
-                  />
+                <ManagementTemplate>
+                  <ResponsiblesPage />
                 </ManagementTemplate>
               )}
             />
@@ -122,32 +82,8 @@ function App() {
               path="/gerenciamento/alunos"
               exact
               component={() => (
-                <ManagementTemplate userData={userData}>
-                  <StudentsPage
-                    studentsList={studentsList}
-                    userData={userData}
-                    changeStudentsList={setStudentsList}
-                  />
-                </ManagementTemplate>
-              )}
-            />
-
-            <Route
-              path="/gerenciamento/extrato"
-              exact
-              component={() => (
-                <ManagementTemplate userData={userData}>
-                  <StatementPage />
-                </ManagementTemplate>
-              )}
-            />
-
-            <Route
-              path="/gerenciamento/depositos"
-              exact
-              component={() => (
-                <ManagementTemplate userData={userData}>
-                  <DepositsPage />
+                <ManagementTemplate>
+                  <StudentsPage />
                 </ManagementTemplate>
               )}
             />

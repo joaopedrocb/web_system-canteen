@@ -5,7 +5,6 @@ import React from "react";
 import { Modal } from "../../../../components";
 import { UpdateStudent } from "../UpdateStudent";
 import { InsertBalance } from "../InsertBalance";
-import { BlockStudent } from "../BlockStudent";
 import { DeleteStudent } from '../DeleteStudent'
 
 // css
@@ -13,6 +12,7 @@ import "./styles.css";
 
 export default function StudentPresentation(props) {
   const {
+    student,
     enrollment,
     studentClass,
     shift,
@@ -29,23 +29,11 @@ export default function StudentPresentation(props) {
     insertBalanceModalActive,
     setInsertBalanceModalIsActive,
 
-    blockStudenteModalIsActive, 
-    setBlockStudentModalIsActive,
-
     deleteStudentModalIsActive,
     setDeleteStudentModalIsActive,
-  } = props;
 
-  const student = {
-    enrollment,
-    studentClass,
-    shift,
-    name,
-    phoneNumber,
-    email,
-    responsibleCpf,
-    balance,
-  };
+    fetchStudentsList,
+  } = props;
 
   return (
     <div id="student">
@@ -65,6 +53,7 @@ export default function StudentPresentation(props) {
           student={student}
           updateStudents={updateStudents}
           setUpdateResponsibleModalIsActive={setUpdateStudentModalActive}
+          fetchStudentsList={fetchStudentsList}
         />
       </Modal>
 
@@ -73,15 +62,16 @@ export default function StudentPresentation(props) {
           student={student}
           updateStudents={updateStudents}
           setInsertBalanceModalIsActive={setInsertBalanceModalIsActive}
+          fetchStudentsList={fetchStudentsList}
         />
       </Modal>
 
-      <Modal isVisible={blockStudenteModalIsActive}>
-        <BlockStudent setBlockStudentModalIsActive={setBlockStudentModalIsActive}/>
-      </Modal>
-
       <Modal isVisible={deleteStudentModalIsActive}>
-        <DeleteStudent setDeleteStudentModalIsActive={setDeleteStudentModalIsActive}/>
+        <DeleteStudent
+          setDeleteStudentModalIsActive={setDeleteStudentModalIsActive}
+          enrollment={enrollment}
+          fetchStudentsList={fetchStudentsList}
+        />
       </Modal>
 
       <div style={{ display: "flex", gridGap: "10px" }}>
@@ -93,11 +83,6 @@ export default function StudentPresentation(props) {
         <div
           onClick={() => setInsertBalanceModalIsActive(true)}
           className="management-button deposite"
-        />
-
-        <div
-          onClick={() => setBlockStudentModalIsActive(true)}
-          className="block-button"
         />
 
         <div

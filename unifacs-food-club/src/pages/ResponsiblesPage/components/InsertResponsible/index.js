@@ -1,10 +1,16 @@
-import { InsertResponsiblePresentational } from './presentation'
+// dependencies
 import React from 'react';
 
-//enums
+// presentation
+import { InsertResponsiblePresentational } from './presentation';
+
+// enums
 import { AccessLevelEnum } from '../../../../common/domain';
 
-export function InsertResponsible({ responsiblesList, updateResponsibles, setInsertResponsibleModalIsActive }) {
+// api
+import { post } from '../../../../common/main/infra';
+
+export function InsertResponsible({ responsiblesList, updateResponsibles, setInsertResponsibleModalIsActive, fetchResponsiblesList }) {
 
   const [cpf, setCpf] = React.useState('');
 
@@ -65,26 +71,33 @@ export function InsertResponsible({ responsiblesList, updateResponsibles, setIns
     return cpfAlreadyExists
   }
 
+  
+  console.log(cpf,
+    name,
+    phone,
+    email,
+    login,
+    password,);
 
-  function onSubmit() {
+  async function onSubmit() {
     const error = cpfAlreadyExists();
-    
-    if (!error) {
 
-      const newList = [...responsiblesList, {
-        cpf,
-        name,
-        phoneNumber: phone,
-        email,
-        login,
-        password,
-        accessLevel: AccessLevelEnum.RESPONSIBLE
-      }]
+    if (error) return;
 
-      updateResponsibles(newList);
+    const payload = new FormData();
+  
+    payload.set('cpf', cpf.replace(/\D/g,''));
+    payload.set('name', name);
+    payload.set('phone_number', phone);
+    payload.set('email', email);
+    payload.set('login', login);
+    payload.set('password', password);
+    payload.set('access_level', 2);
+
+    await post('/food_club_api/public_html/api/responsible', {data: payload}).then(() => {
       setInsertResponsibleModalIsActive(false);
-      return;
-    }
+      fetchResponsiblesList();
+    });
   }
 
   return React.createElement(InsertResponsiblePresentational, {

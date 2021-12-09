@@ -27,6 +27,7 @@ export function InsertResponsiblePresentational(props) {
     setInsertResponsibleModalIsActive,
   } = props;
 
+
   const buttonIsDisabled =
     !cpf || !name || !phone || !email || !login || !password;
 
@@ -39,7 +40,7 @@ export function InsertResponsiblePresentational(props) {
       );
     }
 
-    return <button onClick={onSubmit}>Cadastrar</button>;
+    return ;
   }
 
   return (
@@ -70,7 +71,8 @@ export function InsertResponsiblePresentational(props) {
           </form>
 
           <footer class="insert-responsible-page_section-footer">
-            {renderButton()}
+            {/* {renderButton()} */}
+            <button onClick={onSubmit}>Cadastrar</button>
           </footer>
         </section>
       </main>

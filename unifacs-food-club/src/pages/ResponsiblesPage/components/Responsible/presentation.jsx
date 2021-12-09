@@ -30,6 +30,8 @@ export default function ResponsiblePresentation(props) {
 
     deleteResponsibleModalIsActive,
     setDeleteResponsibleModalIsActive,
+
+    fetchResponsiblesList,
   } = props;
 
   const responsible = {
@@ -47,13 +49,13 @@ export default function ResponsiblePresentation(props) {
   }
 
   function renderDeleteButton() {
-    if (userData?.accessLevel?.id === AccessLevelEnum.STAFF.id) {
+    // if (userData?.accessLevel?.id === AccessLevelEnum.STAFF.id) {
       return (
         <div className="delete-button" onClick={() => setDeleteResponsibleModalIsActive(true)}/>
       );
-    }
+    // }
 
-    return null;
+    // return null;
   }
 
   return (
@@ -71,11 +73,17 @@ export default function ResponsiblePresentation(props) {
           responsible={responsible}
           updateResponsibles={updateResponsibles}
           setUpdateResponsibleModalIsActive={setUpdateResponsibleModalIsActive}
+          fetchResponsiblesList={fetchResponsiblesList}
+          cpf={cpf}
         />
       </Modal>
 
       <Modal isVisible={deleteResponsibleModalIsActive}>
-        <DeleteResponsible setDeleteResponsibleModalIsActive={setDeleteResponsibleModalIsActive} />
+        <DeleteResponsible 
+          setDeleteResponsibleModalIsActive={setDeleteResponsibleModalIsActive} 
+          cpf={cpf} 
+          fetchResponsiblesList={fetchResponsiblesList}
+        />
       </Modal>
 
       <div className="buttons-container">

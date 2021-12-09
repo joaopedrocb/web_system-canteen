@@ -8,7 +8,7 @@ import './styles.css';
 import { CloseButton } from '../../../../components';
 
 function DeleteStudentPresentation(props) {
-    const { setDeleteStudentModalIsActive } = props;
+    const { setDeleteStudentModalIsActive, deleteStudent } = props;
 
     return (
         <div className="block-product-content">
@@ -24,7 +24,7 @@ function DeleteStudentPresentation(props) {
 
                 <div className="block-product-footer">
                     <button>Voltar</button>
-                    <button>Confirmar</button>
+                    <button onClick={deleteStudent}>Confirmar</button>
                 </div>
             </div>
         </div>

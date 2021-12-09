@@ -11,12 +11,15 @@ import { Modal } from "../../components";
 // css
 import "./styles.css";
 
-export default function StudentsPagePresentation({
-  studentsList,
-  updateStudents,
-  insertStudentModalIsActive,
-  setInsertStudentModalIsActive,
-}) {
+export default function StudentsPagePresentation(props) {
+  const {
+    studentsList,
+    updateStudents,
+    insertStudentModalIsActive,
+    setInsertStudentModalIsActive,
+    fetchStudentsList,
+  } = props;
+
   return (
     <>
       <div className="products-page_header">
@@ -33,8 +36,8 @@ export default function StudentsPagePresentation({
       <Modal isVisible={insertStudentModalIsActive}>
         <InsertStudent
           studentsList={studentsList}
-          updateStudents={updateStudents}
           setInsertStudentModalIsActive={setInsertStudentModalIsActive}
+          fetchStudentsList={fetchStudentsList}
         />
       </Modal>
 
@@ -51,15 +54,15 @@ export default function StudentsPagePresentation({
           <div style={{ width: "30px" }} />
         </div>
 
-        {studentsList.map((student) => {
+        {studentsList && studentsList.map((student) => {
           const {
             enrollment,
-            studentClass,
+            student_class,
             shift,
             name,
-            phoneNumber,
+            phone_number,
             email,
-            responsibleCpf,
+            responsible_cpf,
             balance,
           } = student;
 
@@ -67,14 +70,16 @@ export default function StudentsPagePresentation({
             <Student
               key={enrollment.toString()}
               enrollment={enrollment}
-              studentClass={studentClass}
+              studentClass={student_class}
               shift={shift}
               name={name}
-              phoneNumber={phoneNumber}
+              phoneNumber={phone_number}
               email={email}
-              responsibleCpf={responsibleCpf}
+              responsibleCpf={responsible_cpf}
               balance={balance}
               updateStudents={updateStudents}
+              fetchStudentsList={fetchStudentsList}
+              student={student}
             />
           );
         })}

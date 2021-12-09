@@ -6,11 +6,13 @@ import ManagementTemplatePresentation from './presentation';
 
 
 function ManagementTemplate(props) {
-    const { children, userData } = props;
+    const { children } = props;
+
+    const userData = localStorage.getItem('userData');
 
     return React.createElement(ManagementTemplatePresentation, {
-        userData,
-    }, children)
+        userData: JSON.parse(userData),
+    }, children);
 }
 
 export default ManagementTemplate;

@@ -15,6 +15,7 @@ export function Responsible(props) {
     password,
     studentsEnrollment,
     updateResponsibles,
+    fetchResponsiblesList,
   } = props;
 
   const [updateResponsibleModalIsActive, setUpdateResponsibleModalIsActive] =
@@ -39,5 +40,7 @@ export function Responsible(props) {
 
     deleteResponsibleModalIsActive,
     setDeleteResponsibleModalIsActive,
+
+    fetchResponsiblesList,
   });
 }

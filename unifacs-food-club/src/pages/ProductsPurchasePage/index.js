@@ -5,6 +5,6 @@ import React from "react";
 import ProductsPagePresentation from "./presentation";
 
 
-export function ProductsPurchasePage({ productsList, userData }) {
+export function ProductsPurchasePage({ productsList }) {
   return React.createElement(ProductsPagePresentation, { productsList });
 }

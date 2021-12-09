@@ -8,8 +8,7 @@ import './styles.css';
 import { CloseButton } from '../../../../../../components';
 
 function DeleteResponsiblePresentation(props) {
-    const { setDeleteResponsibleModalIsActive } = props;
-
+    const { setDeleteResponsibleModalIsActive, deleteResponsible } = props;
 
     return (
         <div className="block-product-content">
@@ -25,7 +24,7 @@ function DeleteResponsiblePresentation(props) {
 
                 <div className="block-product-footer">
                     <button>Voltar</button>
-                    <button>Confirmar</button>
+                    <button onClick={deleteResponsible}>Confirmar</button>
                 </div>
             </div>
         </div>

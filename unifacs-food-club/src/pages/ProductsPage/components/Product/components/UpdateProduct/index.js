@@ -4,8 +4,12 @@ import React from 'react';
 // presentation
 import { UpdateProductPresentational } from './presentation'
 
+// api
+import { post } from '../../../../../../common/main/infra';
+
 export function UpdateProduct(props) {
-  const { product, productsList, changeProductsList, changeUpdateProductModalIsActive } = props;
+  const { product, fetchProductsList, changeUpdateProductModalIsActive } = props;
+
 
   const [name, setName] = React.useState(product.name);
 
@@ -25,28 +29,18 @@ export function UpdateProduct(props) {
     setIngredients(event?.target?.value);
   }
 
-  function onSubmit() {
-    let temporaryProductsList = productsList;
+  async function onSubmit() {
+    const payload = new FormData();
 
-    const updatedProduct = {
-      type: product.type.id,
-      code: product.code,
-      name,
-      price,
-      isBlocked: product.isBlocked,
-      ingredients: product.ingredients,
-      provider: product.provider,
-    };
+    payload.set('type', product.type);
+    payload.set('name', name);
+    payload.set('price', Number(price));
+    payload.set('ingredients', ingredients);
 
-    const productIndex = productsList.findIndex(product => product.name === name);
-
-    temporaryProductsList[productIndex] = updatedProduct;
-    
-    changeProductsList(temporaryProductsList);
-
-    changeUpdateProductModalIsActive(false);
-      
-    return;
+    await post(`/food_club_api/public_html/api/product/${product.code}`,  { data: payload }).then(() => {
+      changeUpdateProductModalIsActive(false);
+      fetchProductsList();
+    });      
   }
 
   return React.createElement(UpdateProductPresentational, {

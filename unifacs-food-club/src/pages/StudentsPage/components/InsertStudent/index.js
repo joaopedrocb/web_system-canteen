@@ -1,15 +1,20 @@
+
+// dependencies
 import React from "react";
 
+// presentation
 import { InsertStudentPresentational } from "./presentation";
 
-// enums
-import { AccessLevelEnum, ShiftTypeEnum } from "../../../../common/domain";
+// api
+import { post } from '../../../../common/main/infra';
 
-export function InsertStudent({
-  studentsList,
-  updateStudents,
-  setInsertStudentModalIsActive,
-}) {
+export function InsertStudent(props) {
+  const {
+    studentsList,
+    setInsertStudentModalIsActive,
+    fetchStudentsList,
+  } = props;
+
   const [shift, setShift] = React.useState("");
 
   function onShiftInputChange(event) {
@@ -58,6 +63,12 @@ export function InsertStudent({
     setPassword(event?.target?.value);
   }
 
+  const [cpf, setCpf] = React.useState('');
+
+  function onCpfInputChange(event) {
+    setCpf(event?.target?.value);
+  }
+
   function enrollmentAlreadyExists() {
     const enrollmentAlreadyExists = studentsList.some((student) => {
       return student.enrollment === parseFloat(enrollment);
@@ -71,45 +82,29 @@ export function InsertStudent({
     return enrollmentAlreadyExists;
   }
 
-  function onSubmit() {
+  async function onSubmit() {
     const error = enrollmentAlreadyExists();
 
-    if (!error) {
-      // const loggedResponsible = storage.getItem(LOGGED_USER);
+    if (error) return;
 
-      studentsList.push({
-        shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
-        enrollment,
-        name,
-        studentClass,
-        phoneNumber: phone,
-        email,
-        login,
-        password,
-        // responsibleCpf: loggedResponsible.cpf,
-        accessLevel: AccessLevelEnum.STUDENT,
-      });
+    const payload = new FormData();
 
-      const newList = [
-        ...studentsList,
-        {
-          shift: shift === 1 ? ShiftTypeEnum.MORNING : ShiftTypeEnum.AFTERNOON,
-          enrollment,
-          name,
-          studentClass,
-          phoneNumber: phone,
-          email,
-          login,
-          password,
-          // responsibleCpf: loggedResponsible.cpf,
-          accessLevel: AccessLevelEnum.STUDENT,
-        },
-      ];
+    payload.set('enrollment', enrollment);
+    payload.set('student_class', studentClass);
+    payload.set('shift', shift);
+    payload.set('balance', 0);
+    payload.set('responsible_cpf', cpf);
+    payload.set('name', name);
+    payload.set('phone_number', phone);
+    payload.set('email', email);
+    payload.set('login', login);
+    payload.set('password', password);
+    payload.set('access_level', 3);
 
-      updateStudents(newList);
-      alert(`Aluno ${name} cadastrado com sucesso.`);
-      return;
-    }
+    await post('/food_club_api/public_html/api/student', { data: payload }).then(() => {
+      setInsertStudentModalIsActive(false);
+      fetchStudentsList();
+    });
   }
 
   return React.createElement(InsertStudentPresentational, {
@@ -130,6 +125,7 @@ export function InsertStudent({
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
+    onCpfInputChange,
     onSubmit,
 
     setInsertStudentModalIsActive,

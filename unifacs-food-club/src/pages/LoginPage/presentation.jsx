@@ -13,8 +13,6 @@ function LoginPagePresentation(props) {
     onLoginSubmit,
     onEmailInputChange,
     onPasswordInputChange,
-
-    setUserData,
   } = props;
 
   const buttonIsDisabled = !email || !password;
@@ -28,7 +26,7 @@ function LoginPagePresentation(props) {
       );
     }
 
-    return <button onClick={onLoginSubmit}>Entrar</button>;
+    return <button type="button" onClick={onLoginSubmit}>Entrar</button>;
   }
 
   return (
@@ -41,7 +39,7 @@ function LoginPagePresentation(props) {
         <header className="login-page_section-header">
           <span class="login-page_section-title">Entrar</span>
 
-          <div onClick={setUserData(undefined)}>
+          <div>
             <Link replace to="/">
               Voltar ao início
             </Link>

@@ -8,7 +8,7 @@ import "./styles.css";
 import { ProductTypeEnum, AccessLevelEnum } from '../../../../common/domain';
 
 // local components
-import { UpdateProduct, BlockProduct, DeleteProduct } from './components';
+import { UpdateProduct, DeleteProduct } from './components';
 
 // external components
 import { Modal } from '../../../../components';
@@ -29,11 +29,10 @@ function ProductPresentation(props) {
     updateProductModalIsActive,
     setUpdateProductModalIsActive,
 
-    blockProductModalIsActive,
-    setBlockProductModalIsActive,
-
     deleteProductModalIsActive, 
-    setDeleteProductModalIsActive
+    setDeleteProductModalIsActive,
+
+    fetchProductsList,
   } = props;
 
   function renderProductType() {
@@ -49,15 +48,13 @@ function ProductPresentation(props) {
       return "-";
     }
 
-    return ingredients.map((ingredient) => {
-      return <li className="ingredient">{ingredient}</li>;
-    });
+    return ingredients
   }
 
   function renderUpdateProductButton() {
-    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
-      return null;
-    }
+    // if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+    //   return null;
+    // }
 
     return (
         <div className="management-button" onClick={() => setUpdateProductModalIsActive(true)}/>
@@ -65,9 +62,9 @@ function ProductPresentation(props) {
   }
 
   function renderDeleteProductButton() {
-    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
-      return null;
-    }
+    // if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+    //   return null;
+    // }
 
     return (
       <div className="delete-product-button" onClick={() => {setDeleteProductModalIsActive(true)}} />
@@ -89,7 +86,7 @@ function ProductPresentation(props) {
 
           <span>{provider || "-"}</span>
 
-          <span>{renderIngredients()}</span>
+          <span>{ingredients || '-'}</span>
 
           <span className="product-price">
             {new Intl.NumberFormat("pt-BR", {
@@ -113,25 +110,20 @@ function ProductPresentation(props) {
               productsList={productsList}
               changeProductsList={changeProductsList}
               changeUpdateProductModalIsActive={setUpdateProductModalIsActive}
-            />
-          </Modal>
-
-          <Modal isVisible={blockProductModalIsActive}>
-            <BlockProduct
-              accessLevel={accessLevel}
-              setBlockProductModalIsActive={setBlockProductModalIsActive}
-              isBlocked={isBlocked}
+              fetchProductsList={fetchProductsList}
             />
           </Modal>
 
           <Modal isVisible={deleteProductModalIsActive}>
-              <DeleteProduct setDeleteProductModalIsActive={setDeleteProductModalIsActive}/>
+              <DeleteProduct 
+                code={code} 
+                setDeleteProductModalIsActive={setDeleteProductModalIsActive} 
+                fetchProductsList={fetchProductsList}
+              />
           </Modal>
 
           <div className="product-buttons-container">
             {renderUpdateProductButton()}
-
-            <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
 
             {renderDeleteProductButton()}
           </div>
@@ -177,26 +169,20 @@ function ProductPresentation(props) {
               productsList={productsList}
               changeProductsList={changeProductsList}
               changeUpdateProductModalIsActive={setUpdateProductModalIsActive}
-            />
-          </Modal>
-
-
-          <Modal isVisible={blockProductModalIsActive}>
-            <BlockProduct
-              accessLevel={accessLevel}
-              setBlockProductModalIsActive={setBlockProductModalIsActive}
-              isBlocked={isBlocked}
+              fetchProductsList={fetchProductsList}
             />
           </Modal>
 
           <Modal isVisible={deleteProductModalIsActive}>
-              <DeleteProduct setDeleteProductModalIsActive={setDeleteProductModalIsActive}/>
+              <DeleteProduct
+                code={code} 
+                setDeleteProductModalIsActive={setDeleteProductModalIsActive} 
+                fetchProductsList={fetchProductsList}
+              />
           </Modal>
 
           <div className="product-buttons-container">
             {renderUpdateProductButton()}
-
-            <div className="block-button" onClick={() => {setBlockProductModalIsActive(true)}} />
 
             {renderDeleteProductButton()}
           </div>

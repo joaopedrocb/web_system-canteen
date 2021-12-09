@@ -2,10 +2,13 @@
 import React from 'react';
 
 // presentation
-import { InsertProductPresentational } from './presentation'
+import { InsertProductPresentational } from './presentation';
+
+// api
+import { post } from '../../../../common/main/infra';
 
 export function InsertProduct(props) {
-  const { productsList, changeProductsList, createProductModalIsActive } = props;
+  const { productsList, fetchProductsList, createProductModalIsActive } = props;
 
   const [productType, setProductType] = React.useState('');
 
@@ -58,9 +61,8 @@ export function InsertProduct(props) {
       return product.code === parseFloat(code)
     })
 
-    if (codeAlreadyExists && name !== '') {
-      alert('Já existe um produto com este código.')
-      return codeAlreadyExists;
+    if (codeAlreadyExists && code !== '') {
+      alert('Já existe um produto com este código.');
     }
 
     return codeAlreadyExists;
@@ -68,36 +70,43 @@ export function InsertProduct(props) {
 
   function nameAlreadyExists() {
     const nameAlreadyExists =  productsList.some(product => {
-      return product.name.toUpperCase() === name.toLocaleUpperCase()
-    })
+      return product.name.toUpperCase() === name.toLocaleUpperCase();
+    });
 
-    if (nameAlreadyExists) {
-      alert('Já existe um produto com este nome.' && name !== '')
-      return nameAlreadyExists;
+    if (nameAlreadyExists && name !== '') {
+      alert('Já existe um produto com este nome.');
     }
 
     return nameAlreadyExists;
   }
 
-  function onSubmit() {
+  async function onSubmit() {
     const error = codeAlreadyExists() || nameAlreadyExists();
 
-    if (!error) {
-      changeProductsList(prevProductList => {
-        return [
-          ...prevProductList,
-            {
-              type: productType,
-              code,
-              name,
-              price,
-              ingredients: ['Farinha de trigo', 'Ovo'],
-            }
-        ]
-      });
-
-      createProductModalIsActive(false);
+    if (error) {
+      return;
     }
+
+    const payload = new FormData();
+
+    payload.set('type', productType);
+    payload.set('code', Number(code));
+    payload.set('name', name);
+    payload.set('price', price);
+
+    if (!!ingredients) {
+      payload.set('ingredients', ingredients);
+    }
+
+    if (!!provider) {
+      payload.set('provider', provider);
+    }
+    
+
+    await post('food_club_api/public_html/api/product', { data: payload }).then(() => {
+      createProductModalIsActive(false);
+      fetchProductsList();
+    });
   }
 
   return React.createElement(InsertProductPresentational, {

@@ -5,12 +5,10 @@ import { useHistory } from "react-router-dom";
 // presentation
 import LoginPagePresentation from "./presentation";
 
-// models
-import { Responsible, Staff, Student } from "../../models";
+// api
+import { post } from "../../common/main/infra";
 
-export function LoginPage(props) {
-  const { changeUserData, setUserData } = props;
-
+export function LoginPage() {
   const history = useHistory();
 
   const [email, setEmail] = React.useState("");
@@ -25,33 +23,20 @@ export function LoginPage(props) {
     setPassword(event?.target?.value);
   }
 
-  function onLoginSubmit() {
-    if (email === "funcionario@unifacs.com") {
-      const staff = new Staff();
+  async function onLoginSubmit() {
+    const payload = new FormData();
 
-      changeUserData(staff);
-      history.push("/gerenciamento/produtos");
+    payload.set('email', email);
+    payload.set('password', password);
 
-      return;
-    }
+    await post(`/food_club_api/public_html/api/login`, { data: payload }).then((response) => {
+      if (response?.data?.status === 'success') {
+        history.push('/gerenciamento/produtos');
 
-    if (email === "responsavel@unifacs.com") {
-      const responsible = new Responsible();
+        localStorage.setItem('userData', JSON.stringify(response?.data.data));
+      }
+    });
 
-      changeUserData(responsible);
-      history.push("/gerenciamento/produtos");
-
-      return;
-    }
-
-    if (email === "estudante@unifacs.com") {
-      const student = new Student();
-
-      changeUserData(student);
-      history.push("/comprar");
-
-      return;
-    }
   }
 
   return React.createElement(LoginPagePresentation, {
@@ -61,7 +46,5 @@ export function LoginPage(props) {
     onLoginSubmit,
     onEmailInputChange,
     onPasswordInputChange,
-
-    setUserData,
   });
 }

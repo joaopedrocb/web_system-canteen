@@ -15,12 +15,12 @@ export function Product(props) {
         provider,
         accessLevel,
         productsList,
+
         changeProductsList,
+        fetchProductsList,
     } = props;
 
     const [updateProductModalIsActive, setUpdateProductModalIsActive] = React.useState(false);
-
-    const [blockProductModalIsActive, setBlockProductModalIsActive] = React.useState(false);
 
     const [deleteProductModalIsActive, setDeleteProductModalIsActive] = React.useState(false);
 
@@ -39,10 +39,9 @@ export function Product(props) {
         updateProductModalIsActive,
         setUpdateProductModalIsActive,
 
-        blockProductModalIsActive,
-        setBlockProductModalIsActive,
-
         deleteProductModalIsActive, 
-        setDeleteProductModalIsActive
+        setDeleteProductModalIsActive,
+
+        fetchProductsList,
     });
 }

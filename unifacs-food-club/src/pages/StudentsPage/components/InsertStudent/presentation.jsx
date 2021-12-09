@@ -26,6 +26,7 @@ export function InsertStudentPresentational(props) {
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
+    onCpfInputChange,
     onSubmit,
 
     setInsertStudentModalIsActive,
@@ -39,7 +40,7 @@ export function InsertStudentPresentational(props) {
     !email ||
     !login ||
     !password ||
-    !enrollment;
+    !enrollment;  
 
   function renderButton() {
     if (buttonIsDisabled) {
@@ -101,6 +102,7 @@ export function InsertStudentPresentational(props) {
             />
             <input placeholder="Login" onChange={onLoginInputChange} />
             <input placeholder="Senha" onChange={onPasswordInputChange} />
+            <input placeholder="Cpf" onChange={onCpfInputChange}/>
           </form>
 
           <footer class="insert-student-page_section-footer">

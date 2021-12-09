@@ -22,7 +22,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.STUDENT.id) {
+    if (userData?.access_level === AccessLevelEnum.STUDENT.id) {
       return null;
     }
 
@@ -37,7 +37,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderResponsiblesListButton() {
-    if (userData?.accessLevel.id !== AccessLevelEnum.STAFF.id) {
+    if (userData?.access_level !== AccessLevelEnum.STAFF.id) {
       return null;
     }
 
@@ -52,7 +52,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderStudentsButton() {
-    if (userData?.accessLevel.id !== AccessLevelEnum.RESPONSIBLE.id) {
+    if (userData?.access_level !== AccessLevelEnum.RESPONSIBLE.id) {
       return null;
     }
 
@@ -67,7 +67,7 @@ function ManagementTemplatePresentation(props) {
   }
 
   function renderProductsPurchaseButton() {
-    if (userData?.accessLevel.id !== AccessLevelEnum.STUDENT.id) {
+    if (userData?.access_level !== AccessLevelEnum.STUDENT.id) {
       return null;
     }
 
@@ -79,36 +79,6 @@ function ManagementTemplatePresentation(props) {
         </div>
       </Link>
     );
-  }
-
-  function renderStatementButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
-      return (
-        <Link to="/gerenciamento/extrato">
-          <div className="navbar-item">
-            <div className="navbar-item_logo extrato" />
-            Extrato de consumo
-          </div>
-        </Link>
-      );
-    }
-
-    return null;
-  }
-
-  function renderDepositsButton() {
-    if (userData?.accessLevel.id === AccessLevelEnum.RESPONSIBLE.id) {
-      return (
-        <Link to="/gerenciamento/depositos">
-          <div className="navbar-item">
-            <div className="navbar-item_logo deposit" />
-            Extrato de depósitos
-          </div>
-        </Link>
-      );
-    }
-
-    return null;
   }
 
   return (
@@ -142,10 +112,6 @@ function ManagementTemplatePresentation(props) {
           {renderStudentsButton()}
 
           {renderProductsPurchaseButton()}
-
-          {renderStatementButton()}
-
-          {renderDepositsButton()}
         </div>
 
         <div className="management-page_main">{children}</div>

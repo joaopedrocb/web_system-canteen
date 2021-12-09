@@ -14,11 +14,10 @@ import "./styles.css";
 export default function ResponsiblesPagePresentation({
   responsiblesList,
   userData,
-  updateResponsibles,
 
   insertResponsibleModalIsActive,
   setInsertResponsibleModalIsActive,
-
+  fetchResponsiblesList,
 }) {
   return (
     <>
@@ -37,8 +36,8 @@ export default function ResponsiblesPagePresentation({
       <Modal isVisible={insertResponsibleModalIsActive}>
         <InsertResponsible
           responsiblesList={responsiblesList}
-          updateResponsibles={updateResponsibles}
           setInsertResponsibleModalIsActive={setInsertResponsibleModalIsActive}
+          fetchResponsiblesList={fetchResponsiblesList}
         />
       </Modal>
 
@@ -48,12 +47,12 @@ export default function ResponsiblesPagePresentation({
           <span>CPF</span>
           <span>Telefone</span>
           <span>Email</span>
-          <span>Alunos</span>
+          <span></span>
           <div style={{ width: "30px" }} />
         </div>
 
         {responsiblesList.map((responsible) => {
-          const { cpf, name, phoneNumber, email, studentsEnrollment = [] } =
+          const { cpf, name, phone_number, email, studentsEnrollment = [], login, password } =
             responsible;
 
           return (
@@ -61,11 +60,13 @@ export default function ResponsiblesPagePresentation({
               key={cpf.toString()}
               cpf={cpf}
               name={name}
-              phoneNumber={phoneNumber}
+              phoneNumber={phone_number}
               email={email}
               studentsEnrollment={studentsEnrollment}
-              updateResponsibles={updateResponsibles}
               userData={userData}
+              login={login}
+              password={password}
+              fetchResponsiblesList={fetchResponsiblesList}
             />
           );
         })}

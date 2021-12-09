@@ -15,6 +15,8 @@ export function Student(props) {
     responsibleCpf,
     balance,
     updateStudents,
+    fetchStudentsList,
+    student,
   } = props;
 
   const [updateStudentModalActive, setUpdateStudentModalActive] =
@@ -23,13 +25,11 @@ export function Student(props) {
   const [insertBalanceModalActive, setInsertBalanceModalIsActive] =
     React.useState(false);
 
-  const [blockStudenteModalIsActive, setBlockStudentModalIsActive] =
-    React.useState(false);
-
   const [deleteStudentModalIsActive, setDeleteStudentModalIsActive] = 
     React.useState(false);
 
   return React.createElement(StudentPresentation, {
+    student,
     enrollment,
     studentClass,
     shift,
@@ -46,11 +46,10 @@ export function Student(props) {
     insertBalanceModalActive,
     setInsertBalanceModalIsActive,
 
-    blockStudenteModalIsActive, 
-    setBlockStudentModalIsActive,
-
     deleteStudentModalIsActive,
     setDeleteStudentModalIsActive,
+
+    fetchStudentsList,
   });
 }
 

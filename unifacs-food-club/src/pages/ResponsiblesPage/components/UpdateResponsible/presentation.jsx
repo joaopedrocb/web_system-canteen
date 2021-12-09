@@ -10,11 +10,6 @@ import { CloseButton } from "../../../../components";
 export function UpdateResponsiblePresentational(props) {
   const {
     responsible,
-    name,
-    phone,
-    email,
-    login,
-    password,
 
     onNameInputChange,
     onPhoneInputChange,
@@ -25,20 +20,6 @@ export function UpdateResponsiblePresentational(props) {
 
     setUpdateResponsibleModalIsActive,
   } = props;
-
-  const buttonIsDisabled = !name || !phone || !email || !login || !password;
-
-  function renderButton() {
-    if (buttonIsDisabled) {
-      return (
-        <button type="button" className="buttonIsDisabled">
-          Editar
-        </button>
-      );
-    }
-
-    return <button onClick={onSubmit}>Editar</button>;
-  }
 
   return (
     <>
@@ -80,7 +61,7 @@ export function UpdateResponsiblePresentational(props) {
           </form>
 
           <footer class="update-responsible-page_section-footer">
-            {renderButton()}
+            <button onClick={onSubmit}>Editar</button>
           </footer>
         </section>
       </main>

@@ -21,12 +21,13 @@ function ProductsPagePresentation(props) {
 
     createProductModalIsActive,
     setCreateProductModalIsActive,
+    fetchProductsList,
   } = props;
 
   function renderCreateProductButton() {
-    if (userData.accessLevel?.id !== AccessLevelEnum.STAFF.id) {
-      return null;
-    }
+    // if (userData?.accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+    //   return null;
+    // }
 
     return (
         <button
@@ -65,12 +66,13 @@ function ProductsPagePresentation(props) {
           accessLevel={userData?.accessLevel}
           productsList={productsList}
           changeProductsList={changeProductsList}
+          fetchProductsList={fetchProductsList}
         />
       );
     });
 
     return mappedProductsList;
-  }, [changeProductsList, productsList, userData?.accessLevel])
+  }, [changeProductsList, productsList, userData?.accessLevel, fetchProductsList])
 
   return (
     <>
@@ -83,8 +85,8 @@ function ProductsPagePresentation(props) {
     <Modal isVisible={createProductModalIsActive}>
       <InsertProduct 
         productsList={productsList}
-        changeProductsList={changeProductsList}
         createProductModalIsActive={setCreateProductModalIsActive}
+        fetchProductsList={fetchProductsList}
       />
     </Modal>
 

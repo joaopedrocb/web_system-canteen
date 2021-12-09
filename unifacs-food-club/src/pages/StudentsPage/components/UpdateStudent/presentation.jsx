@@ -25,25 +25,11 @@ export function UpdateStudentPresentational(props) {
     onEmailInputChange,
     onLoginInputChange,
     onPasswordInputChange,
+    onCpfInputChange,
     onSubmit,
 
     setUpdateResponsibleModalIsActive
   } = props;
-
-  const buttonIsDisabled =
-    !shift || !name || !studentClass || !phone || !email || !login || !password;
-
-  function renderButton() {
-    if (buttonIsDisabled) {
-      return (
-        <button type="button" className="buttonIsDisabled">
-          Editar
-        </button>
-      );
-    }
-
-    return <button onClick={onSubmit}>Editar</button>;
-  }
 
   return (
     <>
@@ -82,7 +68,7 @@ export function UpdateStudentPresentational(props) {
             <input
               placeholder="Turma"
               onChange={onClassInputChange}
-              defaultValue={student.studentClass}
+              defaultValue={student.student_class}
             />
             <input
               placeholder="Nome"
@@ -92,7 +78,7 @@ export function UpdateStudentPresentational(props) {
             <input
               placeholder="Telefone"
               onChange={onPhoneInputChange}
-              defaultValue={student.phoneNumber}
+              defaultValue={student.phone_number}
             />
             <input
               placeholder="Email"
@@ -109,10 +95,15 @@ export function UpdateStudentPresentational(props) {
               onChange={onPasswordInputChange}
               defaultValue={student.password}
             />
+            <input
+              placeholder="Cpf"
+              onChange={onCpfInputChange}
+              defaultValue={student.responsible_cpf}
+            />
           </form>
 
           <footer class="update-student-page_section-footer">
-            {renderButton()}
+            <button onClick={onSubmit}>Editar</button>
           </footer>
         </section>
       </main>
