@@ -9,7 +9,17 @@ import { AccessLevelEnum } from "../../../common/domain";
 import "./styles.css";
 
 function ManagementTemplatePresentation(props) {
-  const { children, userData, setBalance, balance } = props;
+  const { children, userData } = props;
+
+  function renderBalance() {
+    return (
+      <div className="user-infos">
+        <span>Saldo:</span>
+
+        <span>R$ {userData?.balance || "-"}</span>
+      </div>
+    );
+  }
 
   function renderProductsButton() {
     if (userData?.access_level === AccessLevelEnum.STUDENT.id) {
@@ -62,7 +72,7 @@ function ManagementTemplatePresentation(props) {
     }
 
     return (
-      <Link to="/comprar/" params={{balance, changeBalance: setBalance}}>
+      <Link to="/comprar">
         <div className="navbar-item">
           <div className="navbar-item_logo cart" />
           Comprar
@@ -80,6 +90,8 @@ function ManagementTemplatePresentation(props) {
           className="search-input"
           placeholder="Procurar aluno, responsável ou produto"
         />
+
+        {renderBalance()}
 
         <div className="welcome-content">
           <div className="user-logo" />
