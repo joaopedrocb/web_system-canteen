@@ -25,10 +25,11 @@ export function ProductsPurchasePage() {
   
   async function onPurchase(productCode) {
     await post(`/food_club_api/public_html/api/student/buy/${productCode}/${userData.enrollment}`).then((response) => {
+      console.log(response)
       if (response?.data?.status === 'success') {
         alert(response.data.data)
       }
-    })
+    }).catch((error) => alert(error.response?.data?.error))
   }
 
   return React.createElement(ProductsPagePresentation, { productsList, onPurchase });

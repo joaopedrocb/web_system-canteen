@@ -24,7 +24,7 @@ export function InsertBalance(props) {
     await post(`/food_club_api/public_html/api/responsible/deposit/${student.enrollment}/${balance}`).then(() => {
       setInsertBalanceModalIsActive(false);
       fetchStudentsList();
-    })
+    }).catch((error) => alert(error.response?.data?.error));
   }
 
   return React.createElement(InsertBalancePresentational, {

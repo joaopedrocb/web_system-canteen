@@ -45,7 +45,7 @@ export function LoginPage() {
         localStorage.setItem('userData', '');
         localStorage.setItem('userData', JSON.stringify(response?.data.data));
       }
-    });
+    }).catch((error) => alert(error.response?.data?.error));
 
   }
 
