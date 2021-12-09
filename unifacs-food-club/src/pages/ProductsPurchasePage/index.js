@@ -3,15 +3,14 @@ import React from "react";
 
 // presentation
 import ProductsPagePresentation from "./presentation";
+
 // api
 import { get, post } from '../../common/main/infra';
 
-
-
 export function ProductsPurchasePage() {
-  const [productsList, setProductsList] = React.useState([]);
+  const userData = JSON.parse(localStorage.getItem('userData'));
 
-  const userData = localStorage.getItem('userData');
+  const [productsList, setProductsList] = React.useState([]);
 
   async function fetchProductsList() {
     const response = await get('/food_club_api/public_html/api/product');
@@ -25,9 +24,7 @@ export function ProductsPurchasePage() {
 
   
   async function onPurchase(productCode) {
-    console.log('onPurchase')
-    console.log(productCode)
-    await post(`/food_club_api/public_html/api/student/buy/${productCode}/144171001`).then((response) => {
+    await post(`/food_club_api/public_html/api/student/buy/${productCode}/${userData.enrollment}`).then((response) => {
       if (response?.data?.status === 'success') {
         alert(response.data.data)
       }

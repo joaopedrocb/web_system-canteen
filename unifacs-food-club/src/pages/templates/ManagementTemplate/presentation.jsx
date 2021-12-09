@@ -9,7 +9,7 @@ import { AccessLevelEnum } from "../../../common/domain";
 import "./styles.css";
 
 function ManagementTemplatePresentation(props) {
-  const { children, userData } = props;
+  const { children, userData, setBalance, balance } = props;
 
   function renderProductsButton() {
     if (userData?.access_level === AccessLevelEnum.STUDENT.id) {
@@ -62,7 +62,7 @@ function ManagementTemplatePresentation(props) {
     }
 
     return (
-      <Link to="/comprar">
+      <Link to="/comprar/" params={{balance, changeBalance: setBalance}}>
         <div className="navbar-item">
           <div className="navbar-item_logo cart" />
           Comprar

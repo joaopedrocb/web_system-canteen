@@ -35,13 +35,21 @@ export default function StudentPresentation(props) {
     fetchStudentsList,
   } = props;
 
+  function renderShift() {
+    if (shift === '1') {
+      return 'Matutino'
+    }
+
+    return 'Vespertino'
+  }
+
   return (
     <div id="student">
       <span className="student-id">{enrollment}</span>
 
       <span className="student-id">{studentClass}</span>
 
-      <span className="student-id">{shift.label}</span>
+      <span className="student-id">{renderShift()}</span>
       <span className="student-name">{name}</span>
       <span className="student-id">{phoneNumber}</span>
       <span className="student-id">{email}</span>

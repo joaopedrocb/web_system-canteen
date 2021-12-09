@@ -9,10 +9,12 @@ function ManagementTemplate(props) {
 
     const userData = localStorage.getItem('userData');
 
-    console.log('getUserData from template', JSON.parse(userData));
+    const [balance, setBalance] = React.useState(0);
 
     return React.createElement(ManagementTemplatePresentation, {
         userData: JSON.parse(userData),
+        balance,
+        setBalance,
     }, children);
 }
 

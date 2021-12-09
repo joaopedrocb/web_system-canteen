@@ -52,7 +52,7 @@ function ProductPresentation(props) {
   }
 
   function renderUpdateProductButton() {
-    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+    if (accessLevel !== AccessLevelEnum.STAFF.id) {
       return null;
     }
 
@@ -62,7 +62,7 @@ function ProductPresentation(props) {
   }
 
   function renderDeleteProductButton() {
-    if (accessLevel?.id !== AccessLevelEnum.STAFF.id) {
+    if (accessLevel !== AccessLevelEnum.STAFF.id) {
       return null;
     }
 

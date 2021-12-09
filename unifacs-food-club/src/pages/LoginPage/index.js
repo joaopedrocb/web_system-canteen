@@ -31,6 +31,15 @@ export function LoginPage() {
 
     await post(`/food_club_api/public_html/api/login`, { data: payload }).then((response) => {
       if (response?.data?.status === 'success') {
+        if (response?.data?.data.access_level === '3') {
+          history.push('/comprar');
+
+          localStorage.setItem('userData', '');
+          localStorage.setItem('userData', JSON.stringify(response?.data.data));
+
+          return;
+        }
+
         history.push('/gerenciamento/produtos');
 
         localStorage.setItem('userData', '');
